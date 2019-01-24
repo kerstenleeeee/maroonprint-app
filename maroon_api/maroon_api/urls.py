@@ -1,4 +1,4 @@
-"""project URL Configuration
+"""maroon_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -17,14 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from django.conf.urls import include	
-from tickets import views
+from mp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('tickets.urls')),
-    #url(r'^$', views.HomePageView.as_view(), name='home'),
-    #url(r'^$', UserPageView, name="process"),
-    #url(r'^$',views.UserPageView, name = 'process'),
-    #url(r'^$', UserPageView, name='user'),
-    #url(r'^$', views.UserPageView.as_view(), name='user'),
+    #path('', include('mp.urls')),
 ]
