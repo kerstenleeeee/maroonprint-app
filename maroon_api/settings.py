@@ -79,11 +79,16 @@ WSGI_APPLICATION = 'maroon_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': dj_database_url.config(
         default='postgres://kmguflpagdenqf:8c2521af5b3eff6d37e1db0d8ec336ce9575d5b422c7e2de745d2a6ee9bfadae@ec2-54-83-50-174.compute-1.amazonaws.com:5432/del92mq08q3k6l'
     )
 }
+'''
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
