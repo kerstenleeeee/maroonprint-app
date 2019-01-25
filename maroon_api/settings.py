@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'tickets'
 ]
 
 MIDDLEWARE = [
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'maroon_api.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://axjwpyzfypfdlu:9a65baba1636f69f605fe5259672024c459d00587d41755525669174533678af@ec2-54-163-230-178.compute-1.amazonaws.com:5432/ddjjc0jl97n0pb'
+        default='postgres://kmguflpagdenqf:8c2521af5b3eff6d37e1db0d8ec336ce9575d5b422c7e2de745d2a6ee9bfadae@ec2-54-83-50-174.compute-1.amazonaws.com:5432/del92mq08q3k6l'
     )
 }
 
