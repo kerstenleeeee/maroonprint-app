@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'tickets'
+    'bps'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +133,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #     os.path.join(PROJECT_ROOT, 'static'),
 # )
 
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+MEDIA_URL= "/media/"
