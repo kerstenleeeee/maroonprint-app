@@ -38,3 +38,55 @@ def FloorList(request):
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def BuildingViews(request, pk):
+    try:
+        blue_print = Building.objects.get(userID = pk)
+    except Building.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = BuildingSerializer(blue_print)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = BuildingSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'PUT':
+        serializer = BuildingSerializer(blue_print, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        blue_print.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def FloorViews(request, pk):
+    try:
+        blue_print = Floor.objects.get(userID = pk)
+    except Floor.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = FloorSerializer(blue_print)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = FloorSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'PUT':
+        serializer = FloorSerializer(blue_print, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        blue_print.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
