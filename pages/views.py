@@ -2,15 +2,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render_to_response
+from django.views.generic import TemplateView
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.template import RequestContext, Template
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from bps.models import Building, Floor
+from bps.serializers import BuildingSerializer, FloorSerializer
+from rest_framework import status
 
 # Create your views here.
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
 	return render(request, 'home.html')
-
-def dcsPageView(request):
-	try:
-		blue_print = Building.objects.get(buildID = 'coe0001')
-	except Building.DoesNotExist:
-		return Response(status = status.HTTP_404_NOT_FOUND)
-	return render(request, 'coe.html')
