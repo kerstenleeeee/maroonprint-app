@@ -19,3 +19,21 @@ from rest_framework import status
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
 	return render(request, 'home.html')
+
+def aboutPageView(request):
+	#return HttpResponse('MaroonPrint')
+	return render(request, 'about.html')
+
+def dcsPageView(request):
+	try:
+		entries = Building.objects.get(buildID='dcs001')
+		return render(request, 'dcs.html')
+	except:
+		return render(request, 'error.html')
+
+def coePageView(request):
+	try:
+		entries = Building.objects.get(buildID='coe001')
+		return render(request, 'coe.html')
+	except:
+		return render(request, 'error.html')

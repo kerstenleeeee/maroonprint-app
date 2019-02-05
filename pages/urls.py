@@ -7,8 +7,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     #path('', homePageView, name='home')
     #path('', homePageView.as_view(), name='home'),
-    url(r'^$', views.homePageView),
-    #url(r'^dcs/$', views.dcsPageView),
+    url(r'^$', views.homePageView, name="home"),
+    url('about/', views.aboutPageView, name="about"),
+    url('department-of-computer-science/', views.dcsPageView, name="dcs"),
+    url('college-of-engineering/', views.coePageView, name="coe"),
     #url(r'^new/$', views.new),
 ]
 

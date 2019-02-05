@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
 	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
 
@@ -29,9 +29,10 @@
 	}
 
 	.home{
-		text-align: center;
-		padding-top: 25px;
-		margin-bottom:200px;
+		/*margin-left: 30px;*/
+		text-align: left;
+		padding-top: 20px;
+		margin-bottom:20px;
 	}
 
 	.home img{
@@ -42,8 +43,8 @@
 	.home h1{
 		margin-top:0;
 		font: normal 32px/1.5 'Open Sans', sans-serif;
-		color: #3F71AE;
-		padding-bottom: 16px;
+		color: black;
+		padding-bottom: 1px;
 	}
 
 	.home h2{
@@ -265,7 +266,9 @@
 	  display: block;
 	}
 
-	.dropdown a:hover {color: #800000;}
+	.dropdown a:hover {
+		color: #800000;
+	}
 
 	.show {display: block;}
 
@@ -301,6 +304,35 @@
 		}
 	}
 
+	div.transbox {
+		margin: 20px;
+  		background-color: #ffffff;
+  		border: 0px solid black;
+  		opacity: 0.6;
+  		filter: alpha(opacity=60); /* For IE8 and earlier */
+	}
+
+	div.transbox p {
+  		margin: 5%;
+  		font-weight: bold;
+  		color: #000000;
+	}
+
+	/* Create three equal columns that floats next to each other */
+	.column {
+	  	float: left;
+	  	width: 32%;
+	  	padding: 7px;
+	  	height: 100px; 
+	}
+
+/* Clear floats after the columns */
+	.row:after {
+ 	 	content: "";
+  		display: table;
+  		clear: both;
+	}
+
 	.footer {
 		position: fixed;
 		box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
@@ -320,7 +352,6 @@
 		color: #ffffff;
 		text-align: center;
 	}
-
 </style>
 
 <body>
@@ -358,7 +389,23 @@
 </header>
 
 <div class="home">
-	<h1>MaroonPrint</h1>
+	<div class="transbox">
+		<div style="margin-left: 20px; margin-right: 20px">
+			<h1><strong>About</strong></h1>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit mattis placerat. Fusce et volutpat enim. Sed sit amet nisi convallis nisi aliquam rutrum sed at mauris. Curabitur pharetra nibh eget turpis maximus finibus. Curabitur mi erat, dapibus euismod feugiat at, pellentesque id nisi. Vivamus ut metus imperdiet, fermentum sapien mattis, finibus leo. Duis condimentum, mauris eget efficitur aliquam, enim dolor pharetra ex, eget efficitur mi ipsum quis erat. Nullam ultrices lectus in orci cursus ornare et id enim. Praesent ac nisi lacinia, sagittis dolor sit amet, dapibus est. Duis eget efficitur orci. Suspendisse eu ante velit. Duis mauris orci, condimentum gravida arcu et, venenatis iaculis quam. Aliquam erat volutpat. Morbi pellentesque tellus in est rutrum hendrerit.
+			<br><br>
+		</div>
+	</div>
+	<div class="transbox">
+		<div style="margin-left: 20px; margin-right: 20px">
+			<h1><strong>Developers</strong></h1>
+			<div class="row">
+  				<div class="column">Kristine-Clair Lee</div>
+  				<div class="column">Hannah Mae Magno</div>
+  				<div class="column">Jeremy Jin Qian Wu</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="footer">
