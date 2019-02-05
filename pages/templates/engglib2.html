@@ -16,32 +16,11 @@
 
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
-
-<style>
-	th, td, tr {
-  		padding: 5px;
-  		background: rgba(255, 255, 255, 0.6)
-	}
 	
-	table {
-  		padding: 5px;
-  		margin-bottom: 50px;
-	}
-
-	.header-main .header-sub h3 {
-        position: absolute;
-        right: 180px;
-        font: normal 28px Cookie, Arial, Helvetica, sans-serif;
-        line-height: 40px;
-        margin-top: 17px;
-    }
-
-</style>
-
 <body>
 	<header class="header-main" id="myHeader">
 		<div class="header-sub">
-			<h3>Department of Computer Science|</h3>
+			<h3>Engineering Library II|</h3>
 			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
 
 			<div class="dropdown">
@@ -68,65 +47,37 @@
 		</div>
 	</header>
 
-<div class="home">
-<div class="btn-group">
-	<button class="button" onclick="myFunction0()">Floor 0</button>	
-	<button class="button" onclick="myFunction1()">Lobby</button>	
-	<button class="button" onclick="myFunction2()">Floor 2</button>		
-	<button class="button" onclick="myFunction3()">Floor 3</button>
-	<div id="myDIV1" style="display:block;">
-		<img class="center-fit" src="https://i.ibb.co/LvrT3kM/dcsLobby.jpg" alt="dcsLobby" border="0">
+	<div class="home">
+		<table style="width: 100%;" align="right">
+			<tr>
+				<th style="width: 15%; height: 15%;" valign="top">
+					<img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="height: 90px">
+				</th>
+				<th style="width: 80%; background: rgba(255, 255, 255, 0.6)" rowspan="5">
+					<!-- <img src="https://i.ibb.co/T2ybNkm/floor-3-screen.png"> -->
+					<!-- <img src="https://i.ibb.co/R3HxPXh/floor-2-screen.png"> -->
+					<img src="https://i.ibb.co/XFftWsG/floor-1-screen.png">
+				</th>
+			</tr>
+			<tr>
+				<th><a href="{% url 'engglib20' %}"><img src="https://i.ibb.co/5Ks3Sym/0.png" style="width: 45px; height: 45px"></a></th>
+				<!-- <th><img src="https://i.ibb.co/GtccfT4/0-selected.png" style="width: 45px; height: 45px"></th> -->
+			</tr>
+			<tr>
+				<!-- <th><a href="#"><img src="https://i.ibb.co/FBhWDhV/1.png" style="width: 45px; height: 45px"></a></th> -->
+				<th><img src="https://i.ibb.co/QFMB4JS/1-selected.png" style="width: 45px; height: 45px"></th>
+			</tr>
+			<tr>
+				<th><a href="{% url 'dcs' %}"><img src="https://i.ibb.co/fpHr8nS/2.png" style="width: 45px; height: 45px"></a></th>
+				<!-- <th><img src="https://i.ibb.co/C81kvNV/2-selected.png" style="width: 45px; height: 45px"></th> -->
+			</tr>
+			<tr>
+				<th><a href="{% url 'dcs3' %}"><img src="https://i.ibb.co/tXGTK4S/3.png" style="width: 45px; height: 45px"></a></th>
+				<!-- <th><img src="https://i.ibb.co/VjTgNPQ/3-selected.png" style="width: 45px; height: 45px"></th> -->
+			</tr>
+		</table>
 	</div>
-	<script>
-   		function myFunction1() {
- 		var x = document.getElementById("myDIV1");
- 		var y = document.getElementById("myDIV2");
- 		var z = document.getElementById("myDIV3");
-        if (x.style.display === "none") {
-  			 x.style.display = "block";
-  			 y.style.display = "none";
-  			 z.style.display = "none";
-		} else {
-			x.style.display = "block";
-			}
-		}
-	</script>
-	<div id="myDIV2" style="display:none;">
-		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
-	</div>
-	<script>
-   		function myFunction2() {
- 		var x = document.getElementById("myDIV2");
- 		var y = document.getElementById("myDIV1");
- 		var z = document.getElementById("myDIV3");
-        if (x.style.display === "none") {
-  			 x.style.display = "block";
-  			 y.style.display = "none";
-  			 z.style.display = "none";
-		} else {
-			x.style.display = "block";
-			}
-		}
-	</script>
-	<div id="myDIV3" style="display:none;">
-		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
-	</div>
-	<script>
-   		function myFunction3() {
- 		var x = document.getElementById("myDIV3");
- 		var y = document.getElementById("myDIV1");
- 		var z = document.getElementById("myDIV2");
-        if (x.style.display === "none") {
-  			 x.style.display = "block";
-  			 y.style.display = "none";
-  			 z.style.display = "none";
-		} else {
-			x.style.display = "block";
-			}
-		}
-	</script>	
-	  
-</div></div>
+
 
 	<div class="footer">
 		Copyright © 2019 MaroonPrint
