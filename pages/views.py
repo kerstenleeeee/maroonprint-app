@@ -18,7 +18,7 @@ from rest_framework import status
 # Create your views here.
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
-	return render(request, 'home.html')
+		return render(request, 'home.html')
 
 def aboutPageView(request):
 	#return HttpResponse('MaroonPrint')

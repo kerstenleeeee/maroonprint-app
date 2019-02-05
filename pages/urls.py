@@ -1,5 +1,6 @@
 from django.urls import path
-from django.conf.urls import url
+from django.conf.urls import url, include
+from bps import urls
 from . import views
 from .views import homePageView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
