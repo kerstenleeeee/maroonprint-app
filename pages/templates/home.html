@@ -321,6 +321,55 @@
 		text-align: center;
 	}
 
+	div.transbox {
+		margin: 20px;
+  		background-color: #ffffff;
+  		border: 0px solid black;
+  		opacity: 0.6;
+  		filter: alpha(opacity=60); /* For IE8 and earlier */
+	}
+
+	div.transbox p {
+  		margin: 5%;
+  		font-weight: bold;
+  		color: #000000;
+	}
+
+	/* Create three equal columns that floats next to each other */
+	.column {
+	  	float: left;
+	  	width: 32%;
+	  	padding: 7px;
+	  	height: 100px; 
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+ 	 	content: "";
+  		display: table;
+  		clear: both;
+	}
+
+	.sticky {
+  		position: fixed;
+  		top: 0;
+  		width: 100%;
+	}
+
+	.sticky + .home {
+  		padding-top: 102px;
+	}
+
+	th, td, tr {
+  		padding: 5px;
+	}
+	
+	table {
+  		border-spacing: 15px;
+  		padding: 5px;
+  		margin-bottom: 50px;
+	}
+
 </style>
 
 <body>
@@ -358,8 +407,12 @@
 </header>
 
 <div class="home">
-	<h1>MaroonPrint</h1>
-</div>
+		<table align="center">
+			<tr>
+				<th>MaroonPrint</th>
+			</tr>
+		</table>
+	</div>
 
 <div class="footer">
 	<p>Copyright © 2019 MaroonPrint</p>

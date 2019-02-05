@@ -7,8 +7,8 @@
 
 	<title>MaroonPrint</title>
 
-	<link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
-	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
+	<!-- <link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
+	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css"> -->
 	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,332 +16,518 @@
 </head>
 
 <style>
-	@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-	html{
-		background-color: #eaf0f2;
-	}
+    html{
+        background-color: #eaf0f2;
+    }
 
-	body{
-		font:14px/1.5 Arial, Helvetica, sans-serif;
-		padding:0;
-		margin:0;
-	}
+    body{
+        font:14px/1.5 Arial, Helvetica, sans-serif;
+        padding:0;
+        margin:0;
+    }
 
-	.home{
-		text-align: center;
-		padding-top: 25px;
-		margin-bottom:200px;
-	}
+    .home{
+        text-align: center;
+        padding-top: 25px;
+        margin-bottom:80px;
+    }
 
-	.home img{
-		opacity: 0.4;
-		margin: 20px auto;
-	}
+    .home img{
+        /*opacity: 0.4;*/
+        margin: 20px auto;
+    }
 
-	.home h1{
-		margin-top:0;
-		font: normal 32px/1.5 'Open Sans', sans-serif;
-		color: #3F71AE;
-		padding-bottom: 16px;
-	}
+    .home h1{
+        margin-top:0;
+        font: normal 32px/1.5 'Open Sans', sans-serif;
+        color: #3F71AE;
+        padding-bottom: 16px;
+    }
 
-	.home h2{
-		color: #F05283;
-	}
+    .home h2{
+        color: #F05283;
+    }
 
-	.home h2 a{
-		color:inherit;
-		text-decoration: none;
-		display: inline-block;
-		border: 1px solid #F05283;
-		padding: 10px 15px;
-		border-radius: 3px;
-		font: bold 14px/1 'Open Sans', sans-serif;
-		text-transform: uppercase;
-	}
+    .home h2 a{
+        color:inherit;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #F05283;
+        padding: 10px 15px;
+        border-radius: 3px;
+        font: bold 14px/1 'Open Sans', sans-serif;
+        text-transform: uppercase;
+    }
 
-	.home h2 a:hover{
-		background-color:#F05283;
-		transition:0.2s;
-		color:#fff;
-	}
+    .home h2 a:hover{
+        background-color:#F05283;
+        transition:0.2s;
+        color:#fff;
+    }
 
-	.home ul {
-		max-width: 600px;
-		margin: 60px auto 0;
-	}
+    .home ul {
+        max-width: 600px;
+        margin: 60px auto 0;
+    }
 
-	.home ul a{
-		text-decoration: none;
-		color: #FFF;
-		text-align: left;
-		background-color: #B9C1CA;
-		padding: 10px 16px;
-		border-radius: 2px;
-		opacity: 0.8;
-		font-size: 16px;
-		display: inline-block;
-		margin: 4px;
-		line-height: 1;
-		outline: none;
+    .home ul a{
+        text-decoration: none;
+        color: #FFF;
+        text-align: left;
+        background-color: #B9C1CA;
+        padding: 10px 16px;
+        border-radius: 2px;
+        opacity: 0.8;
+        font-size: 16px;
+        display: inline-block;
+        margin: 4px;
+        line-height: 1;
+        outline: none;
 
-		transition: 0.2s ease;
-	}
+        transition: 0.2s ease;
+    }
 
-	.home ul li a.active{
-		background-color: #66B650;
-		pointer-events: none;
-	}
+    .home ul li a.active{
+        background-color: #66B650;
+        pointer-events: none;
+    }
 
-	.home ul li a:hover {
-		opacity: 1;
-	}
+    .home ul li a:hover {
+        opacity: 1;
+    }
 
-	.home ul{
-		list-style: none;
-		padding: 0;
-	}
+    .home ul{
+        list-style: none;
+        padding: 0;
+    }
 
-	.home ul li{
-		display: inline-block;
-	}
+    .home ul li{
+        display: inline-block;
+    }
 
-	@media (max-height:800px){
-		.home { padding-top:40px; }
-	}
+    @media (max-height:800px){
+        .home { padding-top:40px; }
+    }
 
-	.header-main{
-		background-color:#808080;
-		box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
-		/*padding: 20px 40px;*/
-		height: 70px;
-		color: #ffffff;
-		box-sizing: border-box;
-	}
+    .header-main{
+        background-color:#808080;
+        box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
+        /*padding: 20px 40px;*/
+        height: 70px;
+        color: #ffffff;
+        box-sizing: border-box;
+    }
 
-	.header-main .header-sub {
-		max-width: 1350px;
-		text-align: center;
-		margin: 0 auto;
-	}
+    .header-main .header-sub {
+        max-width: 1350px;
+        text-align: center;
+        margin: 0 auto;
+    }
 
-	/* Logo */
+    /* Logo */
 
-	.header-main .header-sub a img{
-		/*display: block;*/
-		float: right;
-		position: relative;
-		margin-top: 4px;
-	}
+    .header-main .header-sub a img{
+        /*display: block;*/
+        float: right;
+        position: relative;
+        margin-top: 4px;
+    }
 
-	.header-main .header-sub h1 {
-		float: right;
-		font: normal 28px Cookie, Arial, Helvetica, sans-serif;
-		line-height: 40px;
-		margin: 0;
-	}
+    .header-main .header-sub h1 {
+        float: right;
+        font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+        line-height: 40px;
+        margin: 0;
+    }
 
-	.header-main .header-sub h1 span {
-		color: #5383d3;
-	}
+    .header-main .header-sub h1 span {
+        color: #5383d3;
+    }
 
-	/* The header links */
+    /* The header links */
 
-	.header-main .header-sub a {
-		color: #ffffff;
-		text-decoration: none;
-	}
+    .header-main .header-sub a {
+        color: #ffffff;
+        text-decoration: none;
+    }
 
-	.header-main .header-sub nav {
-		font:16px Arial, Helvetica, sans-serif;
-		line-height: 40px;
-		float: left;
-		margin: 0 0 0 60px;
-		padding: 0;
-	}
+    .header-main .header-sub nav {
+        font:16px Arial, Helvetica, sans-serif;
+        line-height: 40px;
+        float: left;
+        margin: 0 0 0 60px;
+        padding: 0;
+    }
 
-	.header-main .header-sub nav a {
-		display: inline-block;
-		padding: 0 5px;
-		text-decoration:none;
-		color: #ffffff;
-		font-size: 18px;
-		font-weight: normal;
-		opacity: 0.9;
-	}
+    .header-main .header-sub nav a {
+        display: inline-block;
+        padding: 0 5px;
+        text-decoration:none;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: normal;
+        opacity: 0.9;
+    }
 
-	.header-main .header-sub nav a:hover {
-		opacity: 1;
-	}
+    .header-main .header-sub nav a:hover {
+        opacity: 1;
+    }
 
-	.header-main .header-sub nav a.selected {
-		color: #608bd2;
-		pointer-events: none;
-		opacity: 1;
-	}
+    .header-main .header-sub nav a.selected {
+        color: #608bd2;
+        pointer-events: none;
+        opacity: 1;
+    }
 
-	/* The search box */
-	.search-container {
-	  float: left;
-	  margin-left: 20px;
-	  margin-top: 13px;
-	}
+    /* The search box */
+    .search-container {
+      float: left;
+      margin-left: 20px;
+      margin-top: 13px;
+    }
 
-	.search-container input[type=text] {
-	  padding: 6px;
-	  margin-top: 8px;
-	  font-size: 13px;
-	  border: none;
-	}
+    .search-container input[type=text] {
+      padding: 6px;
+      margin-top: 8px;
+      font-size: 13px;
+      border: none;
+    }
 
-	.search-container button {
-	  float: float;
-	  padding: 6px 10px;
-	  margin-top: 8px;
-	  margin-right: 16px;
-	  background: #ddd;
-	  font-size: 13px;
-	  border: none;
-	  cursor: pointer;
-	}
+    .search-container button {
+      float: float;
+      padding: 6px 10px;
+      margin-top: 8px;
+      margin-right: 16px;
+      background: #ddd;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+    }
 
-	.search-container button:hover {
-	  background: #ccc;
-	}
+    .search-container button:hover {
+      background: #ccc;
+    }
 
-	@media screen and (max-width: 600px) {
-	  .search-container {
-	    float: none;
-	  }
-	  .search-container a, .search-container input[type=text], .search-container button {
-	    float: none;
-	    display: block;
-	    text-align: left;
-	    width: 100%;
-	    margin: 0;
-	    padding: 14px;
-	  }
-	  .search-container input[type=text] {
-	    border: 1px solid #ccc;  
-	  }
-	}
+    @media screen and (max-width: 600px) {
+      .search-container {
+        float: none;
+      }
+      .search-container a, .search-container input[type=text], .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+      }
+      .search-container input[type=text] {
+        border: 1px solid #ccc;  
+      }
+    }
 
-	/* drop-down menu */
-	.dropdown {
-		float: left;
-		position: relative;
-		display: inline-block;
-	}
+    /* drop-down menu */
+    .dropdown {
+        float: left;
+        position: relative;
+        display: inline-block;
+    }
 
-	.dropbtn {
-		background-color: #808080;
-		color: white;
-		padding: 12px 16px; 
-		margin-top: 10px;
-		font-size: 23px;
-		border: none;
-		cursor: pointer;
-	}
+    .dropbtn {
+        background-color: #808080;
+        color: white;
+        padding: 12px 16px; 
+        margin-top: 10px;
+        font-size: 23px;
+        border: none;
+        cursor: pointer;
+    }
 
-	.dropbtn:hover, .dropbtn:focus {
-	  color: #800000;
-	}
+    .dropbtn:hover, .dropbtn:focus {
+      color: #800000;
+    }
 
-	.dropdown-content {
-	  display: none;
-	  position: absolute;
-	  background-color: #A9A9A9;
-	  min-width: 230px;
-	  overflow: auto;
-	  border: none;
-	  z-index: 1;
-	}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #A9A9A9;
+      min-width: 230px;
+      overflow: auto;
+      border: none;
+      z-index: 1;
+    }
 
-	.dropdown-content a {
-	  color: black;
-	  padding: 12px 16px;
-	  text-decoration: none;
-	  display: block;
-	}
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
 
-	.dropdown a:hover {
-		color: #800000;
-	}
+    .dropdown a:hover {color: #800000;}
 
-	.show {display: block;}
+    .show {display: block;}
 
-	/* Making the header responsive. */
+    /* Making the header responsive. */
 
-	@media all and (max-width: 600px) {
+    @media all and (max-width: 600px) {
 
-		.header-main {
-			padding: 15px;
-			position: relative;
+        .header-main {
+            padding: 15px;
+            position: relative;
+        }
+
+        .header-main .header-sub h1 {
+            float:none;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .header-main .header-sub nav {
+            text-align: center;
+            float: none;
+            margin: 0;
+        }
+
+        .header-main .header-sub nav a {
+            font-size: 13px;
+        }
+
+        .header-main .header-sub form {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    }
+
+    .footer {
+        position: fixed;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+        left: 0;
+        bottom: 0;
+        height: 5%;
+        width: 100%;
+        background-color: #808080;
+        /*color: white;
+        color: #ffffff;
+        text-align: center;*/
+    }
+
+    .footer p {
+        position: relative;
+        bottom: 5px;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    div.transbox {
+        margin: 20px;
+        background-color: #ffffff;
+        border: 0px solid black;
+        opacity: 0.6;
+        filter: alpha(opacity=60); /* For IE8 and earlier */
+    }
+
+    div.transbox p {
+        margin: 5%;
+        font-weight: bold;
+        color: #000000;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 32%;
+        padding: 7px;
+        height: 100px; 
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .sticky + .home {
+        padding-top: 102px;
+    }
+
+    	.btn-group button {
+		  background-color: #C0C0C0; /* Green background */
+		  border: 1px grey; /* Green border */
+		  color: white; /* White text */
+		  padding: 10px 24px; /* Some padding */
+		  cursor: pointer; /* Pointer/hand icon */
+		  float: middle; /* Float the buttons side by side */
+		  text-align: center;
 		}
 
-		.header-main .header-sub h1 {
-			float:none;
-			font-size: 24px;
-			line-height: 1;
+		/* Clear floats (clearfix hack) */
+		.btn-group:after {
+		  content: "";
+		  clear: both;
+		  display: table;
 		}
 
-		.header-main .header-sub nav {
-			text-align: center;
-			float: none;
-			margin: 0;
+		.btn-group button:not(:last-child) {
+		  border-right: none; /* Prevent double borders */
 		}
 
-		.header-main .header-sub nav a {
-			font-size: 13px;
+		/* Add a background color on hover */
+		.btn-group button:hover button:active {
+		  background-color: #800000;
 		}
 
-		.header-main .header-sub form {
-			position: absolute;
-			top: 20px;
-			right: 20px;
-		}
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+
+    .footer {
+        position: fixed;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+        left: 0;
+        bottom: 0;
+        height: 3%;
+        width: 100%;
+        /*background-color: #808080;
+        /*color: white;
+        color: #ffffff;
+        text-align: center;*/
+    }
+
+    .footer p {
+        position: relative;
+        bottom: 5px;
+        color: #ffffff;
+        text-align: center;
+    }
+	th, td, tr {
+  		padding: 5px;
+  		background: rgba(255, 255, 255, 0.6)
 	}
+	
+	table {
+  		padding: 5px;
+  		margin-bottom: 50px;
+	}
+
+	.header-main .header-sub h3 {
+        position: absolute;
+        right: 180px;
+        font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+        line-height: 40px;
+        margin-top: 17px;
+    }
+
 </style>
 
 <body>
-<header class="header-main">
-	<div class="header-sub">
-		<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
+	<header class="header-main" id="myHeader">
+		<div class="header-sub">
+			<h3>Department of Computer Science|</h3>
+			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
 
-		<div class="dropdown">
-			<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
-			<div id="myDropdown" class="dropdown-content">
-				<a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
-				<a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
+			<div class="dropdown">
+				<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
+					<a href="{% url 'engglib21' %}"><img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Engineering Library II</a>
+					<a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
+					<a href="{% url 'eee' %}"><img src="https://i.ibb.co/nRJ2fqk/eee-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Electrical and Electronics Engineering Insitute</a>
+					<a href="{% url 'ice' %}"><img src="https://i.ibb.co/xSwk8LT/ice-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Institute of Civil Engineering</a>
+					<a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
+					<a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
+				</div>
+				<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
+				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
 			</div>
-			<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
-			<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
-		</div>
 
-		<div class="search-container">
-			<form action="/search_action.php">
-				<input type="text" name="search" placeholder="Search...">
-				<button type="submit"><i class="fa fa-search"></i></button>
-			</form>
+			<div class="search-container">
+				<form action="/search_action.php">
+					<input type="text" name="search" placeholder="Search...">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
 		</div>
-		<!-- <nav>
-			<a href="#">Home</a>
-			<a href="#">Blog</a>
-			<a href="#">Pricing</a>
-			<a href="#">Contact</a>
-		</nav> -->
-		
-		<!--<form method="get" action="#">
-			<input type="search" placeholder="Search!" name="search">
-		</form> -->
-	</div>
-</header>
+	</header>
 
 <div class="home">
-	<h1>DCS</h1>
-</div>
+<div class="btn-group">
+	<button class="button" onclick="myFunction0()">Floor 0</button>	
+	<button class="button active" onclick="myFunction1()">Lobby</button>	
+	<button class="button" onclick="myFunction2()">Floor 2</button>		
+	<button class="button" onclick="myFunction3()">Floor 3</button>
+	<div id="myDIV1" style="display:block;">
+		<img class="center-fit" src="https://i.ibb.co/LvrT3kM/dcsLobby.jpg" alt="dcsLobby" border="0">
+	</div>
+	<script>
+   		function myFunction1() {
+ 		var x = document.getElementById("myDIV1");
+ 		var y = document.getElementById("myDIV2");
+ 		var z = document.getElementById("myDIV3");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "block";
+			}
+		}
+	</script>
+	<div id="myDIV2" style="display:none;">
+		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
+	</div>
+	<script>
+   		function myFunction2() {
+ 		var x = document.getElementById("myDIV2");
+ 		var y = document.getElementById("myDIV1");
+ 		var z = document.getElementById("myDIV3");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "block";
+			}
+		}
+	</script>
+	<div id="myDIV3" style="display:none;">
+		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
+	</div>
+	<script>
+   		function myFunction3() {
+ 		var x = document.getElementById("myDIV3");
+ 		var y = document.getElementById("myDIV1");
+ 		var z = document.getElementById("myDIV2");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "block";
+			}
+		}
+	</script>	
+	  
+</div></div>
 
+	<div class="footer">
+		Copyright © 2019 MaroonPrint
+	</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
@@ -361,6 +547,19 @@
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onscroll = function() {newFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function newFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
 }
 
 function filterFunction() {

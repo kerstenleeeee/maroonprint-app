@@ -26,14 +26,56 @@ def aboutPageView(request):
 
 def dcsPageView(request):
 	try:
-		entries = Building.objects.get(buildID='dcs001')
+		entriesB = Building.objects.get(buildID='dcs001')
+		entriesF = Floor.objects.get(buildID='dcs001', floorID='dcs02')
+		return render(request, 'dcs.html')
+	except:
+		return render(request, 'error.html')
+
+def enggLib2PageView(request):
+	try:
+		entriesB = Building.objects.get(buildID='engglib2001')
+		entriesF = Floor.objects.get(buildID='engglib2001', floorID='engglib21')
 		return render(request, 'dcs.html')
 	except:
 		return render(request, 'error.html')
 
 def coePageView(request):
 	try:
-		entries = Building.objects.get(buildID='coe001')
+		entriesB = Building.objects.get(buildID='coe001')
+		entriesF = Floor.objects.get(buildID='coe001', floorID='coe01')
 		return render(request, 'coe.html')
+	except:
+		return render(request, 'error.html')
+
+def eeePageView(request):
+	try:
+		entriesB = Building.objects.get(buildID='eee001')
+		entriesF = Floor.objects.get(buildID='eee001', floorID='eee01')
+		return render(request, 'eee.html')
+	except:
+		return render(request, 'error.html')
+
+def icePageView(request):
+	try:
+		entriesB = Building.objects.get(buildID='ice001')
+		entriesF = Floor.objects.get(buildID='ice001', floorID='ice01')
+		return render(request, 'ice.html')
+	except:
+		return render(request, 'error.html')
+
+def mmmPageView(request):
+	try:
+		entriesB = Building.objects.get(buildID='mmm001')
+		entriesF = Floor.objects.get(buildID='mmm001', floorID='mmm01')
+		return render(request, 'mmm.html')
+	except:
+		return render(request, 'error.html')
+
+def chePageView(request):
+	try:
+		entriesB = Building.objects.get(buildID='che001')
+		entriesF = Floor.objects.get(buildID='che001', floorID='che01')
+		return render(request, 'che.html')
 	except:
 		return render(request, 'error.html')
