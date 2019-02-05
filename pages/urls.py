@@ -15,7 +15,6 @@ urlpatterns = [
     url('engineering-library-ii/', views.enggLib2PageView, name="engglib2"),
     #coe
     url('college-of-engineering/', views.coePageView, name="coe"),
-    #url(r'^new/$', views.new),
     #eee
     url('electrical-and-electronics-engineering-institute/', views.eeePageView, name="eee"),
     #ice
