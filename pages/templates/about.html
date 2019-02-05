@@ -441,8 +441,11 @@
 		<p>Copyright © 2019 MaroonPrint</p>
 	</div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
+	<!-------------------------------------------------------------------------------------------------->
+	<!------------------------------------------- SCRIPTS ---------------------------------------------->
+	<!-------------------------------------------------------------------------------------------------->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
 	$(document).ready(function() {
 		$('.header-search form').on('click', function(e) {
 
@@ -455,41 +458,41 @@
 		});
 	});
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+	/* When the user clicks on the button,
+		toggle between hiding and showing the dropdown content */
+	function myFunction() {
+	  document.getElementById("myDropdown").classList.toggle("show");
+	}
 
-window.onscroll = function() {newFunction()};
+	window.onscroll = function() {newFunction()};
 
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
+	var header = document.getElementById("myHeader");
+	var sticky = header.offsetTop;
 
-function newFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
+	function newFunction() {
+  		if (window.pageYOffset > sticky) {
+    		header.classList.add("sticky");
+  		} else {
+    		header.classList.remove("sticky");
+  		}	
+	}
 
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
+	function filterFunction() {
+  		var input, filter, ul, li, a, i;
+  		input = document.getElementById("myInput");
+  		filter = input.value.toUpperCase();
+  		div = document.getElementById("myDropdown");
+  		a = div.getElementsByTagName("a");
+  		for (i = 0; i < a.length; i++) {
+    		txtValue = a[i].textContent || a[i].innerText;
+    		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      			a[i].style.display = "";
+    		} else {
+      			a[i].style.display = "none";
+    		}
+  		}
+	}
+	
 </script>
-
 </body>
 </html>

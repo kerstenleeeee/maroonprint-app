@@ -1,3 +1,5 @@
+<!-- Home Page (Initial Page) -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +17,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
 
+<!-- CSS Styles -->
 <style>
 	@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
@@ -28,6 +31,7 @@
 		margin:0;
 	}
 
+	/* Content CSS */
 	.home{
 		text-align: center;
 		padding-top: 25px;
@@ -111,6 +115,7 @@
 		.home { padding-top:40px; }
 	}
 
+	/* CSS Header */
 	.header-main{
 		background-color:#808080;
 		box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
@@ -127,7 +132,6 @@
 	}
 
 	/* Logo */
-
 	.header-main .header-sub a img{
 		/*display: block;*/
 		float: right;
@@ -147,7 +151,6 @@
 	}
 
 	/* The header links */
-
 	.header-main .header-sub a {
 		color: #ffffff;
 		text-decoration: none;
@@ -181,7 +184,7 @@
 		opacity: 1;
 	}
 
-	/* The search box */
+	/* Search Box*/
 	.search-container {
 	  float: left;
 	  margin-left: 20px;
@@ -301,6 +304,7 @@
 		}
 	}
 
+	/* Footer */
 	.footer {
 		position: fixed;
 		box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
@@ -321,6 +325,7 @@
 		text-align: center;
 	}
 
+	/* Transparent Container */
 	div.transbox {
 		margin: 20px;
   		background-color: #ffffff;
@@ -350,6 +355,7 @@
   		clear: both;
 	}
 
+	/* Sticky  Header */
 	.sticky {
   		position: fixed;
   		top: 0;
@@ -360,6 +366,7 @@
   		padding-top: 102px;
 	}
 
+	/* Tables */
 	th, td, tr {
   		padding: 5px;
 	}
@@ -373,11 +380,16 @@
 </style>
 
 <body>
+	<!-------------------------------------------------------------------------------------------------->
+	<!------------------------------------------- HEADER ----------------------------------------------->
+	<!-------------------------------------------------------------------------------------------------->
 	<header class="header-main" id="myHeader">
         <div class="header-sub">
+        	<!------- MaroonPrint Logo ----->
             <h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
 
             <div class="dropdown">
+            	<!------- NavBurger -------->
                 <button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
@@ -388,10 +400,12 @@
                     <a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
                     <a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
                 </div>
+                <!--------- Home & About ------->
                 <a href="{% url 'home' %}" style="font-size: 20px">Home</a>
                 <a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
             </div>
 
+            <!------- Search Box -------->
             <div class="search-container">
                 <form action="/search_action.php">
                     <input type="text" name="search" placeholder="Search...">
@@ -401,7 +415,10 @@
         </div>
     </header>
 
-<div class="home">
+    <!-------------------------------------------------------------------------------------------------->
+	<!------------------------------------------- CONTENT ---------------------------------------------->
+	<!-------------------------------------------------------------------------------------------------->
+	<div class="home">
 		<table align="center">
 			<tr>
 				<th>MaroonPrint</th>
@@ -409,12 +426,18 @@
 		</table>
 	</div>
 
-<div class="footer">
-	<p>Copyright © 2019 MaroonPrint</p>
-</div>
+	<!-------------------------------------------------------------------------------------------------->
+	<!------------------------------------------- FOOTER ----------------------------------------------->
+	<!-------------------------------------------------------------------------------------------------->
+	<div class="footer">
+		<p>Copyright © 2019 MaroonPrint</p>
+	</div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
+	<!-------------------------------------------------------------------------------------------------->
+	<!------------------------------------------- SCRIPTS ---------------------------------------------->
+	<!-------------------------------------------------------------------------------------------------->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
 	$(document).ready(function() {
 		$('.header-search form').on('click', function(e) {
 
@@ -427,41 +450,41 @@
 		});
 	});
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+	/* When the user clicks on the button,
+		toggle between hiding and showing the dropdown content */
+	function myFunction() {
+	  document.getElementById("myDropdown").classList.toggle("show");
+	}
 
-window.onscroll = function() {newFunction()};
+	window.onscroll = function() {newFunction()};
 
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
+	var header = document.getElementById("myHeader");
+	var sticky = header.offsetTop;
 
-function newFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
+	function newFunction() {
+  		if (window.pageYOffset > sticky) {
+    		header.classList.add("sticky");
+  		} else {
+    		header.classList.remove("sticky");
+  		}	
+	}
 
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
+	function filterFunction() {
+  		var input, filter, ul, li, a, i;
+  		input = document.getElementById("myInput");
+  		filter = input.value.toUpperCase();
+  		div = document.getElementById("myDropdown");
+  		a = div.getElementsByTagName("a");
+  		for (i = 0; i < a.length; i++) {
+    		txtValue = a[i].textContent || a[i].innerText;
+    		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      			a[i].style.display = "";
+    		} else {
+      			a[i].style.display = "none";
+    		}
+  		}
+	}
+	
 </script>
-
 </body>
 </html>
