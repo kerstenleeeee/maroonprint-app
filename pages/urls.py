@@ -2,7 +2,6 @@ from django.urls import path
 from django.conf.urls import url
 from . import views
 from .views import homePageView
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     #path('', homePageView, name='home')
@@ -25,5 +24,3 @@ urlpatterns = [
     #che
     url('department-of-chemical-engineering/', views.chePageView, name="che"),
 ]
-
-urlpatterns += staticfiles_urlpatterns()
