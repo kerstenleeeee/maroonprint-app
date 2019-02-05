@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
 	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
 
@@ -31,7 +31,7 @@
 	.home{
 		text-align: center;
 		padding-top: 25px;
-		margin-bottom:200px;
+		margin-bottom:50px;
 	}
 
 	.home img{
@@ -80,7 +80,7 @@
 		padding: 10px 16px;
 		border-radius: 2px;
 		opacity: 0.8;
-		font-size: 16px;
+		font-size: 18px;
 		display: inline-block;
 		margin: 4px;
 		line-height: 1;
@@ -166,7 +166,7 @@
 		padding: 0 5px;
 		text-decoration:none;
 		color: #ffffff;
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: normal;
 		opacity: 0.9;
 	}
@@ -265,9 +265,7 @@
 	  display: block;
 	}
 
-	.dropdown a:hover {
-		color: #800000;
-	}
+	.dropdown a:hover {color: #800000;}
 
 	.show {display: block;}
 
@@ -301,7 +299,69 @@
 			top: 20px;
 			right: 20px;
 		}
+
 	}
+
+	.footer {
+		position: fixed;
+		box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+   		left: 0;
+   		bottom: 0;
+   		height: 5%;
+   		width: 100%;
+   		background-color: #808080;
+   		/*color: white;
+   		color: #ffffff;
+   		text-align: center;*/
+	}
+
+	.footer p {
+		position: relative;
+		bottom: 5px;
+		color: #ffffff;
+		text-align: center;
+	}
+
+	.btn-group button {
+		  background-color: #C0C0C0; /* Green background */
+		  border: 1px grey; /* Green border */
+		  color: white; /* White text */
+		  padding: 10px 24px; /* Some padding */
+		  cursor: pointer; /* Pointer/hand icon */
+		  float: middle; /* Float the buttons side by side */
+		  text-align: center;
+		}
+
+		/* Clear floats (clearfix hack) */
+		.btn-group:after {
+		  content: "";
+		  clear: both;
+		  display: table;
+		}
+
+		.btn-group button:not(:last-child) {
+		  border-right: none; /* Prevent double borders */
+		}
+
+		/* Add a background color on hover */
+		.btn-group button:hover {
+		  background-color: #3e8e41;
+		}
+
+		* {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+
 </style>
 
 <body>
@@ -338,10 +398,75 @@
 	</div>
 </header>
 
+
 <div class="home">
-	<h1>DCS</h1>
+	<h1>Department of Computer Science</h1>
 </div>
 
+<div class="btn-group">
+	<button class="button" onclick="myFunction1()">Floor1</button>	
+	<button class="button" onclick="myFunction2()">Floor2</button>		
+	<button class="button" onclick="myFunction3()">Floor3</button>
+	<div id="myDIV1" style="display:block;">
+		<img class="center-fit" src="https://i.ibb.co/LvrT3kM/dcsLobby.jpg" alt="dcsLobby" border="0">
+	</div>
+	<script>
+   		function myFunction1() {
+ 		var x = document.getElementById("myDIV1");
+ 		var y = document.getElementById("myDIV2");
+ 		var z = document.getElementById("myDIV3");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "none";
+			}
+		}
+	</script>
+	<div id="myDIV2" style="display:none;">
+		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
+	</div>
+	<script>
+   		function myFunction2() {
+ 		var x = document.getElementById("myDIV2");
+ 		var y = document.getElementById("myDIV1");
+ 		var z = document.getElementById("myDIV3");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "none";
+			}
+		}
+	</script>
+	<div id="myDIV3" style="display:none;">
+		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
+	</div>
+	<script>
+   		function myFunction3() {
+ 		var x = document.getElementById("myDIV3");
+ 		var y = document.getElementById("myDIV1");
+ 		var z = document.getElementById("myDIV2");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "none";
+			}
+		}
+	</script>	
+	  
+</div>
+
+
+
+
+<div class="footer">
+	<p>Copyright © 2019 MaroonPrint</p>
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
