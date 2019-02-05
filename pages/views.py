@@ -34,7 +34,6 @@ def dcsPageView(request):
 def enggLib2PageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='engglib2001')
-		entriesF = Floor.objects.get(buildID='engglib2001', floorID='engglib21')
 		return render(request, 'engglib2.html')
 	except:
 		return render(request, 'error.html')
@@ -42,7 +41,6 @@ def enggLib2PageView(request):
 def coePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='coe001')
-		entriesF = Floor.objects.get(buildID='coe001', floorID='coe01')
 		return render(request, 'coe.html')
 	except:
 		return render(request, 'error.html')
@@ -50,7 +48,6 @@ def coePageView(request):
 def eeePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='eee001')
-		entriesF = Floor.objects.get(buildID='eee001', floorID='eee01')
 		return render(request, 'eee.html')
 	except:
 		return render(request, 'error.html')
@@ -58,7 +55,6 @@ def eeePageView(request):
 def icePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='ice001')
-		entriesF = Floor.objects.get(buildID='ice001', floorID='ice01')
 		return render(request, 'ice.html')
 	except:
 		return render(request, 'error.html')
@@ -66,7 +62,6 @@ def icePageView(request):
 def mmmPageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='mmm001')
-		entriesF = Floor.objects.get(buildID='mmm001', floorID='mmm01')
 		return render(request, 'mmm.html')
 	except:
 		return render(request, 'error.html')
@@ -74,7 +69,6 @@ def mmmPageView(request):
 def chePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='che001')
-		entriesF = Floor.objects.get(buildID='che001', floorID='che01')
 		return render(request, 'che.html')
 	except:
 		return render(request, 'error.html')
