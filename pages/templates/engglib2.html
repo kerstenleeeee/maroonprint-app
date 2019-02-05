@@ -9,14 +9,15 @@
 
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
-	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
 
 <style>
 	@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+	@import url(http://fonts.googleapis.com/css?family=Cookie);
 
 	html{
 		background-color: #eaf0f2;
@@ -31,11 +32,10 @@
 	.home{
 		text-align: center;
 		padding-top: 25px;
-		margin-bottom:200px;
+		margin-bottom:80px;
 	}
 
 	.home img{
-		opacity: 0.4;
 		margin: 20px auto;
 	}
 
@@ -265,7 +265,9 @@
 	  display: block;
 	}
 
-	.dropdown a:hover {color: #800000;}
+	.dropdown a:hover {
+		color: #800000;
+	}
 
 	.show {display: block;}
 
@@ -302,24 +304,24 @@
 	}
 
 	.footer {
-		position: fixed;
-		box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
-   		left: 0;
-   		bottom: 0;
-   		height: 5%;
-   		width: 100%;
-   		background-color: #808080;
-   		/*color: white;
-   		color: #ffffff;
-   		text-align: center;*/
-	}
+        position: fixed;
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+        left: 0;
+        bottom: 0;
+        height: 3%;
+        width: 100%;
+        /*sbackground-color: #808080;
+        color: white;
+        color: #ffffff;
+        text-align: center;*/
+    }
 
-	.footer p {
-		position: relative;
-		bottom: 5px;
-		color: #ffffff;
-		text-align: center;
-	}
+    .footer p {
+        position: relative;
+        bottom: 5px;
+        color: #ffffff;
+        text-align: center;
+    }
 
 	div.transbox {
 		margin: 20px;
@@ -362,56 +364,152 @@
 
 	th, td, tr {
   		padding: 5px;
+  		background: rgba(255, 255, 255, 0.6)
 	}
 	
 	table {
-  		border-spacing: 15px;
   		padding: 5px;
   		margin-bottom: 50px;
 	}
 
+	.header-main .header-sub h3 {
+        position: absolute;
+        right: 180px;
+        font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+        line-height: 40px;
+        margin-top: 17px;
+    }
+
+    .btn-group button {
+		  background-color: #C0C0C0; /* Green background */
+		  border: 1px grey; /* Green border */
+		  color: white; /* White text */
+		  padding: 10px 24px; /* Some padding */
+		  cursor: pointer; /* Pointer/hand icon */
+		  float: middle; /* Float the buttons side by side */
+		  text-align: center;
+		}
+
+		/* Clear floats (clearfix hack) */
+		.btn-group:after {
+		  content: "";
+		  clear: both;
+		  display: table;
+		}
+
+		.btn-group button:not(:last-child) {
+		  border-right: none; /* Prevent double borders */
+		}
+
+		/* Add a background color on hover */
+		.btn-group button:hover{
+		  background-color: #800000;
+		}
+
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
 </style>
 
 <body>
 	<header class="header-main" id="myHeader">
-        <div class="header-sub">
-            <h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
+		<div class="header-sub">
+			<h3>Engineering Library II|</h3>
+			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
 
-            <div class="dropdown">
-                <button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
-                    <a href="{% url 'engglib2' %}"><img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Engineering Library II</a>
-                    <a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
-                    <a href="{% url 'eee' %}"><img src="https://i.ibb.co/nRJ2fqk/eee-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Electrical and Electronics Engineering Insitute</a>
-                    <a href="{% url 'ice' %}"><img src="https://i.ibb.co/xSwk8LT/ice-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Institute of Civil Engineering</a>
-                    <a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
-                    <a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
-                </div>
-                <a href="{% url 'home' %}" style="font-size: 20px">Home</a>
-                <a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
-            </div>
+			<div class="dropdown">
+				<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
+					<a href="{% url 'engglib2' %}"><img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Engineering Library II</a>
+					<a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
+					<a href="{% url 'eee' %}"><img src="https://i.ibb.co/nRJ2fqk/eee-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Electrical and Electronics Engineering Insitute</a>
+					<a href="{% url 'ice' %}"><img src="https://i.ibb.co/xSwk8LT/ice-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Institute of Civil Engineering</a>
+					<a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
+					<a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
+				</div>
+				<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
+				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
+			</div>
 
-            <div class="search-container">
-                <form action="/search_action.php">
-                    <input type="text" name="search" placeholder="Search...">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
-    </header>
+			<div class="search-container">
+				<form action="/search_action.php">
+					<input type="text" name="search" placeholder="Search...">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+		</div>
+	</header>
 
-<div class="home">
-		<table align="center">
-			<tr>
-				<th>MaroonPrint</th>
-			</tr>
-		</table>
+	<div class="home">
+<div class="btn-group">
+	<button class="button" onclick="myFunction0()">Floor 0</button>	
+	<button class="button active" onclick="myFunction1()">Lobby</button>	
+	<button class="button" onclick="myFunction2()">Floor 2</button>		
+	<button class="button" onclick="myFunction3()">Floor 3</button>
+	<div id="myDIV1" style="display:block;">
+		<img class="center-fit" src="https://i.ibb.co/LvrT3kM/dcsLobby.jpg" alt="dcsLobby" border="0">
 	</div>
+	<script>
+   		function myFunction1() {
+ 		var x = document.getElementById("myDIV1");
+ 		var y = document.getElementById("myDIV2");
+ 		var z = document.getElementById("myDIV3");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "block";
+			}
+		}
+	</script>
+	<div id="myDIV2" style="display:none;">
+		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
+	</div>
+	<script>
+   		function myFunction2() {
+ 		var x = document.getElementById("myDIV2");
+ 		var y = document.getElementById("myDIV1");
+ 		var z = document.getElementById("myDIV3");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "block";
+			}
+		}
+	</script>
+	<div id="myDIV3" style="display:none;">
+		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
+	</div>
+	<script>
+   		function myFunction3() {
+ 		var x = document.getElementById("myDIV3");
+ 		var y = document.getElementById("myDIV1");
+ 		var z = document.getElementById("myDIV2");
+        if (x.style.display === "none") {
+  			 x.style.display = "block";
+  			 y.style.display = "none";
+  			 z.style.display = "none";
+		} else {
+			x.style.display = "block";
+			}
+		}
+	</script>	
+	  
+</div></div>
 
-<div class="footer">
-	<p>Copyright © 2019 MaroonPrint</p>
-</div>
+	<div class="footer">
+		Copyright © 2019 MaroonPrint
+	</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
