@@ -15,6 +15,7 @@
      Lee - 01/31/19 - Modified footer
      Lee - 02/04/19 - Added more menus (buildings)
      Lee - 02/05/19 - Added tables
+     Wu  - 02/06/19 - Fixed indention
 -->
 
 <!--
@@ -208,48 +209,48 @@
 
 	/* The search box */
 	.search-container {
-	  float: left;
-	  margin-left: 20px;
-	  margin-top: 13px;
+	 	float: left;
+	 	margin-left: 20px;
+	  	margin-top: 13px;
 	}
 
 	.search-container input[type=text] {
-	  padding: 6px;
-	  margin-top: 8px;
-	  font-size: 13px;
-	  border: none;
+	  	padding: 6px;
+	  	margin-top: 8px;
+	  	font-size: 13px;
+	 	border: none;
 	}
 
 	.search-container button {
-	  float: float;
-	  padding: 6px 10px;
-	  margin-top: 8px;
-	  margin-right: 16px;
-	  background: #ddd;
-	  font-size: 13px;
-	  border: none;
-	  cursor: pointer;
+	  	float: float;
+	  	padding: 6px 10px;
+	  	margin-top: 8px;
+	  	margin-right: 16px;
+	  	background: #ddd;
+	  	font-size: 13px;
+	  	border: none;
+	  	cursor: pointer;
 	}
 
 	.search-container button:hover {
-	  background: #ccc;
+	  	background: #ccc;
 	}
 
 	@media screen and (max-width: 600px) {
-	  .search-container {
-	    float: none;
-	  }
-	  .search-container a, .search-container input[type=text], .search-container button {
-	    float: none;
-	    display: block;
-	    text-align: left;
-	    width: 100%;
-	    margin: 0;
-	    padding: 14px;
-	  }
-	  .search-container input[type=text] {
-	    border: 1px solid #ccc;  
-	  }
+	  	.search-container {
+	    	float: none;
+	  	}
+	  	.search-container a, .search-container input[type=text], .search-container button {
+	    	float: none;
+	    	display: block;
+	    	text-align: left;
+	    	width: 100%;
+	    	margin: 0;
+	    	padding: 14px;
+	  	}
+	  	.search-container input[type=text] {
+	    	border: 1px solid #ccc;  
+	  	}
 	}
 
 	/* drop-down menu */
@@ -270,24 +271,24 @@
 	}
 
 	.dropbtn:hover, .dropbtn:focus {
-	  color: #800000;
+	  	color: #800000;
 	}
 
 	.dropdown-content {
-	  display: none;
-	  position: absolute;
-	  background-color: #A9A9A9;
-	  min-width: 230px;
-	  overflow: auto;
-	  border: none;
-	  z-index: 1;
+	 	display: none;
+	  	position: absolute;
+	  	background-color: #A9A9A9;
+	  	min-width: 230px;
+	 	overflow: auto;
+	  	border: none;
+	 	z-index: 1;
 	}
 
 	.dropdown-content a {
-	  color: black;
-	  padding: 12px 16px;
-	  text-decoration: none;
-	  display: block;
+	  	color: black;
+	  	padding: 12px 16px;
+	  	text-decoration: none;
+	  	display: block;
 	}
 
 	.dropdown a:hover {color: #800000;}
@@ -427,12 +428,12 @@
     </header>
 
 <div class="home">
-		<table align="center">
-			<tr>
-				<th>MaroonPrint</th>
-			</tr>
-		</table>
-	</div>
+	<table align="center">
+		<tr>
+			<th>MaroonPrint</th>
+		</tr>
+	</table>
+</div>
 
 <div class="footer">
 	<p>Copyright © 2019 MaroonPrint</p>
@@ -455,7 +456,7 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+  	document.getElementById("myDropdown").classList.toggle("show");
 }
 
 window.onscroll = function() {newFunction()};
@@ -464,27 +465,27 @@ var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 
 function newFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
+  	if (window.pageYOffset > sticky) {
+    	header.classList.add("sticky");
+  	} else {
+    	header.classList.remove("sticky");
+  	}
 }
 
 function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
+  	var input, filter, ul, li, a, i;
+  	input = document.getElementById("myInput");
+  	filter = input.value.toUpperCase();
+  	div = document.getElementById("myDropdown");
+ 	 a = div.getElementsByTagName("a");
+  	for (i = 0; i < a.length; i++) {
+    	txtValue = a[i].textContent || a[i].innerText;
+    	if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      		a[i].style.display = "";
+    	} else {
+      		a[i].style.display = "none";
+   		}
+  	}
 }
 </script>
 
