@@ -1,3 +1,29 @@
+<!--
+     License
+     Author: Kristine-Clair Lee & Jeremy Wu
+     This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo 
+     of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019 
+-->
+
+<!--
+     Code History
+     Lee - 01/30/19 - Initial Commit
+     Lee - 01/30/19 - Added navburger
+     Lee - 01/30/19 - Added home & about buttons
+     Lee - 01/30/19 - Edited styles
+     Lee - 01/31/19 - Created sticky header
+     Lee - 01/31/19 - Added tables
+     Lee - 01/31/19 - Modified footer
+     Lee - 02/04/19 - Added more menus (buildings)
+     Wu - 02/05/19 - Added buttongrp and scripts
+-->
+
+<!--
+     File creation date: 01/30/19
+     Development Group: 3
+     Client Group: 3
+     Description: View Engglib2 blueprints.
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -511,11 +537,8 @@
 		Copyright © 2019 MaroonPrint
 	</div>
 
-	<!-------------------------------------------------------------------------------------------------->
-	<!------------------------------------------- SCRIPTS ---------------------------------------------->
-	<!-------------------------------------------------------------------------------------------------->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
 	$(document).ready(function() {
 		$('.header-search form').on('click', function(e) {
 
@@ -528,41 +551,41 @@
 		});
 	});
 
-	/* When the user clicks on the button,
-		toggle between hiding and showing the dropdown content */
-	function myFunction() {
-	  document.getElementById("myDropdown").classList.toggle("show");
-	}
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 
-	window.onscroll = function() {newFunction()};
+window.onscroll = function() {newFunction()};
 
-	var header = document.getElementById("myHeader");
-	var sticky = header.offsetTop;
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
 
-	function newFunction() {
-  		if (window.pageYOffset > sticky) {
-    		header.classList.add("sticky");
-  		} else {
-    		header.classList.remove("sticky");
-  		}	
-	}
+function newFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
 
-	function filterFunction() {
-  		var input, filter, ul, li, a, i;
-  		input = document.getElementById("myInput");
-  		filter = input.value.toUpperCase();
-  		div = document.getElementById("myDropdown");
-  		a = div.getElementsByTagName("a");
-  		for (i = 0; i < a.length; i++) {
-    		txtValue = a[i].textContent || a[i].innerText;
-    		if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      			a[i].style.display = "";
-    		} else {
-      			a[i].style.display = "none";
-    		}
-  		}
-	}
-	
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
 </script>
+
 </body>
 </html>

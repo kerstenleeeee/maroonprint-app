@@ -1,3 +1,19 @@
+# License
+# Author: Kristine-Clair Lee
+# This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo 
+# of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019 
+
+# Code History
+# Lee - 01/30/19 - Initial Commit
+# Lee - 01/30/19 - Added homePageView and aboutPageView
+# Lee - 01/31/19 - Added dcsPageView
+# Lee - 02/04/19 - Added more views
+
+# File creation date: 01/30/19
+# Development Group: 3
+# Client Group: 3
+# Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
