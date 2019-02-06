@@ -10,7 +10,7 @@
 # File creation date: 01/30/19
 # Development Group: 3
 # Client Group: 3
-# Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+# Description: Urls for the database adminitrator
 
 from django.conf.urls import url
 from django.urls import path

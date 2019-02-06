@@ -12,7 +12,7 @@
 # File creation date: 01/30/19
 # Development Group: 3
 # Client Group: 3
-# Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+# Description: Views for the pages
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -31,15 +31,17 @@ from bps.models import Building, Floor
 from bps.serializers import BuildingSerializer, FloorSerializer
 from rest_framework import status
 
-# Create your views here.
+# viwew home.html
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
 	return render(request, 'home.html')
 
+# view about.html
 def aboutPageView(request):
 	#return HttpResponse('MaroonPrint')
 	return render(request, 'about.html')
 
+# view dcs.html
 def dcsPageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='dcs001')
@@ -47,6 +49,7 @@ def dcsPageView(request):
 	except:
 		return render(request, 'error.html')
 
+# view engglib2.html
 def enggLib2PageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='engglib2001')
@@ -54,6 +57,7 @@ def enggLib2PageView(request):
 	except:
 		return render(request, 'error.html')
 
+# view coe.html
 def coePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='coe001')
@@ -61,6 +65,7 @@ def coePageView(request):
 	except:
 		return render(request, 'error.html')
 
+# view  eee.html
 def eeePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='eee001')
@@ -68,6 +73,7 @@ def eeePageView(request):
 	except:
 		return render(request, 'error.html')
 
+# view ice.html
 def icePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='ice001')
@@ -75,6 +81,7 @@ def icePageView(request):
 	except:
 		return render(request, 'error.html')
 
+# view mmm.html
 def mmmPageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='mmm001')
@@ -82,6 +89,7 @@ def mmmPageView(request):
 	except:
 		return render(request, 'error.html')
 
+# view che.html
 def chePageView(request):
 	try:
 		entriesB = Building.objects.get(buildID='che001')

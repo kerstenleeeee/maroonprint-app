@@ -10,7 +10,7 @@
 # File creation date: 01/30/19
 # Development Group: 3
 # Client Group: 3
-# Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+# Description: Django database views
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -27,6 +27,11 @@ from bps.models import Building, Floor
 from bps.serializers import BuildingSerializer, FloorSerializer
 from rest_framework import status
 
+# variables
+# blue_print --- object
+# serializer --- object/model serializer
+
+# Get the list of the buildings
 @api_view(['GET', 'POST'])
 def BuildingList(request):
     if request.method == 'GET':
@@ -40,6 +45,7 @@ def BuildingList(request):
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
+# get the list of the floors
 @api_view(['GET', 'POST'])
 def FloorList(request):
     if request.method == 'GET':
@@ -53,6 +59,7 @@ def FloorList(request):
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
+# get a building object
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def BuildingViews(request, pk):
     try:
@@ -79,6 +86,7 @@ def BuildingViews(request, pk):
         blue_print.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
 
+# get a floor object
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def FloorViews(request, pk):
     try:

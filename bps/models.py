@@ -10,12 +10,11 @@
 # File creation date: 01/30/19
 # Development Group: 3
 # Client Group: 3
-# Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+# Description: models / entities for the database
 
 from django.db import models
 
-# Create your models here.
-
+# building entity
 class Building(models.Model):
   buildID = models.CharField(primary_key = True, max_length = 100)
   buildName = models.CharField(max_length = 100)
@@ -23,6 +22,7 @@ class Building(models.Model):
   def __str__(self):
     return "%s (%s)" % (self.buildID, self.buildName)
 
+# floor entity
 class Floor(models.Model):
 	buildID = models.ForeignKey(Building, on_delete = models.CASCADE)
 	floorID = models.CharField(primary_key = True, max_length = 100)

@@ -10,16 +10,18 @@
 # File creation date: 01/30/19
 # Development Group: 3
 # Client Group: 3
-# Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+# Description: Serializers for the models for the database
 
 from rest_framework import serializers
 from .models import Building, Floor
 
+# building serializer
 class BuildingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Building
 		fields = ('buildID', 'buildName',)
 
+# floor serializer
 class FloorSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Floor
