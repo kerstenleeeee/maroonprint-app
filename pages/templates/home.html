@@ -453,8 +453,11 @@
 		});
 	});
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+/*	Name: myFunction
+	Created: 01/30/2019
+	Purpose: For the dropdown functionality of the dropdown navburger
+	Calling argument: myFunction()
+*/
 function myFunction() {
   	document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -464,6 +467,11 @@ window.onscroll = function() {newFunction()};
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 
+/*	Name: newFunction
+	Created: 01/30/2019
+	Purpose: For the stickiness of the header at the top.
+	Calling argument: newFunction()
+*/
 function newFunction() {
   	if (window.pageYOffset > sticky) {
     	header.classList.add("sticky");
@@ -472,6 +480,11 @@ function newFunction() {
   	}
 }
 
+/*	Name: filterFunction
+	Created: 01/30/2019
+	Purpose: For the home & abouot functions.
+	Calling argument: filterFunction()
+*/
 function filterFunction() {
   	var input, filter, ul, li, a, i;
   	input = document.getElementById("myInput");

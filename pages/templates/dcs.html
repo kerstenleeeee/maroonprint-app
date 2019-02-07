@@ -18,6 +18,7 @@
      Wu - 02/05/19 - Added buttongrp and scripts
      Wu - 02/05/19 - Added more styles
      Wu - 02/06/19 - Fixed identations
+     Lee - 02/07/19 - Added comments
 -->
 
 <!--
@@ -484,52 +485,67 @@
 	<div id="myDIV1" style="display:block;">
 		<img class="center-fit" img src="https://i.ibb.co/524gdqq/dcsLobby.png" alt="dcsLobby" border="0">
 	</div>
-	<script>
+		<script>
+		/*	Name: myFunction1
+			Created: 02/05/2019
+			Purpose: Showing the lobby image
+			Calling argument: myFunction1()
+		*/
    		function myFunction1() {
- 		var x = document.getElementById("myDIV1");
- 		var y = document.getElementById("myDIV2");
- 		var z = document.getElementById("myDIV3");
-        if (x.style.display === "none") {
-  			x.style.display = "block";
-  			y.style.display = "none";
-  			z.style.display = "none";
-		} else {
-			x.style.display = "block";
+ 			var x = document.getElementById("myDIV1");
+ 			var y = document.getElementById("myDIV2");
+ 			var z = document.getElementById("myDIV3");
+        	if (x.style.display === "none") {
+  				x.style.display = "block";
+  				y.style.display = "none";
+  				z.style.display = "none";
+			} else {
+				x.style.display = "block";
 			}
 		}
 	</script>
 	<div id="myDIV2" style="display:none;">
-		<img class="center-fit" img src="https://i.ibb.co/18gRfXr/dcs02.png" alt="dcs02" border="0">
+		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
 	</div>
 	<script>
+		/*	Name: myFunction2
+			Created: 02/05/2019
+			Purpose: Showing the floor 2 image
+			Calling argument: myFunction2()
+		*/
    		function myFunction2() {
- 		var x = document.getElementById("myDIV2");
- 		var y = document.getElementById("myDIV1");
- 		var z = document.getElementById("myDIV3");
-        if (x.style.display === "none") {
-  			x.style.display = "block";
-  			y.style.display = "none";
-  			z.style.display = "none";
-		} else {
-			x.style.display = "block";
-			}
+	 		var x = document.getElementById("myDIV2");
+	 		var y = document.getElementById("myDIV1");
+	 		var z = document.getElementById("myDIV3");
+	        if (x.style.display === "none") {
+	  			x.style.display = "block";
+	  			y.style.display = "none";
+	  			z.style.display = "none";
+			} else {
+				x.style.display = "block";
+				}
 		}
 	</script>
 	<div id="myDIV3" style="display:none;">
-		<img class="center-fit" img src="https://i.ibb.co/rwh8TXB/dcs03.png" alt="dcs03" border="0">
+		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
 	</div>
 	<script>
+		/*	Name: myFunction3
+			Created: 02/05/2019
+			Purpose: Showing the floor3 image
+			Calling argument: myFunction3()
+		*/
    		function myFunction3() {
- 		var x = document.getElementById("myDIV3");
- 		var y = document.getElementById("myDIV1");
- 		var z = document.getElementById("myDIV2");
-        if (x.style.display === "none") {
-  			x.style.display = "block";
-  			y.style.display = "none";
-  			z.style.display = "none";
-		} else {
-			x.style.display = "block";
-			}
+	 		var x = document.getElementById("myDIV3");
+	 		var y = document.getElementById("myDIV1");
+	 		var z = document.getElementById("myDIV2");
+	        if (x.style.display === "none") {
+	  			x.style.display = "block";
+	  			y.style.display = "none";
+	  			z.style.display = "none";
+			} else {
+				x.style.display = "block";
+				}
 		}
 	</script>	
 	  
@@ -553,8 +569,11 @@
 		});
 	});
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+/*	Name: myFunction
+	Created: 01/30/2019
+	Purpose: For the dropdown functionality of the dropdown navburger
+	Calling argument: myFunction()
+*/
 function myFunction() {
 	document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -564,6 +583,11 @@ window.onscroll = function() {newFunction()};
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 
+/*	Name: newFunction
+	Created: 01/30/2019
+	Purpose: For the stickiness of the header at the top.
+	Calling argument: newFunction()
+*/
 function newFunction() {
   	if (window.pageYOffset > sticky) {
     	header.classList.add("sticky");
@@ -572,6 +596,11 @@ function newFunction() {
   	}
 }
 
+/*	Name: filterFunction
+	Created: 01/30/2019
+	Purpose: For the home & abouot functions.
+	Calling argument: filterFunction()
+*/
 function filterFunction() {
   	var input, filter, ul, li, a, i;
   	input = document.getElementById("myInput");

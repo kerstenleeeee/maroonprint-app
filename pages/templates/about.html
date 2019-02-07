@@ -17,6 +17,7 @@
      Lee - 01/31/19 - Updated placeholder
      Lee - 01/31/19 - Modified footer
      Lee - 02/04/19 - Added more menus (buildings)
+     Lee - 02/06/19 - Fixed indentions
 -->
 
 <!--
@@ -482,10 +483,13 @@
 		});
 	});
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+/*	Name: myFunction
+	Created: 01/30/2019
+	Purpose: For the dropdown functionality of the dropdown navburger
+	Calling argument: myFunction()
+*/
 function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+  	document.getElementById("myDropdown").classList.toggle("show");
 }
 
 window.onscroll = function() {newFunction()};
@@ -493,28 +497,38 @@ window.onscroll = function() {newFunction()};
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 
+/*	Name: newFunction
+	Created: 01/30/2019
+	Purpose: For the stickiness of the header at the top.
+	Calling argument: newFunction()
+*/
 function newFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
+  	if (window.pageYOffset > sticky) {
+    	header.classList.add("sticky");
+  	} else {
+    	header.classList.remove("sticky");
+  	}
 }
 
+/*	Name: filterFunction
+	Created: 01/30/2019
+	Purpose: For the home & abouot functions.
+	Calling argument: filterFunction()
+*/
 function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
+  	var input, filter, ul, li, a, i;
+  	input = document.getElementById("myInput");
+  	filter = input.value.toUpperCase();
+  	div = document.getElementById("myDropdown");
+ 	 a = div.getElementsByTagName("a");
+  	for (i = 0; i < a.length; i++) {
+    	txtValue = a[i].textContent || a[i].innerText;
+    	if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      		a[i].style.display = "";
+    	} else {
+      		a[i].style.display = "none";
+   		}
+  	}
 }
 </script>
 
