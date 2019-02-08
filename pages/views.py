@@ -41,6 +41,9 @@ def aboutPageView(request):
 	#return HttpResponse('MaroonPrint')
 	return render(request, 'about.html')
 
+def errorFloor(request):
+	return render(request, 'error.html')
+
 # view dcs.html
 def dcsPageView(request):
 	try:

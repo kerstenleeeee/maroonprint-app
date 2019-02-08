@@ -435,6 +435,11 @@
 		background-color: #800000;
 	}
 
+	.btn-group a {
+		color: #ffffff;
+		text-decoration: none;
+	}
+
     .imgbox {
         display: grid;
         height: 100%;
@@ -478,14 +483,19 @@
 
 	<div class="home">
 <div class="btn-group">
-	<button class="button" onclick="myFunction0()">Floor 0</button>	
-	<button class="button active" onclick="myFunction1()">Lobby</button>	
+	<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}">Floor 0</a></button>	
+	<!--<button class="button active" onclick="myFunction1()">Lobby</button>-->
+	<button class="button active" onclick="myFunction1()">Lobby</button>
 	<button class="button" onclick="myFunction2()">Floor 2</button>		
 	<button class="button" onclick="myFunction3()">Floor 3</button>
 	<div id="myDIV1" style="display:block;">
 		<img class="center-fit" img src="https://i.ibb.co/524gdqq/dcsLobby.png" alt="dcsLobby" border="0">
 	</div>
 		<script>
+		/*function myFunction0() {
+			/*window.location = "https://maroonprint.herokuapp.com/college-of-engineering/";*/
+		/*}*/
+
 		/*	Name: myFunction1
 			Created: 02/05/2019
 			Purpose: Showing the lobby image

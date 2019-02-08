@@ -25,6 +25,7 @@ urlpatterns = [
     #path('', homePageView.as_view(), name='home'),
     url(r'^$', views.homePageView, name="home"),
     url('about/', views.aboutPageView, name="about"),
+    url('error/', views.errorFloor, name="error"),
     #dcs
     url('department-of-computer-science/', views.dcsPageView, name="dcs"),
     #engglib2
