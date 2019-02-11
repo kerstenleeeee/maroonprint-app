@@ -146,12 +146,11 @@
 		/*padding: 20px 40px;*/
 		height: 70px;
 		color: #ffffff;
-		width: 100%;
 		box-sizing: border-box;
 	}
 
 	.header-main .header-sub {
-		max-width: 100%
+		max-width: 100%;
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -394,12 +393,13 @@
 
 	th, td, tr {
   		padding: 5px;
-  		background: rgba(255, 255, 255, 0.6)
+  		background-color: rgba(0, 0, 0, 0)
 	}
 	
 	table {
   		padding: 5px;
   		margin-bottom: 50px;
+  		width: 100%
 	}
 
 	.header-main .header-sub h3 {
@@ -416,8 +416,7 @@
 		color: white; /* White text */
 		padding: 10px 24px; /* Some padding */
 		cursor: pointer; /* Pointer/hand icon */
-		float: middle; /* Float the buttons side by side */
-		text-align: center;
+		float: middle; 
 	}
 
 	/* Clear floats (clearfix hack) */
@@ -445,11 +444,16 @@
         display: grid;
         height: 100%;
     }
+
     .center-fit {
         max-width: 95%;
         max-height: 100vh;
         margin: auto;
     }
+
+    .dropdowndest {
+		float: right;
+	}
 </style>
 
 <body>
@@ -484,11 +488,26 @@
 
 	<div class="home">
 <div class="btn-group">
-	<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}">Floor 0</a></button>	
-	<!--<button class="button active" onclick="myFunction1()">Lobby</button>-->
-	<button class="button active" onclick="myFunction1()">Lobby</button>
-	<button class="button" onclick="myFunction2()">Floor 2</button>		
-	<button class="button" onclick="myFunction3()">Floor 3</button>
+	<table class="center-fit">
+		<tr>
+			<td style="float: left;">
+				<strong>FROM</strong>
+				<button class="button active" onclick="myFunction1()">Lobby</button>
+				<strong>TO &nbsp;</strong>
+				<div class="dropdowndest">
+					<button class="button" onclick="functionDest()">DESTINATION</button>
+				</div>
+			</td>
+			<td style="float: right;">
+				<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}">Floor 0</a></button>	
+				<!--<button class="button active" onclick="myFunction1()">Lobby</button>-->
+				<button class="button active" onclick="myFunction1()">Lobby</button>
+				<button class="button" onclick="myFunction2()">Floor 2</button>		
+				<button class="button" onclick="myFunction3()">Floor 3</button>
+			</td>
+		</tr>
+	</table>
+	
 	<div id="myDIV1" style="display:block;">
 		<img class="center-fit" img src="https://i.ibb.co/524gdqq/dcsLobby.png" alt="dcsLobby" border="0">
 	</div>
@@ -589,6 +608,10 @@ function myFunction() {
 	document.getElementById("myDropdown").classList.toggle("show");
 }
 
+function functionDest() {
+	document.getElementById("destDropdown").classList.toggle("show");
+}
+
 window.onscroll = function() {newFunction()};
 
 var header = document.getElementById("myHeader");
@@ -616,7 +639,7 @@ function filterFunction() {
   	var input, filter, ul, li, a, i;
   	input = document.getElementById("myInput");
   	filter = input.value.toUpperCase();
-  	div = document.getElementById("myDropdown");
+  	div = document.getElementById("destDropdown");
  	 	a = div.getElementsByTagName("a");
   	for (i = 0; i < a.length; i++) {
    	 	txtValue = a[i].textContent || a[i].innerText;
