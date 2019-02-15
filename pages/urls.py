@@ -16,6 +16,7 @@
 
 from django.urls import path
 from django.conf.urls import url
+from django.urls import path, include
 from . import views
 from .views import homePageView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -26,6 +27,8 @@ urlpatterns = [
     url(r'^$', views.homePageView, name="home"),
     url('about/', views.aboutPageView, name="about"),
     url('error/', views.errorFloor, name="error"),
+    url('accounts/', include('django.contrib.auth.urls')),
+    url('login-landing/', views.loginLanding, name="loginLanding"),
     #dcs
     url('department-of-computer-science/', views.dcsPageView, name="dcs"),
     #engglib2

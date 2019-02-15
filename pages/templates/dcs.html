@@ -16,7 +16,6 @@
      Lee - 01/31/19 - Modified footer
      Lee - 02/04/19 - Added more menus (buildings)
      Wu - 02/05/19 - Added buttongrp and scripts
-     Wu - 02/05/19 - Added more styles
      Wu - 02/06/19 - Fixed identations
      Lee - 02/07/19 - Added comments
 -->
@@ -25,7 +24,7 @@
      File creation date: 01/30/19
      Development Group: 3
      Client Group: 3
-     Description: View DCS blueprints.
+     Description: View Engglib2 blueprints.
 -->
 <!DOCTYPE html>
 <html>
@@ -146,12 +145,11 @@
 		/*padding: 20px 40px;*/
 		height: 70px;
 		color: #ffffff;
-		width: 100%;
 		box-sizing: border-box;
 	}
 
 	.header-main .header-sub {
-		max-width: 100%
+		max-width: 100%;
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -436,11 +434,6 @@
 		background-color: #800000;
 	}
 
-	.btn-group a {
-		color: #ffffff;
-		text-decoration: none;
-	}
-
     .imgbox {
         display: grid;
         height: 100%;
@@ -485,18 +478,13 @@
 	<div class="home">
 <div class="btn-group">
 	<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}">Floor 0</a></button>	
-	<!--<button class="button active" onclick="myFunction1()">Lobby</button>-->
-	<button class="button active" onclick="myFunction1()">Lobby</button>
+	<button class="button active" onclick="myFunction1()">Lobby</button>	
 	<button class="button" onclick="myFunction2()">Floor 2</button>		
 	<button class="button" onclick="myFunction3()">Floor 3</button>
 	<div id="myDIV1" style="display:block;">
-		<img class="center-fit" img src="https://i.ibb.co/524gdqq/dcsLobby.png" alt="dcsLobby" border="0">
+		<img class="center-fit" src="https://i.ibb.co/LvrT3kM/dcsLobby.jpg" alt="dcsLobby" border="0">
 	</div>
-		<script>
-		/*function myFunction0() {
-			/*window.location = "https://maroonprint.herokuapp.com/college-of-engineering/";*/
-		/*}*/
-
+	<script>
 		/*	Name: myFunction1
 			Created: 02/05/2019
 			Purpose: Showing the lobby image
@@ -560,11 +548,11 @@
 		}
 	</script>	
 	  
-</div>
+</div>	
 
-	<div class="footer">
-		Copyright © 2019 MaroonPrint
-	</div>
+<div class="footer">
+	Copyright © 2019 MaroonPrint
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>

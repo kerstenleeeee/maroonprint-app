@@ -44,6 +44,9 @@ def aboutPageView(request):
 def errorFloor(request):
 	return render(request, 'error.html')
 
+def loginLanding(request):
+	return render(request, 'login-landing.html')
+
 # view dcs.html
 def dcsPageView(request):
 	try:
