@@ -47,6 +47,12 @@ def errorFloor(request):
 def loginLanding(request):
 	return render(request, 'login-landing.html')
 
+def adminPageView(request):
+	return render(request, 'admin-page.html')
+
+def addPageView(request):
+	return render(request, 'add.html')
+
 # view dcs.html
 def dcsPageView(request):
 	try:
