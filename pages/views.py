@@ -39,7 +39,8 @@ def homePageView(request):
 # view about.html
 def aboutPageView(request):
 	#return HttpResponse('MaroonPrint')
-	return render(request, 'about.html')
+	weather = Building.objects.get(buildID='che001')
+	return render(request, 'about.html', {'weather':weather})
 
 def errorFloor(request):
 	return render(request, 'error.html')
