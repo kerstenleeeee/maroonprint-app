@@ -95,10 +95,17 @@ def dcsPageView(request):
 		#dcsFloor1 = Floor.objects.filter(buildID = 'dcs001', floorNo = 1).values('floorImageLink')
 		#dcsFloor2 = Floor.objects.filter(buildID = 'dcs001', floorNo = 2).values('floorImageLink')
 		#dcsFloor3 = Floor.objects.filter(buildID = 'dcs001', floorNo = 3).values('floorImageLink')
-		dcsFloor1 = Floor.objects.get(buildID='dcs001', floorNo = 1)
+		#dcsFloor1 = Floor.objects.get(buildID='dcs001', floorID = 'dcs01', floorNo=1)
+		dcsFloor2 = Floor.objects.get(buildID='dcs001', floorID = 'dcs02', floorNo=2)
+		#dcsFloor3 = Floor.objects.get(buildID='dcs001', floorID = 'dcs03', floorNo=3)
+		return render(request, 'dcs.html', {
+			#"dcsFloor1" : dcsFloor1.floorImageLink,
+			"dcsFloor2" : dcsFloor2.floorImageLink,
+			#"dcsFloor3" : dcsFloor3.floorImageLink
+			})
 		#my_instance = dcsView.floorImageLink
-		entriesB = Building.objects.get(buildID='dcs001')
-		return render(request, 'dcs.html')
+		#entriesB = Building.objects.get(buildID='dcs001')
+		#return render(request, 'dcs.html')
 	except:
 		return render(request, 'error.html')
 
