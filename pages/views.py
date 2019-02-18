@@ -34,6 +34,8 @@ from rest_framework import status
 from bps.forms import FloorForm, FloorCreateForm
 from django.contrib import messages	
 
+from django.db import IntegrityError
+
 # viwew home.html
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
@@ -65,9 +67,21 @@ def addPageView(request):
 		if form.is_valid():
 			#form.save()
 			print(form.cleaned_data)
-			Floor.objects.create(**form.cleaned_data)
-			messages.success(request, 'Successfully added the blueprint!')
-			return HttpResponseRedirect('/add/')
+			# Floor.objects.create(**form.cleaned_data)
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("floorID")
+			try:
+				#varBuild = Floor.objects.get(buildID=checkBuild, floorID=checkFloor)
+				#context = {
+				#"form" : form,
+				#"error" : "Blueprint already exists."
+				#}
+				#return render(request, 'add.html', context)
+				Floor.objects.create(**form.cleaned_data)	
+				messages.success(request, 'Successfully added the blueprint!')
+				return HttpResponseRedirect('/add/')
+			except IntegrityError as e:
+				messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
 		else:
 			print(form.errors)
 	context = {
