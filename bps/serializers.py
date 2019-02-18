@@ -25,4 +25,4 @@ class BuildingSerializer(serializers.ModelSerializer):
 class FloorSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Floor
-		fields = ('buildID', 'floorID', 'floorNo',)
+		fields = ('buildID', 'floorID', 'floorNo', 'floorImageLink',)
