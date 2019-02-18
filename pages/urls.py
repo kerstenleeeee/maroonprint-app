@@ -28,7 +28,7 @@ urlpatterns = [
     url('about/', views.aboutPageView, name="about"),
     url('error/', views.errorFloor, name="error"),
     url('accounts/', include('django.contrib.auth.urls')),
-    url('login-landing/', views.loginLanding, name="loginLanding"),
+    # url('login-landing/', views.loginLanding, name="loginLanding"),
     url('admin-page/',views.adminPageView, name="admin-page"),
     url('add/',views.addPageView, name="add"),
     #dcs

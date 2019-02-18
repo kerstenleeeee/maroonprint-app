@@ -138,5 +138,5 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 MEDIA_URL= "/media/"
 
 # administrator page login and logout
-LOGIN_REDIRECT_URL = 'loginLanding'
+LOGIN_REDIRECT_URL = 'admin-page'
 LOGOUT_REDIRECT_URL = '/'
