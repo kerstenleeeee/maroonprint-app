@@ -27,6 +27,7 @@ class Floor(models.Model):
 	buildID = models.ForeignKey(Building, on_delete = models.CASCADE)
 	floorID = models.CharField(primary_key = True, max_length = 100)
 	floorNo = models.IntegerField()	
+	floorImageLink = models.URLField()	
 
 	class Meta:
 		unique_together = (('buildID', 'floorID'),)

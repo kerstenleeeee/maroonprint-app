@@ -31,6 +31,9 @@ from bps.models import Building, Floor
 from bps.serializers import BuildingSerializer, FloorSerializer
 from rest_framework import status
 
+from bps.forms import FloorForm, FloorCreateForm
+from django.contrib import messages	
+
 # viwew home.html
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
@@ -54,9 +57,31 @@ def adminPageView(request):
 def addPageView(request):
 	return render(request, 'add.html')
 
+def addPageView(request):
+	form = FloorCreateForm()
+	if request.method == "POST":
+		form = FloorCreateForm(request.POST)	
+		if form.is_valid():
+			#form.save()
+			print(form.cleaned_data)
+			Floor.objects.create(**form.cleaned_data)
+			messages.success(request, 'Successfully added the blueprint!')
+			return HttpResponseRedirect('/add/')
+		else:
+			print(form.errors)
+	context = {
+		"form" : form
+	}
+	return render(request, 'add.html', context)
+
 # view dcs.html
 def dcsPageView(request):
 	try:
+		#dcsFloor1 = Floor.objects.filter(buildID = 'dcs001', floorNo = 1).values('floorImageLink')
+		#dcsFloor2 = Floor.objects.filter(buildID = 'dcs001', floorNo = 2).values('floorImageLink')
+		#dcsFloor3 = Floor.objects.filter(buildID = 'dcs001', floorNo = 3).values('floorImageLink')
+		dcsFloor1 = Floor.objects.get(buildID='dcs001', floorNo = 1)
+		#my_instance = dcsView.floorImageLink
 		entriesB = Building.objects.get(buildID='dcs001')
 		return render(request, 'dcs.html')
 	except:
