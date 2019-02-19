@@ -443,6 +443,30 @@
         max-height: 100vh;
         margin: auto;
     }
+
+    .dropdown-contentTo {
+	  	display: none;
+	  	position: absolute;
+	  	background-color: #A9A9A9;
+	  	min-width: 230px;
+	  	max-width: 250px;
+	  	overflow: auto;
+	  	border: none;
+	  	z-index: 1;
+	}
+
+	.dropdown-contentTo a {
+	  	color: black;
+	  	padding: 12px 16px;
+	  	text-decoration: none;
+	  	display: block;
+	}
+
+	.dropdown-contentTo a:hover {
+		color: #800000;
+	}
+
+	.show {display: inline-table;}
 </style>
 
 <body>
@@ -613,9 +637,19 @@
 			{% endif %}
 		{% endfor %}
 	</div>
-	  
-</div>	
 
+	<table align="center">
+		<tr>
+			<strong>FROM&nbsp;</strong>
+			<button class="button" onclick="myFunction1()">Lobby</button>	
+			<strong>&nbsp;TO&nbsp;</strong>
+			<button class="button" onclick="myFunctionTo()">Destination&nbsp;<i class="fa fa-caret-right"></i></button>			
+				<div id="myDropdownTo" class="dropdown-contentTo">
+					<a href="{% url 'coe' %}">College of Engineering</a>
+				</div>
+		</tr>
+	</table>
+</div>	
 <div class="footer">
 	Copyright © 2019 MaroonPrint
 </div>
@@ -641,6 +675,10 @@
 */
 function myFunction() {
 	document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function myFunctionTo() {
+	document.getElementById("myDropdownTo").classList.toggle("show");
 }
 
 window.onscroll = function() {newFunction()};
