@@ -91,38 +91,53 @@ def addPageView(request):
 
 # view dcs.html
 def dcsPageView(request):
-	try:
-		#dcsFloor1 = Floor.objects.filter(buildID = 'dcs001', floorNo = 1).values('floorImageLink')
-		#dcsFloor2 = Floor.objects.filter(buildID = 'dcs001', floorNo = 2).values('floorImageLink')
-		#dcsFloor3 = Floor.objects.filter(buildID = 'dcs001', floorNo = 3).values('floorImageLink')
-		#dcsFloor1 = Floor.objects.get(buildID='dcs001', floorID = 'dcs01', floorNo=1)
-		dcsFloor2 = Floor.objects.get(buildID='dcs001', floorID = 'dcs02', floorNo=2)
-		#dcsFloor3 = Floor.objects.get(buildID='dcs001', floorID = 'dcs03', floorNo=3)
-		return render(request, 'dcs.html', {
-			#"dcsFloor1" : dcsFloor1.floorImageLink,
-			"dcsFloor2" : dcsFloor2.floorImageLink,
-			#"dcsFloor3" : dcsFloor3.floorImageLink
-			})
-		#my_instance = dcsView.floorImageLink
-		#entriesB = Building.objects.get(buildID='dcs001')
-		#return render(request, 'dcs.html')
-	except:
+	if Floor.objects.filter(buildID='dcs001', floorID='dcsLobby').exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dcs001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			for floors in getFloors:
+				dcsFloors.append(floors.floorID)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'dcs.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view engglib2.html
 def enggLib2PageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='engglib2001')
-		return render(request, 'engglib2.html')
-	except:
+	if Floor.objects.filter(buildID='engglib2001', floorID='engglib2Lobby').exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='engglib2001')	# get all info inluding the floorImageLink
+			engglib2Floors = []
+			for floors in getFloors:
+				engglib2Floors.append(floors.floorID)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'engglib2.html', {"engglib2Floors" : engglib2Floors, "getFloors" : getFloors})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view coe.html
 def coePageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='coe001')
-		return render(request, 'coe.html')
-	except:
+	if Floor.objects.filter(buildID='coe001', floorID='coeLobby').exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='coe001')	# get all info inluding the floorImageLink
+			coeFloors = []
+			for floors in getFloors:
+				coeFloors.append(floors.floorID)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'coe.html', {"coeFloors" : coeFloors, "getFloors" : getFloors})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view  eee.html
