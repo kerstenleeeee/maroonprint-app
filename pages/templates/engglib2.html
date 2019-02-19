@@ -44,7 +44,7 @@
 </head>
 
 <style>
-		@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+	@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
 	@import url(http://fonts.googleapis.com/css?family=Cookie);
 
 	html{
@@ -464,6 +464,7 @@
 				</div>
 				<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
 				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
+				<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 			</div>
 
 			<div class="search-container">
@@ -477,7 +478,7 @@
 
 	<div class="home">
 <div class="btn-group">
-	<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}">Floor 0</a></button>	
+	<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}" style="color: white; text-decoration: none">Floor 0</a></button>	
 	<button class="button active" onclick="myFunction1()">Lobby</button>	
 	<button class="button" onclick="myFunction2()">Floor 2</button>		
 	<button class="button" onclick="myFunction3()">Floor 3</button>

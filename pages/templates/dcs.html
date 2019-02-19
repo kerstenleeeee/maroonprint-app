@@ -16,7 +16,6 @@
      Lee - 01/31/19 - Modified footer
      Lee - 02/04/19 - Added more menus (buildings)
      Wu - 02/05/19 - Added buttongrp and scripts
-     Wu - 02/05/19 - Added more styles
      Wu - 02/06/19 - Fixed identations
      Lee - 02/07/19 - Added comments
 -->
@@ -25,7 +24,7 @@
      File creation date: 01/30/19
      Development Group: 3
      Client Group: 3
-     Description: View DCS blueprints.
+     Description: View Engglib2 blueprints.
 -->
 <!DOCTYPE html>
 <html>
@@ -393,13 +392,12 @@
 
 	th, td, tr {
   		padding: 5px;
-  		background-color: rgba(0, 0, 0, 0)
+  		background: rgba(255, 255, 255, 0.6)
 	}
 	
 	table {
   		padding: 5px;
   		margin-bottom: 50px;
-  		width: 100%
 	}
 
 	.header-main .header-sub h3 {
@@ -416,7 +414,8 @@
 		color: white; /* White text */
 		padding: 10px 24px; /* Some padding */
 		cursor: pointer; /* Pointer/hand icon */
-		float: middle; 
+		float: middle; /* Float the buttons side by side */
+		text-align: center;
 	}
 
 	/* Clear floats (clearfix hack) */
@@ -435,25 +434,15 @@
 		background-color: #800000;
 	}
 
-	.btn-group a {
-		color: #ffffff;
-		text-decoration: none;
-	}
-
     .imgbox {
         display: grid;
         height: 100%;
     }
-
     .center-fit {
         max-width: 95%;
         max-height: 100vh;
         margin: auto;
     }
-
-    .dropdowndest {
-		float: right;
-	}
 </style>
 
 <body>
@@ -475,6 +464,7 @@
 				</div>
 				<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
 				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
+				<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 			</div>
 
 			<div class="search-container">
@@ -488,55 +478,75 @@
 
 	<div class="home">
 <div class="btn-group">
-	<table class="center-fit">
-		<tr>
-			<td style="float: left;">
-				<strong>FROM</strong>
-				<button class="button active" onclick="myFunction1()">Lobby</button>
-				<strong>TO &nbsp;</strong>
-				<div class="dropdowndest">
-					<button class="button" onclick="functionDest()">DESTINATION</button>
-				</div>
-			</td>
-			<td style="float: right;">
-				<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}">Floor 0</a></button>	
-				<!--<button class="button active" onclick="myFunction1()">Lobby</button>-->
-				<button class="button active" onclick="myFunction1()">Lobby</button>
-				<button class="button" onclick="myFunction2()">Floor 2</button>		
-				<button class="button" onclick="myFunction3()">Floor 3</button>
-			</td>
-		</tr>
-	</table>
+	<button class="button" onclick="myFunction0()">Floor 0</button>	
+	<button class="button active" onclick="myFunction1()">Lobby</button>	
+	<button class="button" onclick="myFunction2()">Floor 2</button>		
+	<button class="button" onclick="myFunction3()">Floor 3</button>
 	
-	<div id="myDIV1" style="display:block;">
-		<img class="center-fit" img src="https://i.ibb.co/524gdqq/dcsLobby.png" alt="dcsLobby" border="0">
+	<script>
+		/*	Name: myFunction3
+			Created: 02/05/2019
+			Purpose: Showing the floor3 image
+			Calling argument: myFunction3()
+		*/
+   		function myFunction0() {
+   			{% if "dcs00" not in dcsFloors %}
+   				window.location.href = "{% url 'error' %}";
+   			{% else %}
+   			var a = document.getElementById("myDIV0");
+   			var x = document.getElementById("myDIV1");
+	 		var y = document.getElementById("myDIV2");
+	 		var z = document.getElementById("myDIV3");
+	        if (a.style.display === "none") {
+	  			a.style.display = "block";
+	  			x.style.display = "none";
+	  			y.style.display = "none";
+	  			z.style.display = "none";
+			} else {
+				a.style.display = "block";
+				}
+			{% endif %}
+		}
+	</script>	
+	<div id="myDIV0" style="display:none;">
+		{% for floor in getFloors %}
+			{% if floor.floorID == "dcs00" %}
+				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
+			{% endif %}
+		{% endfor %}
 	</div>
-		<script>
-		/*function myFunction0() {
-			/*window.location = "https://maroonprint.herokuapp.com/college-of-engineering/";*/
-		/*}*/
-
+	<script>
 		/*	Name: myFunction1
 			Created: 02/05/2019
 			Purpose: Showing the lobby image
 			Calling argument: myFunction1()
 		*/
    		function myFunction1() {
- 			var x = document.getElementById("myDIV1");
- 			var y = document.getElementById("myDIV2");
- 			var z = document.getElementById("myDIV3");
-        	if (x.style.display === "none") {
-  				x.style.display = "block";
-  				y.style.display = "none";
-  				z.style.display = "none";
+   			var a = document.getElementById("myDIV1");
+   			var x = document.getElementById("myDIV0");
+	 		var y = document.getElementById("myDIV2");
+	 		var z = document.getElementById("myDIV3");
+	        if (a.style.display === "none") {
+	  			a.style.display = "block";
+	  			x.style.display = "none";
+	  			y.style.display = "none";
+	  			z.style.display = "none";
 			} else {
-				x.style.display = "block";
+				a.style.display = "block";
 			}
 		}
 	</script>
-	<div id="myDIV2" style="display:none;">
-		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
+	<div id="myDIV1" style="display:block;">
+		{% for floor in getFloors %}
+			{% if floor.floorID == "dcsLobby" %}
+				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
+			{% endif %}
+		{% endfor %}
 	</div>
+
+
 	<script>
 		/*	Name: myFunction2
 			Created: 02/05/2019
@@ -544,21 +554,34 @@
 			Calling argument: myFunction2()
 		*/
    		function myFunction2() {
-	 		var x = document.getElementById("myDIV2");
-	 		var y = document.getElementById("myDIV1");
+	 		{% if "dcs02" not in dcsFloors %}
+   				window.location.href = "{% url 'error' %}";
+   			{% else %}
+   			var a = document.getElementById("myDIV2");
+   			var x = document.getElementById("myDIV1");
+	 		var y = document.getElementById("myDIV0");
 	 		var z = document.getElementById("myDIV3");
-	        if (x.style.display === "none") {
-	  			x.style.display = "block";
+	        if (a.style.display === "none") {
+	  			a.style.display = "block";
+	  			x.style.display = "none";
 	  			y.style.display = "none";
 	  			z.style.display = "none";
 			} else {
-				x.style.display = "block";
+				a.style.display = "block";
 				}
+			{% endif %}
 		}
 	</script>
-	<div id="myDIV3" style="display:none;">
-		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
+	<div id="myDIV2" style="display:none;">
+		{% for floor in getFloors %}
+			{% if floor.floorID == "dcs02" %}
+				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
+			{% endif %}
+		{% endfor %}
 	</div>
+
+
 	<script>
 		/*	Name: myFunction3
 			Created: 02/05/2019
@@ -566,7 +589,10 @@
 			Calling argument: myFunction3()
 		*/
    		function myFunction3() {
-	 		var x = document.getElementById("myDIV3");
+   			{% if "dcs03" not in dcsFloors %}
+   				window.location.href = "{% url 'error' %}";
+   			{% else %}
+   			var x = document.getElementById("myDIV3");
 	 		var y = document.getElementById("myDIV1");
 	 		var z = document.getElementById("myDIV2");
 	        if (x.style.display === "none") {
@@ -576,14 +602,23 @@
 			} else {
 				x.style.display = "block";
 				}
+			{% endif %}
 		}
 	</script>	
-	  
-</div>
-
-	<div class="footer">
-		Copyright © 2019 MaroonPrint
+	<div id="myDIV3" style="display:none;">
+		{% for floor in getFloors %}
+			{% if floor.floorID == "dcs03" %}
+				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs03" border="0">
+			{% endif %}
+		{% endfor %}
 	</div>
+	  
+</div>	
+
+<div class="footer">
+	Copyright © 2019 MaroonPrint
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
@@ -602,14 +637,10 @@
 /*	Name: myFunction
 	Created: 01/30/2019
 	Purpose: For the dropdown functionality of the dropdown navburger
-	Calling argument: myFunction()
+	Calling argument: myFunction()	
 */
 function myFunction() {
 	document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function functionDest() {
-	document.getElementById("destDropdown").classList.toggle("show");
 }
 
 window.onscroll = function() {newFunction()};
@@ -639,7 +670,7 @@ function filterFunction() {
   	var input, filter, ul, li, a, i;
   	input = document.getElementById("myInput");
   	filter = input.value.toUpperCase();
-  	div = document.getElementById("destDropdown");
+  	div = document.getElementById("myDropdown");
  	 	a = div.getElementsByTagName("a");
   	for (i = 0; i < a.length; i++) {
    	 	txtValue = a[i].textContent || a[i].innerText;

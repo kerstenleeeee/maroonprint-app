@@ -8,6 +8,7 @@
 # Lee - 01/30/19 - Added homePageView and aboutPageView
 # Lee - 01/31/19 - Added dcsPageView
 # Lee - 02/04/19 - Added more views
+# Lee - 02/18/19 - Fixed views functionality
 
 # File creation date: 01/30/19
 # Development Group: 3
@@ -31,6 +32,11 @@ from bps.models import Building, Floor
 from bps.serializers import BuildingSerializer, FloorSerializer
 from rest_framework import status
 
+from bps.forms import FloorForm, FloorCreateForm
+from django.contrib import messages	
+
+from django.db import IntegrityError
+
 # viwew home.html
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
@@ -38,34 +44,101 @@ def homePageView(request):
 
 # view about.html
 def aboutPageView(request):
-	#return HttpResponse('MaroonPrint')
+	# return HttpResponse('MaroonPrint')
+	# weather = Floor.objects.get(buildID='ice001', floorID='ice02')
+	# return render(request, 'about.html', {'weather':weather.floorImageLink})
 	return render(request, 'about.html')
 
 def errorFloor(request):
 	return render(request, 'error.html')
 
+def loginLanding(request):
+	return render(request, 'login-landing.html')
+
+def adminPageView(request):
+	return render(request, 'admin-page.html')
+
+def addPageView(request):
+	return render(request, 'add.html')
+
+def addPageView(request):
+	form = FloorCreateForm()
+	if request.method == "POST":
+		form = FloorCreateForm(request.POST)	
+		if form.is_valid():
+			#form.save()
+			print(form.cleaned_data)
+			# Floor.objects.create(**form.cleaned_data)
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("floorID")
+			try:
+				#varBuild = Floor.objects.get(buildID=checkBuild, floorID=checkFloor)
+				#context = {
+				#"form" : form,
+				#"error" : "Blueprint already exists."
+				#}
+				#return render(request, 'add.html', context)
+				Floor.objects.create(**form.cleaned_data)	
+				messages.success(request, 'Successfully added the blueprint!')
+				return HttpResponseRedirect('/add/')
+			except IntegrityError as e:
+				messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
+		else:
+			print(form.errors)
+	context = {
+		"form" : form
+	}
+	return render(request, 'add.html', context)
+
 # view dcs.html
 def dcsPageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='dcs001')
-		return render(request, 'dcs.html')
-	except:
+	if Floor.objects.filter(buildID='dcs001', floorID='dcsLobby').exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dcs001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			for floors in getFloors:
+				dcsFloors.append(floors.floorID)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'dcs.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view engglib2.html
 def enggLib2PageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='engglib2001')
-		return render(request, 'engglib2.html')
-	except:
+	if Floor.objects.filter(buildID='engglib2001', floorID='engglib2Lobby').exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='engglib2001')	# get all info inluding the floorImageLink
+			engglib2Floors = []
+			for floors in getFloors:
+				engglib2Floors.append(floors.floorID)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'engglib2.html', {"engglib2Floors" : engglib2Floors, "getFloors" : getFloors})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view coe.html
 def coePageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='coe001')
-		return render(request, 'coe.html')
-	except:
+	if Floor.objects.filter(buildID='coe001', floorID='coeLobby').exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='coe001')	# get all info inluding the floorImageLink
+			coeFloors = []
+			for floors in getFloors:
+				coeFloors.append(floors.floorID)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'coe.html', {"coeFloors" : coeFloors, "getFloors" : getFloors})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view  eee.html
