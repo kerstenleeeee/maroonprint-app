@@ -8,6 +8,7 @@
 # Lee - 01/30/19 - Added homePageView and aboutPageView
 # Lee - 01/31/19 - Added dcsPageView
 # Lee - 02/04/19 - Added more views
+# Lee - 02/18/19 - Fixed views functionality
 
 # File creation date: 01/30/19
 # Development Group: 3

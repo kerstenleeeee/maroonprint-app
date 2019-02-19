@@ -5,7 +5,8 @@
 
 # Code History
 # Magno - 02/17/19 - Added the forms for add functionality
-# Magno - 02/18/19 - Final commit
+# Lee - 02/18/19 - Edited floorNo choicefield and floorID plaeeholder
+# Magno - 02/19/19 - Final commit
 
 # File creation date: 02/17/19
 # Development Group: 3
