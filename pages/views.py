@@ -90,7 +90,7 @@ def addBuildingPageView(request):
 	}
 	return render(request, 'add-building.html', context)
 	
-def addPageView(request):
+def addFloorPageView(request):
 	form = FloorCreateForm()
 	if request.method == "POST":
 		form = FloorCreateForm(request.POST)	
@@ -117,7 +117,7 @@ def addPageView(request):
 	context = {
 		"form" : form
 	}
-	return render(request, 'add.html', context)
+	return render(request, 'add-floor.html', context)
 
 # view dcs.html
 def dcsPageView(request):
