@@ -32,7 +32,7 @@ from bps.models import Building, Floor
 from bps.serializers import BuildingSerializer, FloorSerializer
 from rest_framework import status
 
-from bps.forms import FloorForm, FloorCreateForm
+from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm
 from django.contrib import messages	
 
 from django.db import IntegrityError
@@ -58,9 +58,38 @@ def loginLanding(request):
 def adminPageView(request):
 	return render(request, 'admin-page.html')
 
-def addPageView(request):
-	return render(request, 'add.html')
+def addBuildingFloorPageView(request):
+	return render(request, 'add-building-floor.html')
 
+def addBuildingPageView(request):
+	form = BuildingCreateForm()
+	if request.method == "POST":
+		form = BuildingCreateForm(request.POST)	
+		if form.is_valid():
+			#form.save()
+			print(form.cleaned_data)
+			# Floor.objects.create(**form.cleaned_data)
+			checkBuild = form.cleaned_data.get("buildID")
+			#checkFloor = form.cleaned_data.get("floorID")
+			try:
+				#varBuild = Floor.objects.get(buildID=checkBuild, floorID=checkFloor)
+				#context = {
+				#"form" : form,
+				#"error" : "Blueprint already exists."
+				#}
+				#return render(request, 'add.html', context)
+				Building.objects.create(**form.cleaned_data)	
+				messages.success(request, 'Successfully added the blueprint!')
+				return HttpResponseRedirect('/add/')
+			except IntegrityError as e:
+				messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
+		else:
+			print(form.errors)
+	context = {
+		"form" : form
+	}
+	return render(request, 'add-building.html', context)
+	
 def addPageView(request):
 	form = FloorCreateForm()
 	if request.method == "POST":

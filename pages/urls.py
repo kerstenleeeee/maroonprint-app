@@ -30,7 +30,9 @@ urlpatterns = [
     url('accounts/', include('django.contrib.auth.urls')),
     # url('login-landing/', views.loginLanding, name="loginLanding"),
     url('admin-page/',views.adminPageView, name="admin-page"),
-    url('add/',views.addPageView, name="add"),
+    url('add-building-floor/',views.addBuildingFloorPageView, name="add-building-floor"),
+    url('add-building/',views.addBuildingPageView, name="add-building"),
+    url('add-floor/',views.addFloorPageView, name="add-floor"),
     #dcs
     url('department-of-computer-science/', views.dcsPageView, name="dcs"),
     #engglib2

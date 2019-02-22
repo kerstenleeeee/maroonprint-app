@@ -16,6 +16,18 @@
 from django import forms
 from .models import Building, Floor
 
+class BuildingForm(forms.ModelForm):
+    class Meta:
+        model = Building
+        fields = [
+            'buildID', 
+            'buildName'
+        ]
+
+class BuildingCreateForm(forms.Form):
+    buildID = forms.IntegerField()
+    buildName = forms.CharField()
+
 class FloorForm(forms.ModelForm):
     class Meta:
         model = Floor
