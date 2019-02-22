@@ -93,13 +93,19 @@ def addBuildingPageView(request):
 def addFloorPageView(request):
 	form = FloorCreateForm()
 	if request.method == "POST":
-		form = FloorCreateForm(request.POST)	
+		form = FloorCreateForm(request.POST)
 		if form.is_valid():
 			#form.save()
-			print(form.cleaned_data)
+			#print(form.cleaned_data)
 			# Floor.objects.create(**form.cleaned_data)
 			checkBuild = form.cleaned_data.get("buildID")
+			print(checkBuild.buildID)
+			#if checkBuild.buildID == "dcs001":
+
 			checkFloor = form.cleaned_data.get("floorID")
+			print(checkBuild)
+			print(checkFloor)
+			print(form.cleaned_data)
 			try:
 				#varBuild = Floor.objects.get(buildID=checkBuild, floorID=checkFloor)
 				#context = {
@@ -109,7 +115,7 @@ def addFloorPageView(request):
 				#return render(request, 'add.html', context)
 				Floor.objects.create(**form.cleaned_data)	
 				messages.success(request, 'Successfully added the blueprint!')
-				return HttpResponseRedirect('/add/')
+				return HttpResponseRedirect('/add-floor/')
 			except IntegrityError as e:
 				messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
 		else:
@@ -121,12 +127,12 @@ def addFloorPageView(request):
 
 # view dcs.html
 def dcsPageView(request):
-	if Floor.objects.filter(buildID='dcs001', floorID='dcsLobby').exists():
+	if Floor.objects.filter(buildID='dcs001', floorNo=1).exists():
 		try:
 			getFloors = Floor.objects.filter(buildID='dcs001')	# get all info inluding the floorImageLink
 			dcsFloors = []
 			for floors in getFloors:
-				dcsFloors.append(floors.floorID)	# list of the floorIDs for hecking
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
 			#print(dcsFloors)
 			#for x in dcsFloors:
 			#	print(x.floorImageLink)

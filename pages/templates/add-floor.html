@@ -435,8 +435,8 @@
     <br/><br/>
     <form method = 'POST' align = "center"> 
         {% csrf_token %}
-        <tr>Building ID: {{ form.buildID }}</tr><br/> <br/>
-        <tr>Floor ID: {{ form.floorID }} <small>(ex. DCS floor 3 should be written as dcs03)</small></tr><br/> <br/>
+        <tr>Building Name: {{ form.buildID }}</tr><br/> <br/>
+        <!-- <tr>Floor ID: {{ form.floorID }} <small>(ex. DCS floor 3 should be written as dcs03)</small></tr><br/> <br/> -->
         <tr>Floor No: {{ form.floorNo  }}</tr><br/> <br/>
         <tr>Floor Image Link: {{ form.floorImageLink }}</tr><br/> <br/>
     

@@ -490,7 +490,7 @@
 			Calling argument: myFunction3()
 		*/
    		function myFunction0() {
-   			{% if "dcs00" not in dcsFloors %}
+   			{% if 0 not in dcsFloors %}
    				window.location.href = "{% url 'error' %}";
    			{% else %}
    			var a = document.getElementById("myDIV0");
@@ -510,7 +510,7 @@
 	</script>	
 	<div id="myDIV0" style="display:none;">
 		{% for floor in getFloors %}
-			{% if floor.floorID == "dcs00" %}
+			{% if floor.floorNo == 0 %}
 				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
 				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
 			{% endif %}
@@ -539,7 +539,7 @@
 	</script>
 	<div id="myDIV1" style="display:block;">
 		{% for floor in getFloors %}
-			{% if floor.floorID == "dcsLobby" %}
+			{% if floor.floorNo == 1 %}
 				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
 				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
 			{% endif %}
@@ -554,7 +554,7 @@
 			Calling argument: myFunction2()
 		*/
    		function myFunction2() {
-	 		{% if "dcs02" not in dcsFloors %}
+	 		{% if 2 not in dcsFloors %}
    				window.location.href = "{% url 'error' %}";
    			{% else %}
    			var a = document.getElementById("myDIV2");
@@ -574,7 +574,7 @@
 	</script>
 	<div id="myDIV2" style="display:none;">
 		{% for floor in getFloors %}
-			{% if floor.floorID == "dcs02" %}
+			{% if floor.floorNo == 2 %}
 				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
 				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
 			{% endif %}
@@ -589,7 +589,7 @@
 			Calling argument: myFunction3()
 		*/
    		function myFunction3() {
-   			{% if "dcs03" not in dcsFloors %}
+   			{% if 3 not in dcsFloors %}
    				window.location.href = "{% url 'error' %}";
    			{% else %}
    			var x = document.getElementById("myDIV3");
@@ -607,7 +607,7 @@
 	</script>	
 	<div id="myDIV3" style="display:none;">
 		{% for floor in getFloors %}
-			{% if floor.floorID == "dcs03" %}
+			{% if floor.floorNo == 3 %}
 				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
 				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs03" border="0">
 			{% endif %}

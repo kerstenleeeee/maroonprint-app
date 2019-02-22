@@ -13,6 +13,7 @@
 # Description: models / entities for the database
 
 from django.db import models
+import uuid
 
 # building entity
 class Building(models.Model):
@@ -26,7 +27,7 @@ class Building(models.Model):
 # floor entity
 class Floor(models.Model):
 	buildID = models.ForeignKey(Building, on_delete = models.CASCADE)
-	floorID = models.CharField(primary_key = True, max_length = 100)
+	floorID = models.CharField(primary_key = True, max_length = 100, unique=True, default=uuid.uuid4)
 	floorNo = models.IntegerField()	
 	floorImageLink = models.URLField(blank=True, null=True)
 	# floorImageLink = models.URLField()
@@ -35,4 +36,4 @@ class Floor(models.Model):
 		unique_together = (('buildID', 'floorID'),)
 
 	def __str__(self):
-		return '%s (%s)' % (self.buildID, self.floorID)
+		return '%s (%d)' % (self.buildID, self.floorNo)
