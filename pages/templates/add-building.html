@@ -435,8 +435,9 @@
     <br/><br/>
     <form method = 'POST' align = "center"> 
         {% csrf_token %}
-        <tr>Building ID: {{ form.buildID }}</tr><br/> <br/>
+        <tr>Building ID: {{ form.buildID }} <small>Use building acronym + 001</small></tr><br/> <br/>
         <tr>Building Name: {{ form.buildName }} </tr><br/> <br/>
+        <tr>No. of floors: {{form.buildFloors }} </tr><br/> <br/>
         
     
         <input type = 'submit' value = 'Save' />

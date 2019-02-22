@@ -21,12 +21,15 @@ class BuildingForm(forms.ModelForm):
         model = Building
         fields = [
             'buildID', 
-            'buildName'
+            'buildName',
+            'buildFloors'
         ]
 
 class BuildingCreateForm(forms.Form):
-    buildID = forms.IntegerField()
+    buildID = forms.CharField(widget=forms.TextInput
+        (attrs={'placeholder':'ex. dcs001'}))
     buildName = forms.CharField()
+    buildFloors = forms.IntegerField()
 
 class FloorForm(forms.ModelForm):
     class Meta:
