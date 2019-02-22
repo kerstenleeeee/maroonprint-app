@@ -18,9 +18,10 @@ from django.db import models
 class Building(models.Model):
   buildID = models.CharField(primary_key = True, max_length = 100)
   buildName = models.CharField(max_length = 100)
+  buildFloors = models.IntegerField(default=1)
 
   def __str__(self):
-    return "%s (%s)" % (self.buildID, self.buildName)
+    return "%s" % (self.buildName)
 
 # floor entity
 class Floor(models.Model):

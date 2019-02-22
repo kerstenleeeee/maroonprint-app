@@ -19,7 +19,7 @@ from .models import Building, Floor
 class BuildingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Building
-		fields = ('buildID', 'buildName',)
+		fields = ('buildID', 'buildName', 'buildFloors')
 
 # floor serializer
 class FloorSerializer(serializers.ModelSerializer):
