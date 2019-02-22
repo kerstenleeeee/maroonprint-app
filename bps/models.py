@@ -33,7 +33,7 @@ class Floor(models.Model):
 	# floorImageLink = models.URLField()
 
 	class Meta:
-		unique_together = (('buildID', 'floorID', 'floorNo'),)
+		unique_together = (('buildID', 'floorNo'),)
 
 	def __str__(self):
 		return '%s (%d)' % (self.buildID, self.floorNo)
