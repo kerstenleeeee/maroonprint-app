@@ -90,7 +90,7 @@ def BuildingViews(request, pk):
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def FloorViews(request, pk):
     try:
-        blue_print = Floor.objects.get(userID = pk)
+        blue_print = Floor.objects.get(floorID = pk)
     except Floor.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 

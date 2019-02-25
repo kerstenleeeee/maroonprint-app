@@ -12,18 +12,20 @@
      Lee - 01/30/19 - Added home & about buttons
      Lee - 01/30/19 - Edited styles
      Lee - 01/31/19 - Created sticky header
+     Lee - 01/31/19 - Added tables
+     Lee - 01/31/19 - Added sections
+     Lee - 01/31/19 - Updated placeholder
      Lee - 01/31/19 - Modified footer
      Lee - 02/04/19 - Added more menus (buildings)
-     Lee - 02/05/19 - Added tables
-     Wu  - 02/06/19 - Fixed indention
-     Magno - 02/19/19 - Added Admin
+     Lee - 02/06/19 - Fixed indentions
+     Lee - 02/19/19 - Added Admin button
 -->
 
 <!--
      File creation date: 01/30/19
      Development Group: 3
      Client Group: 3
-     Description: Home landing page. Serves as the primary landing page of the maroonprint application.
+     Description: Abpout landing page. Serves as the about landing page of the maroonprint application.
 -->
 <!DOCTYPE html>
 <html>
@@ -32,13 +34,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>MaroonPrint</title>
+	<title>About | MaroonPrint</title>
 
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
-	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
 
@@ -419,27 +421,26 @@
 				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
 				<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 			</div>
-
-			<div class="search-container">
+			<!-- <div class="search-container">
 				<form action="/search_action.php">
 					<input type="text" name="search" placeholder="Search...">
 					<button type="submit"><i class="fa fa-search"></i></button>
 				</form>
-			</div>
+			</div> -->
 		</div>
 	</header>
 
-<div class="home">
-	<table align="center">
-		<tr>
-			<th>MaroonPrint</th>
-		</tr>
-	</table>
-</div>
+	<div class="home">
+		<table style="width: 97%; text-align: left; margin: 20px" cellpadding="0" cellspacing="0">
+			<tr>
+				MaroonPrint
+			</tr>
+		</table>
+	</div>
 
-<div class="footer">
-	<p>Copyright © 2019 MaroonPrint</p>
-</div>
+	<div class="footer">
+		<p>Copyright © 2019 MaroonPrint</p>
+	</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>

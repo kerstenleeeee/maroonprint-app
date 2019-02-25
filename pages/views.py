@@ -32,10 +32,11 @@ from bps.models import Building, Floor
 from bps.serializers import BuildingSerializer, FloorSerializer
 from rest_framework import status
 
-from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm
+from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm, DeleteFloor
 from django.contrib import messages	
 
 from django.db import IntegrityError
+from django.core.exceptions import ObjectDoesNotExist
 
 # viwew home.html
 def homePageView(request):
@@ -71,15 +72,16 @@ def addBuildingPageView(request):
 			# Floor.objects.create(**form.cleaned_data)
 			checkBuild = form.cleaned_data.get("buildID")
 			checkName = form.cleaned_data.get("buildName")
-			if Building.objects.filter(buildID=checkBuild, buildName=checkName).exists():
+			checkFloor = form.cleaned_data.get("buildFloors")
+			if Building.objects.filter(buildID=checkBuild, buildFloors=checkFloor, buildName=checkName).exists():
 				messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
 			else:
 				try:
 					Building.objects.create(**form.cleaned_data)	
-					messages.success(request, 'Successfully added the blueprint!')
-					return HttpResponseRedirect('/add-buildingg/')
+					messages.success(request, 'Successfully added the building!')
+					return HttpResponseRedirect('/add-building/')
 				except IntegrityError as e:
-					messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
+					messages.error(request, 'Building already exists. If you want to add a blueprint (floor) to the building, please go to the "Add Floor" section.')
 		else:
 			print(form.errors)
 	context = {
@@ -98,7 +100,7 @@ def addFloorPageView(request):
 			checkBuild = form.cleaned_data.get("buildID")
 			print(checkBuild.buildID)
 			#if checkBuild.buildID == "dcs001":
-			checkFloor = form.cleaned_data.get("floorID")
+			checkFloor = form.cleaned_data.get("floorNo")
 			print(checkBuild)
 			print(checkFloor)
 			print(form.cleaned_data)
@@ -118,6 +120,52 @@ def addFloorPageView(request):
 	}
 	return render(request, 'add-floor.html', context)
 
+def deleteFloorPageView(request):
+	form = DeleteFloor()
+	if request.method == "POST":
+		form = DeleteFloor(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("floorNo")
+			try:
+				floor = Floor.objects.get(buildID=checkBuild, floorNo=checkFloor)
+				floor.delete()
+				messages.success(request, 'Successfully deleted the blueprint!')
+				return HttpResponseRedirect('/delete-floor/')
+			except ObjectDoesNotExist:
+				messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
+		else:
+			print(form.errors)
+	context = {
+		"form" : form
+	}
+	return render(request, 'delete-floor.html', context)
+
+def editFloorPageView(request):
+	#return render(request, "edit-floor.html")
+	form = FloorCreateForm()
+	if request.method == "POST":
+		form = FloorCreateForm(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("floorNo")
+			checkLink = form.cleaned_data.get("floorImageLink")
+			if Floor.objects.filter(buildID=checkBuild, floorNo=checkFloor).exists():
+				try:
+					Floor.objects.filter(buildID=checkBuild, floorNo=checkFloor).update(floorImageLink=checkLink)
+					messages.success(request, 'Successfully updated the blueprint!')
+					return HttpResponseRedirect('/edit-floor/')
+				except ObjectDoesNotExist:
+					messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
+			else:
+					messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
+		else:
+			print(form.errors)	
+	context = {
+		"form" : form
+	}
+	return render(request, 'edit-floor.html', context)
+
 # view dcs.html
 def dcsPageView(request):
 	if Floor.objects.filter(buildID='dcs001', floorNo=1).exists():
@@ -135,22 +183,44 @@ def dcsPageView(request):
 	else:
 		return render(request, 'error.html')
 
-# view engglib2.html
 def enggLib2PageView(request):
-	if Floor.objects.filter(buildID='engglib2001', floorID='engglib2Lobby').exists():
+	if Floor.objects.filter(buildID='engglib2001', floorNo=1).exists():
 		try:
 			getFloors = Floor.objects.filter(buildID='engglib2001')	# get all info inluding the floorImageLink
 			engglib2Floors = []
 			for floors in getFloors:
-				engglib2Floors.append(floors.floorID)	# list of the floorIDs for hecking
+				engglib2Floors.append(floors.floorNo)	# list of the floorIDs for hecking
 			#print(dcsFloors)
 			#for x in dcsFloors:
 			#	print(x.floorImageLink)
-			return render(request, 'engglib2.html', {"engglib2Floors" : engglib2Floors, "getFloors" : getFloors})
+			return render(request, 'engglib2.html', {"engglib2Floors" : dcsFloors, "getFloors" : getFloors})
 		except:
 			return render(request, 'error.html')
 	else:
 		return render(request, 'error.html')
+
+# view engglib2.html
+'''def enggLib2PageView(request):
+	getBuildings = Building.objects.all()
+	buildingNames = []
+	for building in getBuildings:
+		buildingNames.append(building)
+	# print(buildingNames)
+	if Floor.objects.filter(buildID='dcs001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dcs001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			getName = Building.objects.get(buildID="dcs001")
+			return render(request, 'engglib2.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getName" : getName, "buildingNames" : buildingNames})
+		except:
+			return render(request, 'error.html')
+	else:
+		return render(request, 'error.html')'''
 
 # view coe.html
 def coePageView(request):

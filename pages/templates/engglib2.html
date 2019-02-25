@@ -447,109 +447,71 @@
 
 <body>
 	<header class="header-main" id="myHeader">
-		<div class="header-sub">
-			<h3>Engineering Library II|</h3>
-			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
+			<div class="header-sub">
+				<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
 
-			<div class="dropdown">
-				<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
-				<div id="myDropdown" class="dropdown-content">
-					<a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
-					<a href="{% url 'engglib2' %}"><img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Engineering Library II</a>
-					<a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
-					<a href="{% url 'eee' %}"><img src="https://i.ibb.co/nRJ2fqk/eee-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Electrical and Electronics Engineering Insitute</a>
-					<a href="{% url 'ice' %}"><img src="https://i.ibb.co/xSwk8LT/ice-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Institute of Civil Engineering</a>
-					<a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
-					<a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
+				<div class="dropdown">
+					<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
+					<div id="myDropdown" class="dropdown-content">
+						{% for building in buildingNames %}
+							<a href="{% url link building.buildID as my_url %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;">{{ building.buildName }}</a>
+						{% endfor %}
+					</div>
+
+					<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
+					<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
+					<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 				</div>
-				<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
-				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
-				<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 			</div>
+		</header>
 
-			<div class="search-container">
-				<form action="/search_action.php">
-					<input type="text" name="search" placeholder="Search...">
-					<button type="submit"><i class="fa fa-search"></i></button>
-				</form>
-			</div>
-		</div>
-	</header>
+	<div id="dcs">
+		Content of page 1
+    <a href="#" onclick="return show('engglib2','dcs');">Show page dcs</a>
+	</div>
 
-	<div class="home">
-<div class="btn-group">
-	<button class="button" onclick="myFunction0()"><a href="{% url 'error' %}" style="color: white; text-decoration: none">Floor 0</a></button>	
-	<button class="button active" onclick="myFunction1()">Lobby</button>	
-	<button class="button" onclick="myFunction2()">Floor 2</button>		
-	<button class="button" onclick="myFunction3()">Floor 3</button>
-	<div id="myDIV1" style="display:block;">
-		<img class="center-fit" src="https://i.ibb.co/LvrT3kM/dcsLobby.jpg" alt="dcsLobby" border="0">
+	<div id="engglib2" style="display: none">
+		 Content of page 2
+    <a href="#" onclick="return show('dcs','engglib2');">Show page engglib2</a>
 	</div>
-	<script>
-		/*	Name: myFunction1
-			Created: 02/05/2019
-			Purpose: Showing the lobby image
-			Calling argument: myFunction1()
-		*/
-   		function myFunction1() {
- 			var x = document.getElementById("myDIV1");
- 			var y = document.getElementById("myDIV2");
- 			var z = document.getElementById("myDIV3");
-        	if (x.style.display === "none") {
-  				x.style.display = "block";
-  				y.style.display = "none";
-  				z.style.display = "none";
-			} else {
-				x.style.display = "block";
-			}
-		}
-	</script>
-	<div id="myDIV2" style="display:none;">
-		<img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0">
-	</div>
-	<script>
-		/*	Name: myFunction2
-			Created: 02/05/2019
-			Purpose: Showing the floor 2 image
-			Calling argument: myFunction2()
-		*/
-   		function myFunction2() {
-	 		var x = document.getElementById("myDIV2");
-	 		var y = document.getElementById("myDIV1");
-	 		var z = document.getElementById("myDIV3");
-	        if (x.style.display === "none") {
-	  			x.style.display = "block";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				x.style.display = "block";
-				}
-		}
-	</script>
-	<div id="myDIV3" style="display:none;">
-		<img class="center-fit" src="https://i.ibb.co/VNJrNsn/dcs03.png" alt="dcs03" border="0">
-	</div>
-	<script>
-		/*	Name: myFunction3
-			Created: 02/05/2019
-			Purpose: Showing the floor3 image
-			Calling argument: myFunction3()
-		*/
-   		function myFunction3() {
-	 		var x = document.getElementById("myDIV3");
-	 		var y = document.getElementById("myDIV1");
-	 		var z = document.getElementById("myDIV2");
-	        if (x.style.display === "none") {
-	  			x.style.display = "block";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				x.style.display = "block";
-				}
-		}
-	</script>	
-	  
-</div>	
+
+<script>
+	function show(shown, hidden){
+		document.getElementById(shown).style.display="block";
+		document.getElementById(hidden).style.display="none";
+		return false;
+	}
+</script>
+
+<!--
+<div id="Page1">
+    Content of page 1
+    <a href="#" onclick="return show('Page2','Page1');">Show page 2</a>
+  </div>
+
+  <div id="Page2" style="display:none">
+    Content of page 2
+    <a href="#" onclick="return show('Page1','Page2');">Show page 1</a>
+  </div>
+
+<script>
+function show(shown, hidden) {
+  document.getElementById(shown).style.display='block';
+  document.getElementById(hidden).style.display='none';
+  return false;
+}
+</script>
+-->
+
+
+
+
+
+
+
+
+
+<!-- insert here the contents of the untitled file --> 
 
 <div class="footer">
 	Copyright © 2019 MaroonPrint
@@ -572,7 +534,7 @@
 /*	Name: myFunction
 	Created: 01/30/2019
 	Purpose: For the dropdown functionality of the dropdown navburger
-	Calling argument: myFunction()
+	Calling argument: myFunction()	
 */
 function myFunction() {
 	document.getElementById("myDropdown").classList.toggle("show");

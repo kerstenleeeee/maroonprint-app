@@ -33,6 +33,8 @@ urlpatterns = [
     url('add-building-floor/',views.addBuildingFloorPageView, name="add-building-floor"),
     url('add-building/',views.addBuildingPageView, name="add-building"),
     url('add-floor/',views.addFloorPageView, name="add-floor"),
+    url('delete-floor/',views.deleteFloorPageView, name="delete-floor"),
+    url('edit-floor/',views.editFloorPageView, name="edit-floor"),
     #dcs
     url('department-of-computer-science/', views.dcsPageView, name="dcs"),
     #engglib2

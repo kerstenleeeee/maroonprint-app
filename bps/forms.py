@@ -52,3 +52,7 @@ class FloorCreateForm(forms.Form):
     floorNo = forms.IntegerField()
     #floorID = forms.CharField(default="%s %d" % (buildID, Floor.objects.get(floorNo)))
     floorImageLink = forms.URLField()
+
+class DeleteFloor(forms.Form):
+    buildID = forms.ModelChoiceField(queryset=Building.objects.all())
+    floorNo = forms.IntegerField()
