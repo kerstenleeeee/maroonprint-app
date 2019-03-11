@@ -19,6 +19,7 @@ import uuid
 class Building(models.Model):
   buildID = models.CharField(primary_key = True, max_length = 100)
   buildName = models.CharField(max_length = 100)
+  buildExist = models.BooleanField(default=False)
   buildFloors = models.IntegerField(default=1)
   #buildLogo = models.URLField()
 
@@ -34,7 +35,7 @@ class Floor(models.Model):
 	# floorImageLink = models.URLField()
 
 	class Meta:
-		unique_together = (('buildID', 'floorNo'),)
+		unique_together = (('buildID', 'floorID'),)
 
 	def __str__(self):
 		return '%s (%d)' % (self.buildID, self.floorNo)

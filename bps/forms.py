@@ -20,15 +20,12 @@ class BuildingForm(forms.ModelForm):
     class Meta:
         model = Building
         fields = [
-            'buildID', 
-            'buildName',
+            'buildID',
             'buildFloors'
         ]
 
 class BuildingCreateForm(forms.Form):
-    buildID = forms.CharField(widget=forms.TextInput
-        (attrs={'placeholder':'ex. dcs001'}))
-    buildName = forms.CharField()
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=False))
     buildFloors = forms.IntegerField()
 
 class FloorForm(forms.ModelForm):
@@ -42,7 +39,7 @@ class FloorForm(forms.ModelForm):
         ]
 
 class FloorCreateForm(forms.Form):
-    buildID = forms.ModelChoiceField(queryset=Building.objects.all())
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
     #if buildID == "dcs001":
       #  print("ok")
     #floorID = forms.CharField(widget=forms.TextInput
@@ -54,5 +51,5 @@ class FloorCreateForm(forms.Form):
     floorImageLink = forms.URLField()
 
 class DeleteFloor(forms.Form):
-    buildID = forms.ModelChoiceField(queryset=Building.objects.all())
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
     floorNo = forms.IntegerField()

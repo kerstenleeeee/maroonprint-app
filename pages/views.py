@@ -41,7 +41,12 @@ from django.core.exceptions import ObjectDoesNotExist
 # viwew home.html
 def homePageView(request):
 	#return HttpResponse('MaroonPrint')
-	return render(request, 'home.html')
+	getBuildings = Building.objects.all()
+	#listBuildings = []
+	#for buildings in getBuildings:
+		#listBuildings.append(buildings.buildName)
+	print(getBuildings)
+	return render(request, 'home.html', {"getBuildings" : getBuildings})
 
 # view about.html
 def aboutPageView(request):
@@ -62,6 +67,32 @@ def adminPageView(request):
 def addBuildingFloorPageView(request):
 	return render(request, 'add-building-floor.html')
 
+'''
+def editFloorPageView(request):
+	#return render(request, "edit-floor.html")
+	form = FloorCreateForm()
+	if request.method == "POST":
+		form = FloorCreateForm(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("floorNo")
+			checkLink = form.cleaned_data.get("floorImageLink")
+			if Floor.objects.filter(buildID=checkBuild, floorNo=checkFloor).exists():
+				try:
+					Floor.objects.filter(buildID=checkBuild, floorNo=checkFloor).update(floorImageLink=checkLink)
+					messages.success(request, 'Successfully updated the blueprint!')
+					return HttpResponseRedirect('/edit-floor/')
+				except ObjectDoesNotExist:
+					messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
+			else:
+					messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
+		else:
+			print(form.errors)	
+	context = {
+		"form" : form
+	}
+	return render(request, 'edit-floor.html', context)'''
+
 def addBuildingPageView(request):
 	form = BuildingCreateForm()
 	if request.method == "POST":
@@ -71,17 +102,13 @@ def addBuildingPageView(request):
 			print(form.cleaned_data)
 			# Floor.objects.create(**form.cleaned_data)
 			checkBuild = form.cleaned_data.get("buildID")
-			checkName = form.cleaned_data.get("buildName")
 			checkFloor = form.cleaned_data.get("buildFloors")
-			if Building.objects.filter(buildID=checkBuild, buildFloors=checkFloor, buildName=checkName).exists():
-				messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
-			else:
-				try:
-					Building.objects.create(**form.cleaned_data)	
-					messages.success(request, 'Successfully added the building!')
-					return HttpResponseRedirect('/add-building/')
-				except IntegrityError as e:
-					messages.error(request, 'Building already exists. If you want to add a blueprint (floor) to the building, please go to the "Add Floor" section.')
+			try:
+				Building.objects.filter(buildName=checkBuild).update(buildExist=True, buildFloors=checkFloor)
+				messages.success(request, 'Successfully added the building!')
+				return HttpResponseRedirect('/add-building/')
+			except IntegrityError as e:
+				messages.error(request, 'Building already exists. If you want to add a blueprint (floor) to the building, please go to the "Add Floor" section.')
 		else:
 			print(form.errors)
 	context = {
