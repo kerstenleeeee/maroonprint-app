@@ -53,7 +53,23 @@ def aboutPageView(request):
 	# return HttpResponse('MaroonPrint')
 	# weather = Floor.objects.get(buildID='ice001', floorID='ice02')
 	# return render(request, 'about.html', {'weather':weather.floorImageLink})
-	return render(request, 'about.html')
+	getBuildings = Building.objects.all()
+	#listBuildings = []
+	#for buildings in getBuildings:
+		#listBuildings.append(buildings.buildName)
+	print(getBuildings)
+	return render(request, 'about.html', {"getBuildings" : getBuildings})
+
+def searchPageView(request):
+	# return HttpResponse('MaroonPrint')
+	# weather = Floor.objects.get(buildID='ice001', floorID='ice02')
+	# return render(request, 'about.html', {'weather':weather.floorImageLink})
+	getBuildings = Building.objects.all()
+	#listBuildings = []
+	#for buildings in getBuildings:
+		#listBuildings.append(buildings.buildName)
+	print(getBuildings)
+	return render(request, 'search.html', {"getBuildings" : getBuildings})
 
 def errorFloor(request):
 	return render(request, 'error.html')
@@ -199,12 +215,13 @@ def dcsPageView(request):
 		try:
 			getFloors = Floor.objects.filter(buildID='dcs001')	# get all info inluding the floorImageLink
 			dcsFloors = []
+			getBuildings = Building.objects.all()
 			for floors in getFloors:
 				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
 			#print(dcsFloors)
 			#for x in dcsFloors:
 			#	print(x.floorImageLink)
-			return render(request, 'dcs.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors})
+			return render(request, 'dcs.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings})
 		except:
 			return render(request, 'error.html')
 	else:

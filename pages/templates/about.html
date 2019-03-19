@@ -409,19 +409,59 @@
 			<div class="dropdown">
 				<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
 				<div id="myDropdown" class="dropdown-content">
-					<a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
-					<a href="{% url 'engglib2' %}"><img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Engineering Library II</a>
-					<a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
-					<a href="{% url 'eee' %}"><img src="https://i.ibb.co/nRJ2fqk/eee-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Electrical and Electronics Engineering Insitute</a>
-					<a href="{% url 'ice' %}"><img src="https://i.ibb.co/xSwk8LT/ice-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Institute of Civil Engineering</a>
-					<a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
-					<a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
+					{% for buildings in getBuildings %}
+					{% if buildings.buildID == "coe001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'coe' %}"><img src="https://i.ibb.co/Ph9PL8J/coe-logo.png" style="width: 40px; height: 40px; float: left;"> College of Engineering</a>
+						{% endif %}
+					{% elif buildings.buildID == "engglib2001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'engglib2' %}"><img src="https://i.ibb.co/zmHZfDZ/engglib-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Engineering Library II</a>
+						{% endif %}
+					{% elif buildings.buildID == "dcs001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'dcs' %}"><img src="https://i.ibb.co/RgQxcnc/dcs-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Computer Science</a>
+						{% endif %}
+					{% elif buildings.buildID == "eee001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'eee' %}"><img src="https://i.ibb.co/nRJ2fqk/eee-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Electrical and Electronics Engineering Insitute</a>
+						{% endif %}
+					{% elif buildings.buildID == "ice001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'ice' %}"><img src="https://i.ibb.co/xSwk8LT/ice-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Institute of Civil Engineering</a>
+						{% endif %}
+					{% elif buildings.buildID == "dmmme001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'mmm' %}"><img src="https://i.ibb.co/B3Fdxxv/mmm-logo.png" style="width: 35px; height: 35px; float: left; display: block;"><center>Department of Mining, Metallurgical and <br> Materials<br> Engineering</center></a>
+						{% endif %}
+					{% elif buildings.buildID == "dche001" %}
+						{% if buildings.buildExist %}
+						<a href="{% url 'che' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Chemical Engineering</a>
+						{% endif %}
+					{% elif buildings.buildID == "dieor001" %}
+						{% if buildings.buildExist %}
+						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Industrial Engineering and Operations Research</a>
+						{% endif %}
+					{% elif buildings.buildID == "dge001" %}
+						{% if buildings.buildExist %}
+						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Geodetic Engineering</a>
+						{% endif %}
+					{% elif buildings.buildID == "dme001" %}
+						{% if buildings.buildExist %}
+						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Mechanical Engineering</a>
+						{% endif %}
+					{% elif buildings.buildID == "nec001" %}
+						{% if buildings.buildExist %}
+						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">National Engineering Center</a>
+						{% endif %}
+					{% endif %}
+					{% endfor %}
 				</div>
 				<a href="{% url 'home' %}" style="font-size: 20px">Home</a>
 				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
 				<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 			</div>
-
+			<a href="{% url 'search-view' %}"><i class="fa fa-search" style="margin-left: 15px; font-size: 20px; float: left; margin-top: 25px"></i></a>
 			<!-- <div class="search-container">
 				<form action="/search_action.php">
 					<input type="text" name="search" placeholder="Search...">

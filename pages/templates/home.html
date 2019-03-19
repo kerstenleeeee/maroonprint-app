@@ -59,13 +59,7 @@
 
 	.home{
 		text-align: center;
-		padding-top: 25px;
 		margin-bottom:200px;
-	}
-
-	.home img{
-		opacity: 0.4;
-		margin: 20px auto;
 	}
 
 	.home h1{
@@ -405,6 +399,7 @@
 	<header class="header-main" id="myHeader">
 		<div class="header-sub">
 			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
+
 			<div class="dropdown">
 				<button class="dropbtn" onclick="myFunction()"><i class="fa fa-bars"></i></button>
 				<div id="myDropdown" class="dropdown-content">
@@ -460,6 +455,7 @@
 				<a href="{% url 'about' %}" style="font-size: 20px; margin-left: 10px">About</a>
 				<a href="{% url 'admin-page' %}" style="font-size: 20px; margin-left: 10px">Admin</a>
 			</div>
+			<a href="{% url 'search-view' %}"><i class="fa fa-search" style="margin-left: 15px; font-size: 20px; float: left; margin-top: 25px"></i></a>
 			<!-- <div class="search-container">
 				<form action="/search_action.php">
 					<input type="text" name="search" placeholder="Search...">
@@ -469,13 +465,13 @@
 		</div>
 	</header>
 
-	<div class="home">
 		<table style="width: 97%; text-align: left; margin: 20px" cellpadding="0" cellspacing="0">
+			<tr><img src="http://coe.upd.edu.ph/wp-content/uploads/2013/06/19055884_801498000009645_353606756549076293_o.jpg" style="width: 100%"></tr>
+			<small style="margin-left: 10px">Source: <a href="http://coe.upd.edu.ph/about/">http://coe.upd.edu.ph/about/</a></small>
 			<tr>
-				MaroonPrint
+				
 			</tr>
 		</table>
-	</div>
 
 	<div class="footer">
 		<p>Copyright © 2019 MaroonPrint</p>

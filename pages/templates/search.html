@@ -1,6 +1,6 @@
 <!--
      License
-     Author: Kristine-Clair Lee & Jeremy Wu
+     Author: Kristine-Clair Lee
      This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo 
      of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019 
 -->
@@ -13,18 +13,19 @@
      Lee - 01/30/19 - Edited styles
      Lee - 01/31/19 - Created sticky header
      Lee - 01/31/19 - Added tables
+     Lee - 01/31/19 - Added sections
+     Lee - 01/31/19 - Updated placeholder
      Lee - 01/31/19 - Modified footer
      Lee - 02/04/19 - Added more menus (buildings)
-     Wu - 02/05/19 - Added buttongrp and scripts
-     Wu - 02/06/19 - Fixed identations
-     Lee - 02/07/19 - Added comments
+     Lee - 02/06/19 - Fixed indentions
+     Lee - 02/19/19 - Added Admin button
 -->
 
 <!--
      File creation date: 01/30/19
      Development Group: 3
      Client Group: 3
-     Description: View Engglib2 blueprints.
+     Description: Abpout landing page. Serves as the about landing page of the maroonprint application.
 -->
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>MaroonPrint</title>
+	<title>Search | MaroonPrint</title>
 
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
 	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
@@ -45,7 +46,6 @@
 
 <style>
 	@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
-	@import url(http://fonts.googleapis.com/css?family=Cookie);
 
 	html{
 		background-color: #eaf0f2;
@@ -60,10 +60,11 @@
 	.home{
 		text-align: center;
 		padding-top: 25px;
-		margin-bottom:80px;
+		margin-bottom:200px;
 	}
 
 	.home img{
+		opacity: 0.4;
 		margin: 20px auto;
 	}
 
@@ -93,46 +94,6 @@
 		background-color:#F05283;
 		transition:0.2s;
 		color:#fff;
-	}
-
-	.home ul {
-		max-width: 600px;
-		margin: 60px auto 0;
-	}
-
-	.home ul a{
-		text-decoration: none;
-		color: #FFF;
-		text-align: left;
-		background-color: #B9C1CA;
-		padding: 10px 16px;
-		border-radius: 2px;
-		opacity: 0.8;
-		font-size: 16px;
-		display: inline-block;
-		margin: 4px;
-		line-height: 1;
-		outline: none;
-
-		transition: 0.2s ease;
-	}
-
-	.home ul li a.active{
-		background-color: #66B650;
-		pointer-events: none;
-	}
-
-	.home ul li a:hover {
-		opacity: 1;
-	}
-
-	.home ul{
-		list-style: none;
-		padding: 0;
-	}
-
-	.home ul li{
-		display: inline-block;
 	}
 
 	@media (max-height:800px){
@@ -211,47 +172,47 @@
 
 	/* The search box */
 	.search-container {
-	  	float: left;
-	  	margin-left: 20px;
-	 	margin-top: 13px;
+	  float: left;
+	  margin-left: 20px;
+	  margin-top: 13px;
 	}
 
 	.search-container input[type=text] {
-	 	padding: 6px;
-	 	margin-top: 8px;
-	  	font-size: 13px;
-		border: none;
+	  padding: 6px;
+	  margin-top: 8px;
+	  font-size: 13px;
+	  border: none;
 	}
 
 	.search-container button {
-	  	float: float;
-	  	padding: 6px 10px;
-	  	margin-top: 8px;
-	  	margin-right: 16px;
-	  	background: #ddd;
-	  	font-size: 13px;
-	  	border: none;
-	  	cursor: pointer;
+	  float: float;
+	  padding: 6px 10px;
+	  margin-top: 8px;
+	  margin-right: 16px;
+	  background: #ddd;
+	  font-size: 13px;
+	  border: none;
+	  cursor: pointer;
 	}
 
 	.search-container button:hover {
-	  	background: #ccc;
+	  background: #ccc;
 	}
 
 	@media screen and (max-width: 600px) {
-	  	.search-container {
-	    	float: none;
-	  	}
-	  	.search-container a, .search-container input[type=text], .search-container button {
-	    	float: none;
-	    	display: block;
-	    	text-align: left;
-	    	width: 100%;
-	   		margin: 0;
-	    	padding: 14px;
+	  .search-container {
+	    float: none;
 	  }
-	  	.search-container input[type=text] {
-	    	border: 1px solid #ccc;  
+	  .search-container a, .search-container input[type=text], .search-container button {
+	    float: none;
+	    display: block;
+	    text-align: left;
+	    width: 100%;
+	    margin: 0;
+	    padding: 14px;
+	  }
+	  .search-container input[type=text] {
+	    border: 1px solid #ccc;  
 	  }
 	}
 
@@ -273,29 +234,27 @@
 	}
 
 	.dropbtn:hover, .dropbtn:focus {
-	  	color: #800000;
+	  color: #800000;
 	}
 
 	.dropdown-content {
-	  	display: none;
-	  	position: absolute;
-	  	background-color: #A9A9A9;
-	  	min-width: 230px;
-	  	overflow: auto;
-	  	border: none;
-	  	z-index: 1;
+	  display: none;
+	  position: absolute;
+	  background-color: #A9A9A9;
+	  min-width: 230px;
+	  overflow: auto;
+	  border: none;
+	  z-index: 1;
 	}
 
 	.dropdown-content a {
-	  	color: black;
-	  	padding: 12px 16px;
-	  	text-decoration: none;
-	  	display: block;
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
 	}
 
-	.dropdown a:hover {
-		color: #800000;
-	}
+	.dropdown a:hover {color: #800000;}
 
 	.show {display: block;}
 
@@ -332,24 +291,24 @@
 	}
 
 	.footer {
-        position: fixed;
-        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
-        left: 0;
-        bottom: 0;
-        height: 3%;
-        width: 100%;
-        /*sbackground-color: #808080;
-        color: white;
-        color: #ffffff;
-        text-align: center;*/
-    }
+		position: fixed;
+		box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
+   		left: 0;
+   		bottom: 0;
+   		height: 5%;
+   		width: 100%;
+   		background-color: #808080;
+   		/*color: white;
+   		color: #ffffff;
+   		text-align: center;*/
+	}
 
-    .footer p {
-        position: relative;
-        bottom: 5px;
-        color: #ffffff;
-        text-align: center;
-    }
+	.footer p {
+		position: relative;
+		bottom: 5px;
+		color: #ffffff;
+		text-align: center;
+	}
 
 	div.transbox {
 		margin: 20px;
@@ -400,55 +359,102 @@
   		margin-bottom: 50px;
 	}
 
-	.header-main .header-sub h3 {
-        position: absolute;
-        right: 180px;
-        font: normal 28px Cookie, Arial, Helvetica, sans-serif;
-        line-height: 40px;
-        margin-top: 17px;
-    }
-
-    .btn-group button {
-		background-color: #C0C0C0; /* Green background */
-		border: 1px grey; /* Grey border */
-		color: white; /* White text */
-		padding: 10px 24px; /* Some padding */
-		cursor: pointer; /* Pointer/hand icon */
-		float: middle; /* Float the buttons side by side */
-		text-align: center;
+	* {
+  		box-sizing: border-box;
 	}
 
-	/* Clear floats (clearfix hack) */
-	.btn-group:after {
-	 	content: "";
-		clear: both;
-		display: table;
+	#myInput {
+	  background-position: 5px 12px;
+	  background-repeat: no-repeat;
+	  width: 100%;
+	  font-size: 16px;
+	  padding: 12px 20px 12px 40px;
+	  border: 1px solid #ddd;
+	  margin-bottom: 12px;
 	}
 
-	.btn-group button:not(:last-child) {
-		border-right: none; /* Prevent double borders */
+	#myUL {
+	  list-style-type: none;
+	  padding: 0;
+	  margin: 0;
 	}
 
-	/* Add a background color on hover */
-	.btn-group button:hover{
-		background-color: #800000;
+	#myUL li a {
+	  border: 1px solid #ddd;
+	  margin-top: -1px; /* Prevent double borders */
+	  background-color: #f6f6f6;
+	  padding: 12px;
+	  text-decoration: none;
+	  font-size: 18px;
+	  color: black;
+	  display: block
 	}
 
-    .imgbox {
-        display: grid;
-        height: 100%;
-    }
-    .center-fit {
-        max-width: 95%;
-        max-height: 100vh;
-        margin: auto;
-    }
+	#myUL li a:hover:not(.header) {
+	  background-color: #eee;
+	}
+
+	/* Popup container - can be anything you want */
+	.popup {
+	  position: relative;
+	  display: inline-block;
+	  cursor: pointer;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+	}
+
+	/* The actual popup */
+	.popup .popuptext {
+	  visibility: hidden;
+	  width: 160px;
+	  background-color: #555;
+	  color: #fff;
+	  text-align: center;
+	  border-radius: 6px;
+	  padding: 8px 0;
+	  position: absolute;
+	  z-index: 1;
+	  bottom: 125%;
+	  left: 50%;
+	  margin-left: -80px;
+	}
+
+	/* Popup arrow */
+	.popup .popuptext::after {
+	  content: "";
+	  position: absolute;
+	  top: 100%;
+	  left: 50%;
+	  margin-left: -5px;
+	  border-width: 5px;
+	  border-style: solid;
+	  border-color: #555 transparent transparent transparent;
+	}
+
+	/* Toggle this class - hide and show the popup */
+	.popup .show {
+	  visibility: visible;
+	  -webkit-animation: fadeIn 1s;
+	  animation: fadeIn 1s;
+	}
+
+	/* Add animation (fade in the popup) */
+	@-webkit-keyframes fadeIn {
+	  from {opacity: 0;} 
+	  to {opacity: 1;}
+	}
+
+	@keyframes fadeIn {
+	  from {opacity: 0;}
+	  to {opacity:1 ;}
+	}
 </style>
 
 <body>
 	<header class="header-main" id="myHeader">
 		<div class="header-sub">
-			<h3>Department of Computer Science|</h3>
 			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
 
 			<div class="dropdown">
@@ -517,148 +523,122 @@
 	</header>
 
 	<div class="home">
-<div class="btn-group">
-	<button class="button" onclick="myFunction0()">Floor 0</button>	
-	<button class="button active" onclick="myFunction1()">Lobby</button>	
-	<button class="button" onclick="myFunction2()">Floor 2</button>		
-	<button class="button" onclick="myFunction3()">Floor 3</button>
-	
-	<script>
-		/*	Name: myFunction3
-			Created: 02/05/2019
-			Purpose: Showing the floor3 image
-			Calling argument: myFunction3()
-		*/
-   		function myFunction0() {
-   			{% if 0 not in dcsFloors %}
-   				window.location.href = "{% url 'error' %}";
-   			{% else %}
-   			var a = document.getElementById("myDIV0");
-   			var x = document.getElementById("myDIV1");
-	 		var y = document.getElementById("myDIV2");
-	 		var z = document.getElementById("myDIV3");
-	        if (a.style.display === "none") {
-	  			a.style.display = "block";
-	  			x.style.display = "none";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				a.style.display = "block";
-				}
-			{% endif %}
-		}
-	</script>	
-	<div id="myDIV0" style="display:none;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 0 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
-			{% endif %}
-		{% endfor %}
-	</div>
-	<script>
-		/*	Name: myFunction1
-			Created: 02/05/2019
-			Purpose: Showing the lobby image
-			Calling argument: myFunction1()
-		*/
-   		function myFunction1() {
-   			var a = document.getElementById("myDIV1");
-   			var x = document.getElementById("myDIV0");
-	 		var y = document.getElementById("myDIV2");
-	 		var z = document.getElementById("myDIV3");
-	        if (a.style.display === "none") {
-	  			a.style.display = "block";
-	  			x.style.display = "none";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				a.style.display = "block";
-			}
-		}
-	</script>
-	<div id="myDIV1" style="display:block;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 1 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
-			{% endif %}
-		{% endfor %}
-	</div>
+		<input type="text" id="myInput" onkeyup="myFunctionSearch()" placeholder="Search for buildings..." title="Type here">
 
-
-	<script>
-		/*	Name: myFunction2
-			Created: 02/05/2019
-			Purpose: Showing the floor 2 image
-			Calling argument: myFunction2()
-		*/
-   		function myFunction2() {
-	 		{% if 2 not in dcsFloors %}
-   				window.location.href = "{% url 'error' %}";
-   			{% else %}
-   			var a = document.getElementById("myDIV2");
-   			var x = document.getElementById("myDIV1");
-	 		var y = document.getElementById("myDIV0");
-	 		var z = document.getElementById("myDIV3");
-	        if (a.style.display === "none") {
-	  			a.style.display = "block";
-	  			x.style.display = "none";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				a.style.display = "block";
-				}
-			{% endif %}
-		}
-	</script>
-	<div id="myDIV2" style="display:none;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 2 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
-			{% endif %}
-		{% endfor %}
+		<ul id="myUL">
+			{% for buildings in getBuildings %}
+				{% if buildings.buildID == "coe001" %}
+					{% if buildings.buildExist %}
+		  				<li><a href="{% url 'coe' %}">College of Engineering (Melchor Hall)</a></li>
+		  			{% else %}
+		  				<li><a onclick="myFunctionErr()">College of Engineering (Melchor Hall)</a></li>
+		  			{% endif %}
+		  		{% elif buildings.buildID == "engglib2001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'engglib2' %}">Engineering Library II (EnggLib2)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Engineering Library II (EnggLib2)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "dcs001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'dcs' %}">Department of Computer Science (DCS)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Department of Computer Science (DCS)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "eee001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'eee' %}">Electrical and Electronics Engineering Institute (EEEI)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Electrical and Electronics Engineering Institute (EEEI)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "ice001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'ice' %}">Institute of Civil Engineering (ICE)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Institute of Civil Engineering (ICE)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "dmmme001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'mmm' %}">Department of Mining, Mettalurgical, and Materials Engineering (DMMME)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Department of Mining, Mettalurgical, and Materials Engineering (DMMME)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "dche001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'che' %}">Department of Chemical Engineering (DCHE)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Department of Chemical Engineering (DCHE)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "dieor001" %}
+					{% if buildings.buildExist %}
+						<li><a href="#">Department of Industrial Engineering and Operations Research (DIEOR)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Department of Industrial Engineering and Operations Research (DIEOR)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "dge001" %}
+						{% if buildings.buildExist %}
+						<li><a href="#">Department of Geodetic Engineering (DGE)</a></li>
+						{% else %}
+						<li><a onclick="myFunctionErr()">Department of Geodetic Engineering (DGE)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "dme001" %}
+						{% if buildings.buildExist %}
+						<li><a href="#">Department of Mechanical Engineering (DME)</a></li>
+						{% else %}
+						<li><a onclick="myFunctionErr()">Department of Mechanical Engineering (DME)</a></li>
+						{% endif %}
+				{% elif buildings.buildID == "nec001" %}
+						{% if buildings.buildExist %}
+						<li><a href="#">National Engineering Center (NEC)</a></li>
+						{% else %}
+						<li><a onclick="myFunctionErr()">National Engineering Center (NEC)</a></li>
+						{% endif %}
+				{% if buildings.buildID == "coe001" %}
+					{% if buildings.buildExist %}
+		  				<li><a href="{% url 'coe' %}">Engineering Library I (EnggLib1)</a></li>
+		  			{% else %}
+		  				<li><a onclick="myFunctionErr()">Engineering Library I (EnggLib1)</a></li>
+		  				{% endif %}
+		  			{% endif %}
+		  		{% elif buildings.buildID == "dcs001" %}
+					{% if buildings.buildExist %}
+						<li><a href="{% url 'dcs' %}">Alumni Engineers Centennial Hall (AECH)</a></li>
+					{% else %}
+						<li><a onclick="myFunctionErr()">Alumni Engineers Centennial Hall (AECH)</a></li>
+						{% endif %}
+		  		{% endif %}
+		  	{% endfor %}
+		</ul>
 	</div>
 
-
 	<script>
-		/*	Name: myFunction3
-			Created: 02/05/2019
-			Purpose: Showing the floor3 image
-			Calling argument: myFunction3()
-		*/
-   		function myFunction3() {
-   			{% if 3 not in dcsFloors %}
-   				window.location.href = "{% url 'error' %}";
-   			{% else %}
-   			var x = document.getElementById("myDIV3");
-	 		var y = document.getElementById("myDIV1");
-	 		var z = document.getElementById("myDIV2");
-	        if (x.style.display === "none") {
-	  			x.style.display = "block";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				x.style.display = "block";
-				}
-			{% endif %}
-		}
-	</script>	
-	<div id="myDIV3" style="display:none;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 3 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs03" border="0">
-			{% endif %}
-		{% endfor %}
-	</div>
-	  
-</div>	
+function myFunctionSearch() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 
-<div class="footer">
-	Copyright © 2019 MaroonPrint
-</div>
+<script>
+function myFunctionErr() {
+  alert("This building does not exist.");
+}
+</script>
+
+	<div class="footer">
+		<p>Copyright © 2019 MaroonPrint</p>
+	</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
@@ -677,10 +657,10 @@
 /*	Name: myFunction
 	Created: 01/30/2019
 	Purpose: For the dropdown functionality of the dropdown navburger
-	Calling argument: myFunction()	
+	Calling argument: myFunction()
 */
 function myFunction() {
-	document.getElementById("myDropdown").classList.toggle("show");
+  	document.getElementById("myDropdown").classList.toggle("show");
 }
 
 window.onscroll = function() {newFunction()};
@@ -698,27 +678,6 @@ function newFunction() {
     	header.classList.add("sticky");
   	} else {
     	header.classList.remove("sticky");
-  	}
-}
-
-/*	Name: filterFunction
-	Created: 01/30/2019
-	Purpose: For the home & abouot functions.
-	Calling argument: filterFunction()
-*/
-function filterFunction() {
-  	var input, filter, ul, li, a, i;
-  	input = document.getElementById("myInput");
-  	filter = input.value.toUpperCase();
-  	div = document.getElementById("myDropdown");
- 	 	a = div.getElementsByTagName("a");
-  	for (i = 0; i < a.length; i++) {
-   	 	txtValue = a[i].textContent || a[i].innerText;
-    	if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      		a[i].style.display = "";
-    	} else {
-      		a[i].style.display = "none";
-    	}
   	}
 }
 </script>

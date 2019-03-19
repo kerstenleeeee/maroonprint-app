@@ -29,6 +29,7 @@ urlpatterns = [
     url('error/', views.errorFloor, name="error"),
     url('accounts/', include('django.contrib.auth.urls')),
     # url('login-landing/', views.loginLanding, name="loginLanding"),
+    url('search-view/', views.searchPageView, name="search-view"),
     url('admin-page/',views.adminPageView, name="admin-page"),
     url('add-building-floor/',views.addBuildingFloorPageView, name="add-building-floor"),
     url('add-building/',views.addBuildingPageView, name="add-building"),
