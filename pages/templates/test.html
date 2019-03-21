@@ -1,0 +1,110 @@
+<!--
+     License
+     Author: Kristine-Clair Lee
+     This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo 
+     of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019 
+-->
+
+<!--
+     Code History
+     Lee - 01/30/19 - Initial Commit
+     Lee - 01/30/19 - Added navburger
+     Lee - 01/30/19 - Added home & about buttons
+     Lee - 01/30/19 - Edited styles
+     Lee - 01/31/19 - Created sticky header
+     Lee - 01/31/19 - Added tables
+     Lee - 01/31/19 - Added sections
+     Lee - 01/31/19 - Updated placeholder
+     Lee - 01/31/19 - Modified footer
+     Lee - 02/04/19 - Added more menus (buildings)
+     Lee - 02/06/19 - Fixed indentions
+     Lee - 02/19/19 - Added Admin button
+-->
+
+<!--
+     File creation date: 01/30/19
+     Development Group: 3
+     Client Group: 3
+     Description: Abpout landing page. Serves as the about landing page of the maroonprint application.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>About | MaroonPrint</title>
+
+	<link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
+	<link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
+	<link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
+</head>
+
+<style>
+	input {
+    padding: 10px 8px;
+    width: 300px;
+}
+table {
+    background-color: lightgrey;
+    margin: 24px 0;
+    text-align: left;
+    width: 100%;
+}
+th {
+    background-color: darkgrey;
+}
+th, td {
+    padding: 4px 8px;
+}
+</style>
+
+<body>
+	<section>
+    <input id="my-search-input" type="text" placeholder="Search list" />
+    <div class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody class="my-list">
+                <tr>
+                    <td>Lorem ipsum</td>
+                </tr>
+                <tr>
+                    <td>Dolor sit</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+	$("#my-search-input").keyup(function () {
+    var search = $(this).val();
+    $(".my-list").children().show();
+    $('.noresults').remove();
+    if (search) {
+        $(".my-list").children().not(":containsNoCase(" + search + ")").hide();
+        $(".my-list").each(function () {
+            if ($(this).children(':visible').length == 0) $(this).append('<tr class="noresults"><td colspan="3"><em>No Results</em></td></tr>');
+        });
+
+    }
+});
+
+$.expr[":"].containsNoCase = function (el, i, m) {
+    var search = m[3];
+    if (!search) return false;
+    return new RegExp(search, "i").test($(el).text());
+};
+</script>
+</body>
+</html>

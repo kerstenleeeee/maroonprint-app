@@ -41,6 +41,8 @@
 	<link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/fv6snd7/logo.png"/>
 </head>
 
@@ -351,19 +353,28 @@
 
 	th, td, tr {
   		padding: 5px;
-  		background: rgba(255, 255, 255, 0.6)
+  		background: rgba(255, 255, 255, 0.6);
+  		font-size: 15px;
 	}
-	
+
+	input {
+		padding: 10px 8px;
+		width: 300px;
+	}
+
 	table {
-  		padding: 5px;
+  		padding-top: 1px;
+  		padding-bottom: 1px;
   		margin-bottom: 50px;
+  		background-color: lightgrey;
+  		width: 100%;
 	}
 
 	* {
   		box-sizing: border-box;
 	}
 
-	#myInput {
+	#my-search-input {
 	  background-position: 5px 12px;
 	  background-repeat: no-repeat;
 	  width: 100%;
@@ -371,27 +382,6 @@
 	  padding: 12px 20px 12px 40px;
 	  border: 1px solid #ddd;
 	  margin-bottom: 12px;
-	}
-
-	#myUL {
-	  list-style-type: none;
-	  padding: 0;
-	  margin: 0;
-	}
-
-	#myUL li a {
-	  border: 1px solid #ddd;
-	  margin-top: -1px; /* Prevent double borders */
-	  background-color: #f6f6f6;
-	  padding: 12px;
-	  text-decoration: none;
-	  font-size: 18px;
-	  color: black;
-	  display: block
-	}
-
-	#myUL li a:hover:not(.header) {
-	  background-color: #eee;
 	}
 
 	/* Popup container - can be anything you want */
@@ -449,6 +439,29 @@
 	@keyframes fadeIn {
 	  from {opacity: 0;}
 	  to {opacity:1 ;}
+	}
+</style>
+
+<STYLE>A {text-decoration: none;} </STYLE>
+
+<style>
+	a:link {
+	    color: black;
+	}
+
+	/* A link that has been visited */
+	a:visited {
+	    color: black;
+	}
+
+	/* A link that is hovered on */
+	a:hover {
+	    color: black;
+	}
+
+	/* A link that is selected */
+	a:active {
+	    color: black;
 	}
 </style>
 
@@ -523,166 +536,209 @@
 	</header>
 
 	<div class="home">
-		<input type="text" id="myInput" onkeyup="myFunctionSearch()" placeholder="Search for buildings..." title="Type here">
-
-		<ul id="myUL">
-			{% for buildings in getBuildings %}
-				{% if buildings.buildID == "coe001" %}
-					{% if buildings.buildExist %}
-		  				<li><a href="{% url 'coe' %}">College of Engineering (Melchor Hall)</a></li>
-		  			{% else %}
-		  				<li><a onclick="myFunctionErr()">College of Engineering (Melchor Hall)</a></li>
-		  			{% endif %}
-		  		{% elif buildings.buildID == "engglib2001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'engglib2' %}">Engineering Library II (EnggLib2)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Engineering Library II (EnggLib2)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "dcs001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'dcs' %}">Department of Computer Science (DCS)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Department of Computer Science (DCS)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "eee001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'eee' %}">Electrical and Electronics Engineering Institute (EEEI)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Electrical and Electronics Engineering Institute (EEEI)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "ice001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'ice' %}">Institute of Civil Engineering (ICE)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Institute of Civil Engineering (ICE)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "dmmme001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'mmm' %}">Department of Mining, Mettalurgical, and Materials Engineering (DMMME)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Department of Mining, Mettalurgical, and Materials Engineering (DMMME)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "dche001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'che' %}">Department of Chemical Engineering (DCHE)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Department of Chemical Engineering (DCHE)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "dieor001" %}
-					{% if buildings.buildExist %}
-						<li><a href="#">Department of Industrial Engineering and Operations Research (DIEOR)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Department of Industrial Engineering and Operations Research (DIEOR)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "dge001" %}
+		<section>
+		    <input id="my-search-input" type="text" placeholder="Search list" />
+		    <div class="list">
+		        <table align="center">
+		            <tbody class="my-list">
+		            {% for buildings in getBuildings %}
+					{% if buildings.buildID == "coe001" %}
 						{% if buildings.buildExist %}
-						<li><a href="#">Department of Geodetic Engineering (DGE)</a></li>
-						{% else %}
-						<li><a onclick="myFunctionErr()">Department of Geodetic Engineering (DGE)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "dme001" %}
-						{% if buildings.buildExist %}
-						<li><a href="#">Department of Mechanical Engineering (DME)</a></li>
-						{% else %}
-						<li><a onclick="myFunctionErr()">Department of Mechanical Engineering (DME)</a></li>
-						{% endif %}
-				{% elif buildings.buildID == "nec001" %}
-						{% if buildings.buildExist %}
-						<li><a href="#">National Engineering Center (NEC)</a></li>
-						{% else %}
-						<li><a onclick="myFunctionErr()">National Engineering Center (NEC)</a></li>
-						{% endif %}
-				{% if buildings.buildID == "coe001" %}
-					{% if buildings.buildExist %}
-		  				<li><a href="{% url 'coe' %}">Engineering Library I (EnggLib1)</a></li>
-		  			{% else %}
-		  				<li><a onclick="myFunctionErr()">Engineering Library I (EnggLib1)</a></li>
+						<tr>
+							<td><a href="{% url 'coe' %}">College of Engineering (Melchor Hall)</a></td>
+		  				</tr>
+		  				{% else %}
+		  				<tr>
+		  					<td><a onclick="myFunctionErr()">College of Engineering (Melchor Hall)</a></td>
+		  				</tr>
 		  				{% endif %}
-		  			{% endif %}
-		  		{% elif buildings.buildID == "dcs001" %}
-					{% if buildings.buildExist %}
-						<li><a href="{% url 'dcs' %}">Alumni Engineers Centennial Hall (AECH)</a></li>
-					{% else %}
-						<li><a onclick="myFunctionErr()">Alumni Engineers Centennial Hall (AECH)</a></li>
+		  			{% elif buildings.buildID == "engglib2001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'engglib2' %}">Engineering Library II (EnggLib2)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Engineering Library II (EnggLib2)</a></td>
+						</tr>
 						{% endif %}
-		  		{% endif %}
-				{% endfor %}
-				<br>
-				<li>No results found.</li>
-		</ul>
+					{% elif buildings.buildID == "dcs001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'dcs' %}">Department of Computer Science (DCS)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Department of Computer Science (DCS)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "eee001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'eee' %}">Electrical and Electronics Engineering Institute (EEEI)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Electrical and Electronics Engineering Institute (EEEI)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "ice001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'ice' %}">Institute of Civil Engineering (ICE)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Institute of Civil Engineering (ICE)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "dmmme001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'mmm' %}">Department of Mining, Mettalurgical, and Materials Engineering (DMMME)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Department of Mining, Mettalurgical, and Materials Engineering (DMMME)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "dche001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'che' %}">Department of Chemical Engineering (DCHE)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Department of Chemical Engineering (DCHE)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "dieor001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="#">Department of Industrial Engineering and Operations Research (DIEOR)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Department of Industrial Engineering and Operations Research (DIEOR)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "dge001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="#">Department of Geodetic Engineering (DGE)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Department of Geodetic Engineering (DGE)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "dme001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="#">Department of Mechanical Engineering (DME)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Department of Mechanical Engineering (DME)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "nec001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="#">National Engineering Center (NEC)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">National Engineering Center (NEC)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "coe001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'coe' %}">Engineering Library I (EnggLib1)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Engineering Library I (EnggLib1)</a></td>
+						</tr>
+						{% endif %}
+					{% elif buildings.buildID == "dcs001" %}
+						{% if buildings.buildExist %}
+						<tr>
+							<td><a href="{% url 'dcs' %}">Alumni Engineers Centennial Hall (AECH)</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td><a onclick="myFunctionErr()">Alumni Engineers Centennial Hall (AECH)</a></td>
+						</tr>
+						{% endif %}
+		            {% endif %}
+		            {% endfor %}
+		            </tbody>
+		        </table>
+		    </div>
+		</section>
 	</div>
 
 	<script>
-function myFunctionSearch() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-}
-</script>
+		$("#my-search-input").keyup(function () {
+	    var search = $(this).val();
+	    $(".my-list").children().show();
+	    $('.noresults').remove();
+	    if (search) {
+	        $(".my-list").children().not(":containsNoCase(" + search + ")").hide();
+	        $(".my-list").each(function () {
+	            if ($(this).children(':visible').length == 0) $(this).append('<tr class="noresults"><td colspan="3"><em>No Results Found</em></td></tr>');
+	        });
+	    }
+	});
 
-<script>
-function myFunctionErr() {
-  alert("This building does not exist.");
-}
-</script>
+	$.expr[":"].containsNoCase = function (el, i, m) {
+	    var search = m[3];
+	    if (!search) return false;
+	    return new RegExp(search, "i").test($(el).text());
+	};
+	</script>
+
+
+	<script>
+		function myFunctionErr() {
+		  alert("This building does not exist.");
+		}
+	</script>
 
 	<div class="footer">
 		<p>Copyright © 2019 MaroonPrint</p>
 	</div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$('.header-search form').on('click', function(e) {
+	<script>
+	/*	Name: myFunction
+		Created: 01/30/2019
+		Purpose: For the dropdown functionality of the dropdown navburger
+		Calling argument: myFunction()
+	*/
+	function myFunction() {
+	  	document.getElementById("myDropdown").classList.toggle("show");
+	}
 
-			// If the form (which is turned into the search button) was
-			// clicked directly, toggle the visibility of the search box.
+	window.onscroll = function() {newFunction()};
 
-			if(e.target == this) {
-				$(this).find('input').toggle();
-			}
-		});
-	});
+	var header = document.getElementById("myHeader");
+	var sticky = header.offsetTop;
 
-/*	Name: myFunction
-	Created: 01/30/2019
-	Purpose: For the dropdown functionality of the dropdown navburger
-	Calling argument: myFunction()
-*/
-function myFunction() {
-  	document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onscroll = function() {newFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-/*	Name: newFunction
-	Created: 01/30/2019
-	Purpose: For the stickiness of the header at the top.
-	Calling argument: newFunction()
-*/
-function newFunction() {
-  	if (window.pageYOffset > sticky) {
-    	header.classList.add("sticky");
-  	} else {
-    	header.classList.remove("sticky");
-  	}
-}
-</script>
+	/*	Name: newFunction
+		Created: 01/30/2019
+		Purpose: For the stickiness of the header at the top.
+		Calling argument: newFunction()
+	*/
+	function newFunction() {
+	  	if (window.pageYOffset > sticky) {
+	    	header.classList.add("sticky");
+	  	} else {
+	    	header.classList.remove("sticky");
+	  	}
+	}
+	</script>
 
 </body>
 </html>
