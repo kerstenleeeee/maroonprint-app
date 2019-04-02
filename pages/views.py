@@ -80,7 +80,7 @@ def loginLanding(request):
 def adminPageView(request):
 	return render(request, 'admin-page.html')
 
-def addBuildingFloorPageView(request):
+def addBuildingFloorRoutePageView(request):
 	return render(request, 'add-building-floor-route.html')
 
 def addRoutePageView(request):
