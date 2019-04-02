@@ -81,7 +81,10 @@ def adminPageView(request):
 	return render(request, 'admin-page.html')
 
 def addBuildingFloorPageView(request):
-	return render(request, 'add-building-floor.html')
+	return render(request, 'add-building-floor-route.html')
+
+def addRoutePageView(request):
+	return render(request, 'add-route.html')
 
 '''
 def editFloorPageView(request):
@@ -183,6 +186,24 @@ def deleteFloorPageView(request):
 		"form" : form
 	}
 	return render(request, 'delete-floor.html', context)
+
+def deleteBuildingFloorRoutePageView(request):
+	return render(request, 'delete-building-floor-route.html')
+
+def deleteBuildingPageView(request):
+	return render(request, 'delete-building.html')
+
+def deleteRoutePageView(request):
+	return render(request, 'delete-route.html')
+
+def editBuildingFloorRoutePageView(request):
+	return render(request, 'edit-building-floor-route.html')
+
+def editBuildingPageView(request):
+	return render(request, 'edit-building.html')
+
+def editRoutePageView(request):
+	return render(request, 'edit-route.html')
 
 def editFloorPageView(request):
 	#return render(request, "edit-floor.html")
