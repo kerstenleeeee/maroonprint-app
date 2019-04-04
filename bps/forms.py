@@ -28,6 +28,13 @@ class BuildingCreateForm(forms.Form):
     buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=False))
     buildFloors = forms.IntegerField()
 
+class EditBuilding(forms.Form):
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
+    buildFloors = forms.IntegerField()
+
+class DeleteBuilding(forms.Form):
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
+
 class FloorForm(forms.ModelForm):
     class Meta:
         model = Floor

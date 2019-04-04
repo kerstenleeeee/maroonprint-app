@@ -32,7 +32,7 @@ from bps.models import Building, Floor, Routes
 from bps.serializers import BuildingSerializer, FloorSerializer, RouteSerializer
 from rest_framework import status
 
-from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm, DeleteFloor, RouteCreateForm, RouteForm, DeleteRoute
+from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm, DeleteFloor, RouteCreateForm, RouteForm, DeleteRoute, EditBuilding, DeleteBuilding
 from django.contrib import messages	
 
 from django.db import IntegrityError
@@ -81,10 +81,7 @@ def adminPageView(request):
 	return render(request, 'admin-page.html')
 
 def addBuildingFloorRoutePageView(request):
-	return render(request, 'add-building-floor-route.html')
-
-def addRoutePageView(request):
-	return render(request, 'add-route.html')
+	return render(request, 'add-page.html')
 
 def editPageView(request):
 	return render(request, 'edit-page.html')
@@ -218,7 +215,6 @@ def deleteFloorPageView(request):
 	}
 	return render(request, 'delete-floor.html', context)
 
-<<<<<<< HEAD
 def deleteRoutePageView(request):
 	form = DeleteRoute()
 	if request.method == "POST":
@@ -239,25 +235,6 @@ def deleteRoutePageView(request):
 		"form" : form
 	}
 	return render(request, 'delete-route.html', context)
-=======
-def deleteBuildingFloorRoutePageView(request):
-	return render(request, 'delete-building-floor-route.html')
-
-def deleteBuildingPageView(request):
-	return render(request, 'delete-building.html')
-
-def deleteRoutePageView(request):
-	return render(request, 'delete-route.html')
-
-def editBuildingFloorRoutePageView(request):
-	return render(request, 'edit-building-floor-route.html')
-
-def editBuildingPageView(request):
-	return render(request, 'edit-building.html')
-
-def editRoutePageView(request):
-	return render(request, 'edit-route.html')
->>>>>>> 0e87308a9e7752ef4fe27c448f8fab5661b63026
 
 def editFloorPageView(request):
 	#return render(request, "edit-floor.html")
@@ -283,6 +260,53 @@ def editFloorPageView(request):
 		"form" : form
 	}
 	return render(request, 'edit-floor.html', context)
+
+def editBuildingPageView(request):
+	#return render(request, "edit-floor.html")
+	form = EditBuilding()
+	if request.method == "POST":
+		form = EditBuilding(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("buildFloors")
+			if Building.objects.filter(buildName=checkBuild, buildExist=True).exists():
+				try:
+					Building.objects.filter(buildName=checkBuild).update(buildFloors=checkFloor)
+					messages.success(request, 'Successfully updated the blueprint!')
+					return HttpResponseRedirect('/edit-building/')
+				except ObjectDoesNotExist:
+					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
+			else:
+					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
+		else:
+			print(form.errors)	
+	context = {
+		"form" : form
+	}
+	return render(request, 'edit-building.html', context)
+
+def deleteBuildingPageView(request):
+	#return render(request, "edit-floor.html")
+	form = DeleteBuilding()
+	if request.method == "POST":
+		form = DeleteBuilding(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			if Building.objects.filter(buildName=checkBuild, buildExist=True).exists():
+				try:
+					Building.objects.filter(buildName=checkBuild).update(buildExist=False)
+					messages.success(request, 'Successfully delete the building!')
+					return HttpResponseRedirect('/edit-building/')
+				except ObjectDoesNotExist:
+					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
+			else:
+					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
+		else:
+			print(form.errors)	
+	context = {
+		"form" : form
+	}
+	return render(request, 'delete-building.html', context)
 
 def editRoutePageView(request):
 	#return render(request, "edit-floor.html")
