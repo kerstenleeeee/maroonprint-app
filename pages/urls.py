@@ -31,9 +31,11 @@ urlpatterns = [
     # url('login-landing/', views.loginLanding, name="loginLanding"),
     url('search-view/', views.searchPageView, name="search-view"),
     url('admin-page/',views.adminPageView, name="admin-page"),
-    url('add-building-floor/',views.addBuildingFloorPageView, name="add-building-floor"),
+    url('add-building-floor-route/',views.addBuildingFloorRoutePageView, name="add-building-floor-route"),
     url('add-building/',views.addBuildingPageView, name="add-building"),
+    url('add-route/',views.addRoutePageView, name="add-route"),
     url('add-floor/',views.addFloorPageView, name="add-floor"),
+<<<<<<< HEAD
     url('add-route/',views.addRoutePageView, name="add-route"),
     url('delete-floor/',views.deleteFloorPageView, name="delete-floor"),
     url('delete-page/',views.deletePageView, name="delete-page"),
@@ -41,6 +43,17 @@ urlpatterns = [
     url('edit-page/',views.editPageView, name="edit-page"),
     url('edit-floor/',views.editFloorPageView, name="edit-floor"),
     url('edit-route/',views.editRoutePageView, name="edit-route"),
+=======
+    url('delete-building-floor-route/',views.deleteBuildingFloorRoutePageView, name="delete-building-floor-route"),
+    url('delete-building/',views.deleteBuildingPageView, name="delete-building"),
+    url('delete-floor/',views.deleteFloorPageView, name="delete-floor"),
+    url('delete-route/',views.deleteRoutePageView, name="delete-route"),    
+    url('edit-building-floor-route/',views.editBuildingFloorRoutePageView, name="edit-building-floor-route"),
+    url('edit-building/',views.editBuildingPageView, name="edit-building"),
+    url('edit-floor/',views.editFloorPageView, name="edit-floor"),
+    url('edit-route/',views.editRoutePageView, name="edit-route"),
+    
+>>>>>>> 0e87308a9e7752ef4fe27c448f8fab5661b63026
     #dcs
     url('department-of-computer-science/', views.dcsPageView, name="dcs"),
     #engglib2

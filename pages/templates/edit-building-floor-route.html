@@ -1,23 +1,3 @@
-<!--
-     License
-     Author: Hannah Mae Magno
-     This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo 
-     of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2018-2019 
--->
-
-<!--
-     Code History
-     Magno - 02/16/19 - Initial Commit
-     Magno - 02/17/19 - Added django forms for add functionality
--->
-
-<!--
-     File creation date: 02/16/19
-     Development Group: 3
-     Client Group: 3
-     Description: Add Blueprint Page
--->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MaroonPrint</title>
+    <title>Administrator | MaroonPrint</title>
 
     <link rel="stylesheet" href="{{STATIC_ROOT}}css/demo.css">
     <link rel="stylesheet" href="{{STATIC_ROOT}}css/header-search.css">
@@ -56,7 +36,6 @@
     }
 
     .home img{
-        opacity: 0.4;
         margin: 20px auto;
     }
 
@@ -412,6 +391,29 @@
 
     </header>
 
+    <div class="home">
+        <table align="center">
+            <tr>
+                <a href="{% url 'edit-building' %}"><img src="https://i.ibb.co/pfYK5zM/edit-building.png" style="width: 210px; height: 55px"></a>
+                <a href="{% url 'edit-floor' %}"><img src="https://i.ibb.co/VVq9JV0/edit-floor.png" style="width: 210px; height: 55px"></a>
+                <a href="{% url 'edit-route' %}"><img src="https://i.ibb.co/CVYJTjJ/edit-route.png" style="width: 210px; height: 55px"></a>
+                
+            </tr>
+            <tr>
+                <p><span style="color: #800000; font-size: 20px">&#9888;</span>&nbsp;&nbsp;Please do not forget to logout after using to avoid non-admin personnels to have access.</p>
+            </tr>
+            <tr>
+                <a href="{% url 'admin-page' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000"></i></a>
+            </tr>
+        </table>
+    </div>
+    <!-- <br/><br/> 
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <a href="{% url 'edit-building' %}"><img src="https://i.ibb.co/QpbwB81/add-building.png" style="width: 180px; height: 80px"></a>
+    <a href="{% url 'edit-floor' %}"><img src="https://i.ibb.co/P6BLX29/add-floor.png" style="width: 180px; height: 80px"></a>
+    -->
+    
+
     {% else %}
     <header class="header-main" id="myHeader">
         <div class="header-sub">
@@ -430,37 +432,5 @@
     </div>
     {% endif %}
 
-
-    <div class="home">
-    <h2 style="color: #800000; font-size: 30px" align="center"><strong>ADD BUILDING</strong></h2>
-    <br/><br/>
-    <form method = 'POST' align = "center"> 
-        {% csrf_token %}
-        <tr>Department Name: {{ form.buildID }}</tr><br/> <br/>
-        <tr>No. of floors: {{form.buildFloors }} </tr><br/> <br/>
-        
-    
-        <input type = 'submit' value = 'Save' />
-        <div class = "form-group">
-                {% if messages %}
-                    <ul class = "messages">
-                    {% for message in messages %}
-                    <li>
-                        {% if message.tags == "success" %}
-                            <div class="alert alert-success">{{message}}</div>
-                        {% elif message.tags == "error" %}
-                            <div class="alert alert-success">{{message}} 
-                            <br><a href="{% url 'add-floor' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Add</a>
-                            </div>
-                        {% endif %}
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-    </form>
-    <br>
-    <a href="{% url 'add-building-floor-route' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000;"></i></a>
-    </div>
 </body>
 </html>

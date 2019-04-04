@@ -80,8 +80,11 @@ def loginLanding(request):
 def adminPageView(request):
 	return render(request, 'admin-page.html')
 
-def addBuildingFloorPageView(request):
-	return render(request, 'add-building-floor.html')
+def addBuildingFloorRoutePageView(request):
+	return render(request, 'add-building-floor-route.html')
+
+def addRoutePageView(request):
+	return render(request, 'add-route.html')
 
 def editPageView(request):
 	return render(request, 'edit-page.html')
@@ -215,6 +218,7 @@ def deleteFloorPageView(request):
 	}
 	return render(request, 'delete-floor.html', context)
 
+<<<<<<< HEAD
 def deleteRoutePageView(request):
 	form = DeleteRoute()
 	if request.method == "POST":
@@ -235,6 +239,25 @@ def deleteRoutePageView(request):
 		"form" : form
 	}
 	return render(request, 'delete-route.html', context)
+=======
+def deleteBuildingFloorRoutePageView(request):
+	return render(request, 'delete-building-floor-route.html')
+
+def deleteBuildingPageView(request):
+	return render(request, 'delete-building.html')
+
+def deleteRoutePageView(request):
+	return render(request, 'delete-route.html')
+
+def editBuildingFloorRoutePageView(request):
+	return render(request, 'edit-building-floor-route.html')
+
+def editBuildingPageView(request):
+	return render(request, 'edit-building.html')
+
+def editRoutePageView(request):
+	return render(request, 'edit-route.html')
+>>>>>>> 0e87308a9e7752ef4fe27c448f8fab5661b63026
 
 def editFloorPageView(request):
 	#return render(request, "edit-floor.html")

@@ -451,7 +451,7 @@
                             <div class="alert alert-success">{{message}}</div>
                         {% elif message.tags == "error" %}
                             <div class="alert alert-success">{{message}} 
-                            <br><a href="{% url 'edit-floor' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Edit</a>
+                            <br><a href="{% url 'edit-building-floor-route' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Edit</a>
                             </div>
                         {% endif %}
                     </li>
@@ -461,7 +461,7 @@
             </div>
     </form>
     <br>
-    <a href="{% url 'add-building-floor' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000;"></i></a>
+    <a href="{% url 'add-building-floor-route' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000;"></i></a>
     </div>
 </body>
 </html>
