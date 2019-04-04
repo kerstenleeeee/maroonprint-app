@@ -14,7 +14,7 @@
 # Description: Forms for the add blueprint functionality
 
 from django import forms
-from .models import Building, Floor
+from .models import Building, Floor, Routes
 
 class BuildingForm(forms.ModelForm):
     class Meta:
@@ -53,3 +53,23 @@ class FloorCreateForm(forms.Form):
 class DeleteFloor(forms.Form):
     buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
     floorNo = forms.IntegerField()
+
+class RouteForm(forms.ModelForm):
+    class Meta:
+        model = Routes
+        fields = [
+            'destination',
+            'directions',
+            'roomNo'
+        ]
+
+class RouteCreateForm(forms.Form):
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
+    destination = forms.CharField(max_length=100, widget=forms.TextInput
+        (attrs={'placeholder':'ex. ERDT'}))
+    roomNo = forms.IntegerField()
+    directions = forms.CharField(widget=forms.Textarea)
+
+class DeleteRoute(forms.Form):
+    buildID = forms.ModelChoiceField(queryset=Building.objects.filter(buildExist=True))
+    roomNo = forms.IntegerField()

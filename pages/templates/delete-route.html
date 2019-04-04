@@ -402,12 +402,12 @@
 </style>
 
 <body>
-    {% if user.is_authenticated %}
+	{% if user.is_authenticated %}
     <header class="header-main" id="myHeader">
         <div class="header-sub">
-            <h3>Hi {{ user.username }}!&nbsp;</h3>
-            <h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
-            <h2 style="display: inline-block; float: left; padding-left: 10px; font-size: 20px; line-height: 50px" ><a href="{% url 'logout' %}" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Logout</a></h2>
+  			<h3>Hi {{ user.username }}!&nbsp;</h3>
+  			<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
+  			<h2 style="display: inline-block; float: left; padding-left: 10px; font-size: 20px; line-height: 50px" ><a href="{% url 'logout' %}" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Logout</a></h2>
         </div>
 
     </header>
@@ -415,33 +415,32 @@
     {% else %}
     <header class="header-main" id="myHeader">
         <div class="header-sub">
-                <h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
+  				<h1><a href="{% url 'home' %}"><img src="https://i.ibb.co/cw0tmmS/logo-name.png" style="width: 200px; height: 65px"></a></h1>
         </div>
     </header>
 
     <div class="home">
-        <table align="center">
-            <tr>
-                <h2 style="color: #800000; font-size: 35px">You are not logged in</h2>
-                <p>You do not have permission to access this page.</p>
-                <a href="{% url 'login' %}" onMouseOver="this.style.color='#808080'" onMouseOut="this.style.color='#800000'" style="font-size: 15px; color: #800000">LOGIN</a>
-            </tr>
-        </table>
+    	<table align="center">
+    		<tr>
+    			<h2 style="color: #800000; font-size: 35px">You are not logged in</h2>
+    			<p>You do not have permission to access this page.</p>
+  				<a href="{% url 'login' %}" onMouseOver="this.style.color='#808080'" onMouseOut="this.style.color='#800000'" style="font-size: 15px; color: #800000">LOGIN</a>
+    		</tr>
+    	</table>
     </div>
     {% endif %}
 
 
     <div class="home">
-    <h2 style="color: #800000; font-size: 30px" align="center"><strong>EDIT FLOOR BLUEPRINT</strong></h2>
+    <h2 style="color: #800000; font-size: 30px" align="center"><strong>DELETE ROUTE</strong></h2>
     <br/><br/>
     <form method = 'POST' align = "center"> 
         {% csrf_token %}
         <tr>Building Name: {{ form.buildID }}</tr><br/> <br/>
         <!-- <tr>Floor ID: {{ form.floorID }} <small>(ex. DCS floor 3 should be written as dcs03)</small></tr><br/> <br/> -->
-        <tr>Floor No: {{ form.floorNo  }}</tr><br/> <br/>
-        <tr>Floor Image Link: {{ form.floorImageLink }}</tr><br/> <br/>
+        <tr>Room No.: {{ form.roomNo  }}</tr><br/> <br/>
     
-        <input type = 'submit' value = 'Save' />
+        <input type = 'submit' value = 'Delete' />
         <div class = "form-group">
                 {% if messages %}
                     <ul class = "messages">
@@ -451,7 +450,7 @@
                             <div class="alert alert-success">{{message}}</div>
                         {% elif message.tags == "error" %}
                             <div class="alert alert-success">{{message}} 
-                            <br><a href="{% url 'add-floor' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Add</a>
+                            <br><a href="{% url 'add-route' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Add</a>
                             </div>
                         {% endif %}
                     </li>
@@ -461,7 +460,7 @@
             </div>
     </form>
     <br>
-    <a href="{% url 'edit-page' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000"></i></a>
+    <a href="{% url 'delete-page' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000"></i></a>
     </div>
 </body>
 </html>

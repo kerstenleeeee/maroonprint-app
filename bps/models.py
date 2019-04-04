@@ -39,3 +39,16 @@ class Floor(models.Model):
 
 	def __str__(self):
 		return '%s (%d)' % (self.buildID, self.floorNo)
+
+# to from entity
+class Routes(models.Model):
+	buildID = models.ForeignKey(Building, on_delete = models.CASCADE)
+	destination = models.CharField(max_length = 100)
+	roomNo = models.IntegerField(primary_key=True, default=1)
+	directions = models.TextField("Directions", null=False, blank=False)
+
+	class Meta:
+		unique_together = (('buildID', 'roomNo'),)
+
+	def __str__(self):
+		return '%s (%d)' % (self.destination, self.roomNo)

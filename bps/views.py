@@ -23,8 +23,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from bps.models import Building, Floor
-from bps.serializers import BuildingSerializer, FloorSerializer
+from bps.models import Building, Floor, Routes
+from bps.serializers import BuildingSerializer, FloorSerializer, RouteSerializer
 from rest_framework import status
 
 # variables
@@ -105,6 +105,47 @@ def FloorViews(request, pk):
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     elif request.method == 'PUT':
         serializer = FloorSerializer(blue_print, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        blue_print.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
+
+# get the list of the floors
+@api_view(['GET', 'POST'])
+def routeList(request):
+    if request.method == 'GET':
+        blue_print = Route.objects.all()
+        serializer = RouteSerializer(blue_print, many = True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = RouteSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+# get a building object
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def routeViews(request, pk):
+    try:
+        blue_print = Route.objects.get(roomNo = pk)
+    except Route.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = RouteSerializer(blue_print)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = RouteSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'PUT':
+        serializer = RouteSerializer(blue_print, data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

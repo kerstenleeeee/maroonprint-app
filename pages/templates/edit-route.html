@@ -432,14 +432,15 @@
 
 
     <div class="home">
-    <h2 style="color: #800000; font-size: 30px" align="center"><strong>EDIT FLOOR BLUEPRINT</strong></h2>
+    <h2 style="color: #800000; font-size: 30px" align="center"><strong>EDIT ROUTE</strong></h2>
     <br/><br/>
     <form method = 'POST' align = "center"> 
         {% csrf_token %}
         <tr>Building Name: {{ form.buildID }}</tr><br/> <br/>
         <!-- <tr>Floor ID: {{ form.floorID }} <small>(ex. DCS floor 3 should be written as dcs03)</small></tr><br/> <br/> -->
-        <tr>Floor No: {{ form.floorNo  }}</tr><br/> <br/>
-        <tr>Floor Image Link: {{ form.floorImageLink }}</tr><br/> <br/>
+        <tr>Destination: {{ form.destination  }}</tr><br/> <br/>
+        <tr>Room No: {{ form.roomNo }}</tr><br/> <br/>
+        <tr>Directions: {{ form.directions }}</tr><br/> <br/>
     
         <input type = 'submit' value = 'Save' />
         <div class = "form-group">
@@ -451,7 +452,7 @@
                             <div class="alert alert-success">{{message}}</div>
                         {% elif message.tags == "error" %}
                             <div class="alert alert-success">{{message}} 
-                            <br><a href="{% url 'add-floor' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Add</a>
+                            <br><a href="{% url 'add-route' %}<" onMouseOver="this.style.color='#800000'" onMouseOut="this.style.color='white'">Add</a>
                             </div>
                         {% endif %}
                     </li>
@@ -461,7 +462,7 @@
             </div>
     </form>
     <br>
-    <a href="{% url 'edit-page' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000"></i></a>
+    <a href="{% url 'edit-page' %}"><i class='fas fa-arrow-alt-circle-left' style="font-size: 30px; color: #800000;"></i></a>
     </div>
 </body>
 </html>

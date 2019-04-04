@@ -4,3 +4,4 @@ from . import models
 # Register your models here.
 admin.site.register(models.Building)
 admin.site.register(models.Floor)
+admin.site.register(models.Routes)

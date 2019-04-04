@@ -22,6 +22,8 @@ urlpatterns = [
     path('building/', views.BuildingList),
     path('floor/', views.FloorList),
     path('building/<str:pk>/', views.BuildingViews),
-    path('floor/<str:pk>/', views.FloorViews)
+    path('floor/<str:pk>/', views.FloorViews),
+    path('route/', views.routeList),
+    path('route/<str:pk>/', views.routeViews)
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

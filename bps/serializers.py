@@ -13,7 +13,7 @@
 # Description: Serializers for the models for the database
 
 from rest_framework import serializers
-from .models import Building, Floor
+from .models import Building, Floor, Routes
 
 # building serializer
 class BuildingSerializer(serializers.ModelSerializer):
@@ -26,3 +26,8 @@ class FloorSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Floor
 		fields = ('buildID', 'floorID', 'floorNo', 'floorImageLink',)
+
+class RouteSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Routes
+		fields = ('buildID', 'destination', 'roomNo', 'directions')

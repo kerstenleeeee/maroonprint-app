@@ -28,11 +28,11 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from bps.models import Building, Floor
-from bps.serializers import BuildingSerializer, FloorSerializer
+from bps.models import Building, Floor, Routes
+from bps.serializers import BuildingSerializer, FloorSerializer, RouteSerializer
 from rest_framework import status
 
-from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm, DeleteFloor
+from bps.forms import FloorForm, FloorCreateForm, BuildingForm, BuildingCreateForm, DeleteFloor, RouteCreateForm, RouteForm, DeleteRoute
 from django.contrib import messages	
 
 from django.db import IntegrityError
@@ -82,6 +82,12 @@ def adminPageView(request):
 
 def addBuildingFloorPageView(request):
 	return render(request, 'add-building-floor.html')
+
+def editPageView(request):
+	return render(request, 'edit-page.html')
+
+def deletePageView(request):
+	return render(request, 'delete-page.html')
 
 '''
 def editFloorPageView(request):
@@ -163,6 +169,31 @@ def addFloorPageView(request):
 	}
 	return render(request, 'add-floor.html', context)
 
+def addRoutePageView(request):
+	form = RouteCreateForm()
+	if request.method == "POST":
+		form = RouteCreateForm(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkDest = form.cleaned_data.get("destination")
+			checkRoom = form.cleaned_data.get('roomNo')
+			checkDir = form.cleaned_data.get("directions")
+			if Routes.objects.filter(buildID=checkBuild, roomNo=checkRoom).exists():
+				messages.error(request, 'Route already exists, if you want to edit route, please go to the EDIT panel.')
+			else:
+				try:
+					Routes.objects.create(**form.cleaned_data)	
+					messages.success(request, 'Successfully added route!')
+					return HttpResponseRedirect('/add-route/')
+				except IntegrityError as e:
+					messages.error(request, 'Route already exists, if you want to edit route, please go to the EDIT panel.')
+		else:
+			print(form.errors)
+	context = {
+		"form" : form
+	}
+	return render(request, 'add-route.html', context)
+
 def deleteFloorPageView(request):
 	form = DeleteFloor()
 	if request.method == "POST":
@@ -183,6 +214,27 @@ def deleteFloorPageView(request):
 		"form" : form
 	}
 	return render(request, 'delete-floor.html', context)
+
+def deleteRoutePageView(request):
+	form = DeleteRoute()
+	if request.method == "POST":
+		form = DeleteRoute(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkFloor = form.cleaned_data.get("roomNo")
+			try:
+				floor = Routes.objects.get(buildID=checkBuild, roomNo=checkFloor)
+				floor.delete()
+				messages.success(request, 'Successfully deleted route!')
+				return HttpResponseRedirect('/delete-floor/')
+			except ObjectDoesNotExist:
+				messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
+		else:
+			print(form.errors)
+	context = {
+		"form" : form
+	}
+	return render(request, 'delete-route.html', context)
 
 def editFloorPageView(request):
 	#return render(request, "edit-floor.html")
@@ -209,6 +261,32 @@ def editFloorPageView(request):
 	}
 	return render(request, 'edit-floor.html', context)
 
+def editRoutePageView(request):
+	#return render(request, "edit-floor.html")
+	form = RouteCreateForm()
+	if request.method == "POST":
+		form = RouteCreateForm(request.POST)
+		if form.is_valid():
+			checkBuild = form.cleaned_data.get("buildID")
+			checkDest = form.cleaned_data.get("destination")
+			checkRoom = form.cleaned_data.get('roomNo')
+			checkDir = form.cleaned_data.get("directions")
+			if Floor.objects.filter(buildID=checkBuild, roomNo=roomNo).exists():
+				try:
+					Floor.objects.filter(buildID=checkBuild, roomNo=roomNo).update(directions=checkDir, destination=checkDest)
+					messages.success(request, 'Successfully updated route!')
+					return HttpResponseRedirect('/edit-route/')
+				except ObjectDoesNotExist:
+					messages.error(request, 'Route does not exist. If you want to add route, please go to the ADD panel.')
+			else:
+					messages.error(request, 'Route does not exist. If you want to add route, please go to the ADD panel.')
+		else:
+			print(form.errors)	
+	context = {
+		"form" : form
+	}
+	return render(request, 'edit-route.html', context)
+
 # view dcs.html
 def dcsPageView(request):
 	if Floor.objects.filter(buildID='dcs001', floorNo=1).exists():
@@ -218,10 +296,11 @@ def dcsPageView(request):
 			getBuildings = Building.objects.all()
 			for floors in getFloors:
 				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='dcs001')
 			#print(dcsFloors)
 			#for x in dcsFloors:
 			#	print(x.floorImageLink)
-			return render(request, 'dcs.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings})
+			return render(request, 'dcs.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
 		except:
 			return render(request, 'error.html')
 	else:
@@ -242,29 +321,6 @@ def enggLib2PageView(request):
 			return render(request, 'error.html')
 	else:
 		return render(request, 'error.html')
-
-# view engglib2.html
-'''def enggLib2PageView(request):
-	getBuildings = Building.objects.all()
-	buildingNames = []
-	for building in getBuildings:
-		buildingNames.append(building)
-	# print(buildingNames)
-	if Floor.objects.filter(buildID='dcs001', floorNo=1).exists():
-		try:
-			getFloors = Floor.objects.filter(buildID='dcs001')	# get all info inluding the floorImageLink
-			dcsFloors = []
-			for floors in getFloors:
-				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
-			#print(dcsFloors)
-			#for x in dcsFloors:
-			#	print(x.floorImageLink)
-			getName = Building.objects.get(buildID="dcs001")
-			return render(request, 'engglib2.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getName" : getName, "buildingNames" : buildingNames})
-		except:
-			return render(request, 'error.html')
-	else:
-		return render(request, 'error.html')'''
 
 # view coe.html
 def coePageView(request):
