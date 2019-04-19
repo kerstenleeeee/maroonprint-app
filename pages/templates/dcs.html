@@ -551,165 +551,672 @@
 		{% endif %}
 	{% endif %}
 	{% endfor %} -->
-	<div class="btn-group">
-	<button class="button" onclick="myFunction0()">Floor 0</button>	
-	<button class="button active" onclick="myFunction1()">Lobby</button>	
-	<button class="button" onclick="myFunction2()">Floor 2</button>		
-	<button class="button" onclick="myFunction3()">Floor 3</button>
-	
-	<script>
-		/*	Name: myFunction3
-			Created: 02/05/2019
-			Purpose: Showing the floor3 image
-			Calling argument: myFunction3()
-		*/
-   		function myFunction0() {
-   			{% if 0 not in dcsFloors %}
-   				window.location.href = "{% url 'error' %}";
-   			{% else %}
-   			var a = document.getElementById("myDIV0");
-   			var x = document.getElementById("myDIV1");
-	 		var y = document.getElementById("myDIV2");
-	 		var z = document.getElementById("myDIV3");
-	        if (a.style.display === "none") {
-	  			a.style.display = "block";
-	  			x.style.display = "none";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				a.style.display = "block";
-				}
-			{% endif %}
-		}
-	</script>	
-	<div id="myDIV0" style="display:none;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 0 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
-			{% endif %}
-		{% endfor %}
-	</div>
-	<script>
-		/*	Name: myFunction1
-			Created: 02/05/2019
-			Purpose: Showing the lobby image
-			Calling argument: myFunction1()
-		*/
-   		function myFunction1() {
-   			var a = document.getElementById("myDIV1");
-   			var x = document.getElementById("myDIV0");
-	 		var y = document.getElementById("myDIV2");
-	 		var z = document.getElementById("myDIV3");
-	        if (a.style.display === "none") {
-	  			a.style.display = "block";
-	  			x.style.display = "none";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				a.style.display = "block";
-			}
-		}
-	</script>
-	<div id="myDIV1" style="display:block;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 1 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
-			{% endif %}
-		{% endfor %}
-	</div>
 
 
-	<script>
-		/*	Name: myFunction2
-			Created: 02/05/2019
-			Purpose: Showing the floor 2 image
-			Calling argument: myFunction2()
-		*/
-   		function myFunction2() {
-	 		{% if 2 not in dcsFloors %}
-   				window.location.href = "{% url 'error' %}";
-   			{% else %}
-   			var a = document.getElementById("myDIV2");
-   			var x = document.getElementById("myDIV1");
-	 		var y = document.getElementById("myDIV0");
-	 		var z = document.getElementById("myDIV3");
-	        if (a.style.display === "none") {
-	  			a.style.display = "block";
-	  			x.style.display = "none";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				a.style.display = "block";
-				}
+	{% for buildings in getBuildings %}
+		{% if buildings.buildID == "dcs001" %}
+			{% if buildings.buildFloors == 1 %} <!-- for 1 floor -->
+				<!-- for 1 floor code -->
+				<div class="btn-group">
+					<button class="button active" onclick="myFunction0()">Floor 0</button>	
+					
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction0() {
+							{% if 0 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV0");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV0" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 0 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				
+					<!-- {% for routes in getRoutes %}
+					<p>{{ routes.destination }}</p>
+					<p>{{ routes.directions|linebreaks }}</p>
+					{% endfor %} -->
+					<hr style="border: none; height: 3px; background-color: #808080">
+					<section>
+						<p style="font-size: 15px"">FROM <strong style="color: #800000;">&nbsp;LOBBY&nbsp;</strong>&nbsp;TO&nbsp;
+							<input id="my-search-input" type="text" placeholder="Search Destination" /></p>
+							<div class="list">
+								<table align="center">
+									<tbody class="my-list">
+									{% for routes in getRoutes %}
+									<tr>
+										<td>{{ routes.destination }} ({{ routes.roomNo }})</td>
+										<td>{{ routes.directions|linebreaks }}</td>
+									</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
 			{% endif %}
-		}
-	</script>
-	<div id="myDIV2" style="display:none;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 2 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
+		
+			{% if buildings.buildFloors == 2 %} <!-- for 2 floors -->
+				<!-- for 2 floors code -->
+				<div class="btn-group">
+					<button class="button" onclick="myFunction0()">Floor 0</button>	
+					<button class="button active" onclick="myFunction1()">Lobby</button>	
+					
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction0() {
+							{% if 0 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV0");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV0" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 0 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+					<script>
+						/*	Name: myFunction1
+							Created: 02/05/2019
+							Purpose: Showing the lobby image
+							Calling argument: myFunction1()
+						*/
+						function myFunction1() {
+							var a = document.getElementById("myDIV1");
+							var x = document.getElementById("myDIV0");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+							}
+						}
+					</script>
+					<div id="myDIV1" style="display:block;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 1 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				
+					<!-- {% for routes in getRoutes %}
+					<p>{{ routes.destination }}</p>
+					<p>{{ routes.directions|linebreaks }}</p>
+					{% endfor %} -->
+					<hr style="border: none; height: 3px; background-color: #808080">
+					<section>
+						<p style="font-size: 15px"">FROM <strong style="color: #800000;">&nbsp;LOBBY&nbsp;</strong>&nbsp;TO&nbsp;
+							<input id="my-search-input" type="text" placeholder="Search Destination" /></p>
+							<div class="list">
+								<table align="center">
+									<tbody class="my-list">
+									{% for routes in getRoutes %}
+									<tr>
+										<td>{{ routes.destination }} ({{ routes.roomNo }})</td>
+										<td>{{ routes.directions|linebreaks }}</td>
+									</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+				
 			{% endif %}
-		{% endfor %}
-	</div>
+			
+			{% if buildings.buildFloors == 3 %} <!-- for 3 floors -->
+				<!-- for 3 floors code -->
+				<div class="btn-group">
+					<button class="button" onclick="myFunction0()">Floor 0</button>	
+					<button class="button active" onclick="myFunction1()">Lobby</button>	
+					<button class="button" onclick="myFunction2()">Floor 2</button>		
+					
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction0() {
+							{% if 0 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV0");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV0" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 0 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+					<script>
+						/*	Name: myFunction1
+							Created: 02/05/2019
+							Purpose: Showing the lobby image
+							Calling argument: myFunction1()
+						*/
+						function myFunction1() {
+							var a = document.getElementById("myDIV1");
+							var x = document.getElementById("myDIV0");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+							}
+						}
+					</script>
+					<div id="myDIV1" style="display:block;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 1 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				
+				
+					<script>
+						/*	Name: myFunction2
+							Created: 02/05/2019
+							Purpose: Showing the floor 2 image
+							Calling argument: myFunction2()
+						*/
+						function myFunction2() {
+							{% if 2 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV2");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV0");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>
+					<div id="myDIV2" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 2 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				
+					<!-- {% for routes in getRoutes %}
+					<p>{{ routes.destination }}</p>
+					<p>{{ routes.directions|linebreaks }}</p>
+					{% endfor %} -->
+					<hr style="border: none; height: 3px; background-color: #808080">
+					<section>
+						<p style="font-size: 15px"">FROM <strong style="color: #800000;">&nbsp;LOBBY&nbsp;</strong>&nbsp;TO&nbsp;
+							<input id="my-search-input" type="text" placeholder="Search Destination" /></p>
+							<div class="list">
+								<table align="center">
+									<tbody class="my-list">
+									{% for routes in getRoutes %}
+									<tr>
+										<td>{{ routes.destination }} ({{ routes.roomNo }})</td>
+										<td>{{ routes.directions|linebreaks }}</td>
+									</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+				
+			{% endif %}
+		
+			{% if buildings.buildFloors == 4 %} <!-- for 4 floors -->
+				<div class="btn-group">
+					<button class="button" onclick="myFunction0()">Floor 0</button>	
+					<button class="button active" onclick="myFunction1()">Lobby</button>	
+					<button class="button" onclick="myFunction2()">Floor 2</button>		
+					<button class="button" onclick="myFunction3()">Floor 3</button>
+					
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction0() {
+							{% if 0 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV0");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV0" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 0 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+					<script>
+						/*	Name: myFunction1
+							Created: 02/05/2019
+							Purpose: Showing the lobby image
+							Calling argument: myFunction1()
+						*/
+						function myFunction1() {
+							var a = document.getElementById("myDIV1");
+							var x = document.getElementById("myDIV0");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+							}
+						}
+					</script>
+					<div id="myDIV1" style="display:block;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 1 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				
+				
+					<script>
+						/*	Name: myFunction2
+							Created: 02/05/2019
+							Purpose: Showing the floor 2 image
+							Calling argument: myFunction2()
+						*/
+						function myFunction2() {
+							{% if 2 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV2");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV0");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>
+					<div id="myDIV2" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 2 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				
+				
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction3() {
+							{% if 3 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var x = document.getElementById("myDIV3");
+							var y = document.getElementById("myDIV1");
+							var z = document.getElementById("myDIV2");
+							if (x.style.display === "none") {
+								x.style.display = "block";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								x.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV3" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 3 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs03" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>  
+				</div>
+				
+					<!-- {% for routes in getRoutes %}
+					<p>{{ routes.destination }}</p>
+					<p>{{ routes.directions|linebreaks }}</p>
+					{% endfor %} -->
+					<hr style="border: none; height: 3px; background-color: #808080">
+					<section>
+						<p style="font-size: 15px"">FROM <strong style="color: #800000;">&nbsp;LOBBY&nbsp;</strong>&nbsp;TO&nbsp;
+							<input id="my-search-input" type="text" placeholder="Search Destination" /></p>
+							<div class="list">
+								<table align="center">
+									<tbody class="my-list">
+									{% for routes in getRoutes %}
+									<tr>
+										<td>{{ routes.destination }} ({{ routes.roomNo }})</td>
+										<td>{{ routes.directions|linebreaks }}</td>
+									</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+			{% endif %}
+
+			{% if buildings.buildFloors == 5 %} <!-- for 5 floors -->
+				<!-- for 5 floors code -->
+				<div class="btn-group">
+					<button class="button" onclick="myFunction0()">Floor 0</button>	
+					<button class="button active" onclick="myFunction1()">Lobby</button>	
+					<button class="button" onclick="myFunction2()">Floor 2</button>		
+					<button class="button" onclick="myFunction3()">Floor 3</button>
+					<button class="button" onclick="myFunction4()">Floor 4</button>
+					
+					
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction0() {
+							{% if 0 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV0");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV0" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 0 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs00" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+					<script>
+						/*	Name: myFunction1
+							Created: 02/05/2019
+							Purpose: Showing the lobby image
+							Calling argument: myFunction1()
+						*/
+						function myFunction1() {
+							var a = document.getElementById("myDIV1");
+							var x = document.getElementById("myDIV0");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+							}
+						}
+					</script>
+					<div id="myDIV1" style="display:block;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 1 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcsLobby" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				
+				
+					<script>
+						/*	Name: myFunction2
+							Created: 02/05/2019
+							Purpose: Showing the floor 2 image
+							Calling argument: myFunction2()
+						*/
+						function myFunction2() {
+							{% if 2 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var a = document.getElementById("myDIV2");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV0");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								a.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>
+					<div id="myDIV2" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 2 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs02" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>
+				
+				
+					<script>
+						/*	Name: myFunction3
+							Created: 02/05/2019
+							Purpose: Showing the floor3 image
+							Calling argument: myFunction3()
+						*/
+						function myFunction3() {
+							{% if 3 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var x = document.getElementById("myDIV3");
+							var y = document.getElementById("myDIV1");
+							var z = document.getElementById("myDIV2");
+							if (x.style.display === "none") {
+								x.style.display = "block";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								x.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV3" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 3 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs03" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>  
+
+					<script>
+						/*	Name: myFunction4
+							Created: 04/04/2019
+							Purpose: Showing the floor4 image
+							Calling argument: myFunction4()
+						*/
+						function myFunction4() {
+							{% if 4 not in dcsFloors %}
+								window.location.href = "{% url 'error' %}";
+							{% else %}
+							var x = document.getElementById("myDIV3");
+							var y = document.getElementById("myDIV1");
+							var z = document.getElementById("myDIV2");
+
+							if (x.style.display === "none") {
+								x.style.display = "block";
+								y.style.display = "none";
+								z.style.display = "none";
+							} else {
+								x.style.display = "block";
+								}
+							{% endif %}
+						}
+					</script>	
+					<div id="myDIV4" style="display:none;">
+						{% for floor in getFloors %}
+							{% if floor.floorNo == 4 %}
+								<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
+								<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs04" border="0">
+							{% endif %}
+						{% endfor %}
+					</div>  
+				</div>
+				
+					<!-- {% for routes in getRoutes %}
+					<p>{{ routes.destination }}</p>
+					<p>{{ routes.directions|linebreaks }}</p>
+					{% endfor %} -->
+					<hr style="border: none; height: 3px; background-color: #808080">
+					<section>
+						<p style="font-size: 15px"">FROM <strong style="color: #800000;">&nbsp;LOBBY&nbsp;</strong>&nbsp;TO&nbsp;
+							<input id="my-search-input" type="text" placeholder="Search Destination" /></p>
+							<div class="list">
+								<table align="center">
+									<tbody class="my-list">
+									{% for routes in getRoutes %}
+									<tr>
+										<td>{{ routes.destination }} ({{ routes.roomNo }})</td>
+										<td>{{ routes.directions|linebreaks }}</td>
+									</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+			{% endif %}
 
 
-	<script>
-		/*	Name: myFunction3
-			Created: 02/05/2019
-			Purpose: Showing the floor3 image
-			Calling argument: myFunction3()
-		*/
-   		function myFunction3() {
-   			{% if 3 not in dcsFloors %}
-   				window.location.href = "{% url 'error' %}";
-   			{% else %}
-   			var x = document.getElementById("myDIV3");
-	 		var y = document.getElementById("myDIV1");
-	 		var z = document.getElementById("myDIV2");
-	        if (x.style.display === "none") {
-	  			x.style.display = "block";
-	  			y.style.display = "none";
-	  			z.style.display = "none";
-			} else {
-				x.style.display = "block";
-				}
-			{% endif %}
-		}
-	</script>	
-	<div id="myDIV3" style="display:none;">
-		{% for floor in getFloors %}
-			{% if floor.floorNo == 3 %}
-				<!-- <img class="center-fit" src="https://i.ibb.co/1Lnfqj7/dcs02.png" alt="dcs02" border="0"> -->
-				<img class="center-fit" src="{{ floor.floorImageLink }}" alt="dcs03" border="0">
-			{% endif %}
-		{% endfor %}
-	</div>  
-</div>
 
-	<!-- {% for routes in getRoutes %}
-	<p>{{ routes.destination }}</p>
-	<p>{{ routes.directions|linebreaks }}</p>
-	{% endfor %} -->
-	<hr style="border: none; height: 3px; background-color: #808080">
-	<section>
-		<p style="font-size: 15px"">FROM <strong style="color: #800000;">&nbsp;LOBBY&nbsp;</strong>&nbsp;TO&nbsp;
-		    <input id="my-search-input" type="text" placeholder="Search Destination" /></p>
-		    <div class="list">
-		        <table align="center">
-		            <tbody class="my-list">
-		            {% for routes in getRoutes %}
-					<tr>
-						<td>{{ routes.destination }} ({{ routes.roomNo }})</td>
-						<td>{{ routes.directions|linebreaks }}</td>
-					</tr>
-		            {% endfor %}
-		            </tbody>
-		        </table>
-		    </div>
-		</section>
+
+
+
+
+
+
+
+
+
+		{% endif %}
+	{% endfor %}
+
+
 </div>	
 
 <div class="footer">
