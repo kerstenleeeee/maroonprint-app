@@ -21,7 +21,7 @@ from bps import views
 from pages import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('hello-thesis/', admin.site.urls),
     path('', include('pages.urls')),
     path('', include('bps.urls')),
     #url(r'^$', views.HomePageView.as_view(), name='home'),
