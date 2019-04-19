@@ -1025,11 +1025,13 @@
 								window.location.href = "{% url 'error' %}";
 							{% else %}
 							var a = document.getElementById("myDIV0");
+							var b = document.getElementById("myDIV4");
 							var x = document.getElementById("myDIV1");
 							var y = document.getElementById("myDIV2");
 							var z = document.getElementById("myDIV3");
 							if (a.style.display === "none") {
 								a.style.display = "block";
+								b.style.display = "none";
 								x.style.display = "none";
 								y.style.display = "none";
 								z.style.display = "none";
@@ -1055,11 +1057,13 @@
 						*/
 						function myFunction1() {
 							var a = document.getElementById("myDIV1");
+							var b = document.getElementById("myDIV4");
 							var x = document.getElementById("myDIV0");
 							var y = document.getElementById("myDIV2");
 							var z = document.getElementById("myDIV3");
 							if (a.style.display === "none") {
 								a.style.display = "block";
+								b.style.display = "none";
 								x.style.display = "none";
 								y.style.display = "none";
 								z.style.display = "none";
@@ -1089,11 +1093,13 @@
 								window.location.href = "{% url 'error' %}";
 							{% else %}
 							var a = document.getElementById("myDIV2");
+							var b = document.getElementById("myDIV4");
 							var x = document.getElementById("myDIV1");
 							var y = document.getElementById("myDIV0");
 							var z = document.getElementById("myDIV3");
 							if (a.style.display === "none") {
 								a.style.display = "block";
+								b.style.display = "none";
 								x.style.display = "none";
 								y.style.display = "none";
 								z.style.display = "none";
@@ -1123,11 +1129,15 @@
 							{% if 3 not in dcsFloors %}
 								window.location.href = "{% url 'error' %}";
 							{% else %}
-							var x = document.getElementById("myDIV3");
-							var y = document.getElementById("myDIV1");
-							var z = document.getElementById("myDIV2");
-							if (x.style.display === "none") {
-								x.style.display = "block";
+							var a = document.getElementById("myDIV3");
+							var b = document.getElementById("myDIV4");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV0");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								b.style.display = "none";
+								x.style.display = "none";
 								y.style.display = "none";
 								z.style.display = "none";
 							} else {
@@ -1155,12 +1165,15 @@
 							{% if 4 not in dcsFloors %}
 								window.location.href = "{% url 'error' %}";
 							{% else %}
-							var x = document.getElementById("myDIV3");
-							var y = document.getElementById("myDIV1");
-							var z = document.getElementById("myDIV2");
-
-							if (x.style.display === "none") {
-								x.style.display = "block";
+							var a = document.getElementById("myDIV4");
+							var b = document.getElementById("myDIV0");
+							var x = document.getElementById("myDIV1");
+							var y = document.getElementById("myDIV2");
+							var z = document.getElementById("myDIV3");
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								b.style.display = "none";
+								x.style.display = "none";
 								y.style.display = "none";
 								z.style.display = "none";
 							} else {
