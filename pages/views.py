@@ -353,17 +353,20 @@ def dcsPageView(request):
 	else:
 		return render(request, 'error.html')
 
+# view engglib2.html
 def enggLib2PageView(request):
 	if Floor.objects.filter(buildID='engglib2001', floorNo=1).exists():
 		try:
 			getFloors = Floor.objects.filter(buildID='engglib2001')	# get all info inluding the floorImageLink
-			engglib2Floors = []
+			dcsFloors = []
+			getBuildings = Building.objects.all()
 			for floors in getFloors:
-				engglib2Floors.append(floors.floorNo)	# list of the floorIDs for hecking
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='engglib2001')
 			#print(dcsFloors)
 			#for x in dcsFloors:
 			#	print(x.floorImageLink)
-			return render(request, 'engglib2.html', {"engglib2Floors" : dcsFloors, "getFloors" : getFloors})
+			return render(request, 'engglib2.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
 		except:
 			return render(request, 'error.html')
 	else:
@@ -371,16 +374,18 @@ def enggLib2PageView(request):
 
 # view coe.html
 def coePageView(request):
-	if Floor.objects.filter(buildID='coe001', floorID='coeLobby').exists():
+	if Floor.objects.filter(buildID='coe001', floorNo=1).exists():
 		try:
 			getFloors = Floor.objects.filter(buildID='coe001')	# get all info inluding the floorImageLink
-			coeFloors = []
+			dcsFloors = []
+			getBuildings = Building.objects.all()
 			for floors in getFloors:
-				coeFloors.append(floors.floorID)	# list of the floorIDs for hecking
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='coe001')
 			#print(dcsFloors)
 			#for x in dcsFloors:
 			#	print(x.floorImageLink)
-			return render(request, 'coe.html', {"coeFloors" : coeFloors, "getFloors" : getFloors})
+			return render(request, 'coe.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
 		except:
 			return render(request, 'error.html')
 	else:
@@ -388,32 +393,154 @@ def coePageView(request):
 
 # view  eee.html
 def eeePageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='eee001')
-		return render(request, 'eee.html')
-	except:
+	if Floor.objects.filter(buildID='eee001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='eee001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='eee001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'eee.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view ice.html
 def icePageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='ice001')
-		return render(request, 'ice.html')
-	except:
+	if Floor.objects.filter(buildID='ice001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='ice001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='ice001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'ice.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view mmm.html
 def mmmPageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='mmm001')
-		return render(request, 'mmm.html')
-	except:
+	if Floor.objects.filter(buildID='dmmme001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dmmme001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='dmmme001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'mmm.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')
 
 # view che.html
 def chePageView(request):
-	try:
-		entriesB = Building.objects.get(buildID='che001')
-		return render(request, 'che.html')
-	except:
+	if Floor.objects.filter(buildID='dche001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dche001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='dche001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'che.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
+		return render(request, 'error.html')
+
+# view ie.html
+def iePageView(request):
+	if Floor.objects.filter(buildID='dieor001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dieor001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='dieor001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'ie.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
+		return render(request, 'error.html')
+
+
+# view ge.html
+def gePageView(request):
+	if Floor.objects.filter(buildID='dge001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dge001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='dge001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'ge.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
+		return render(request, 'error.html')
+
+
+# view me.html
+def mePageView(request):
+	if Floor.objects.filter(buildID='dme001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='dme001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='dme001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'me.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
+		return render(request, 'error.html')
+
+# view nec.html
+def necPageView(request):
+	if Floor.objects.filter(buildID='nec001', floorNo=1).exists():
+		try:
+			getFloors = Floor.objects.filter(buildID='nec001')	# get all info inluding the floorImageLink
+			dcsFloors = []
+			getBuildings = Building.objects.all()
+			for floors in getFloors:
+				dcsFloors.append(floors.floorNo)	# list of the floorIDs for hecking
+			getRoutes = Routes.objects.filter(buildID='nec001')
+			#print(dcsFloors)
+			#for x in dcsFloors:
+			#	print(x.floorImageLink)
+			return render(request, 'nec.html', {"dcsFloors" : dcsFloors, "getFloors" : getFloors, "getBuildings" : getBuildings, "getRoutes" : getRoutes})
+		except:
+			return render(request, 'error.html')
+	else:
 		return render(request, 'error.html')

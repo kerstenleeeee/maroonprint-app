@@ -440,19 +440,19 @@
 						{% endif %}
 					{% elif buildings.buildID == "dieor001" %}
 						{% if buildings.buildExist %}
-						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Industrial Engineering and Operations Research</a>
+						<a href="{% url 'dieor' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Industrial Engineering and Operations Research</a>
 						{% endif %}
 					{% elif buildings.buildID == "dge001" %}
 						{% if buildings.buildExist %}
-						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Geodetic Engineering</a>
+						<a href="{% url 'dge' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Geodetic Engineering</a>
 						{% endif %}
 					{% elif buildings.buildID == "dme001" %}
 						{% if buildings.buildExist %}
-						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Mechanical Engineering</a>
+						<a href="{% url 'dme' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">Department of Mechanical Engineering</a>
 						{% endif %}
 					{% elif buildings.buildID == "nec001" %}
 						{% if buildings.buildExist %}
-						<a href="#"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">National Engineering Center</a>
+						<a href="{% url 'nec' %}"><img src="https://i.ibb.co/0qS2Jxr/che-logo.png" style="width: 35px; height: 35px; float: left; display: block;">National Engineering Center</a>
 						{% endif %}
 					{% endif %}
 					{% endfor %}

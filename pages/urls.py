@@ -60,6 +60,14 @@ urlpatterns = [
     url('mining-metallurgical-materials/', views.mmmPageView, name="mmm"),
     #che
     url('department-of-chemical-engineering/', views.chePageView, name="che"),
+    #dieor
+    url('department-of-industrial-engineering/', views.iePageView, name="dieor"),
+    #dge
+    url('department-of-geodetic-engineering/', views.gePageView, name="dge"),
+    #dme
+    url('department-of-mechanical-engineering/', views.mePageView, name="dme"),
+    #nec
+    url('national-engineering-center/', views.necPageView, name="nec"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
