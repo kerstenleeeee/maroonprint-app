@@ -318,9 +318,9 @@ def editRoutePageView(request):
 			checkDest = form.cleaned_data.get("destination")
 			checkRoom = form.cleaned_data.get('roomNo')
 			checkDir = form.cleaned_data.get("directions")
-			if Floor.objects.filter(buildID=checkBuild, roomNo=checkRoom).exists():
+			if Routes.objects.filter(buildID=checkBuild, roomNo=checkRoom).exists():
 				try:
-					Floor.objects.filter(buildID=checkBuild, roomNo=checkRoom).update(directions=checkDir, destination=checkDest)
+					Routes.objects.filter(buildID=checkBuild, roomNo=checkRoom).update(directions=checkDir, destination=checkDest)
 					messages.success(request, 'Successfully updated route!')
 					return HttpResponseRedirect('/edit-route/')
 				except ObjectDoesNotExist:
