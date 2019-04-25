@@ -958,15 +958,17 @@
 							{% if 3 not in dcsFloors %}
 								window.location.href = "{% url 'error' %}";
 							{% else %}
-							var x = document.getElementById("myDIV3");
+							var a = document.getElementById("myDIV3");
+							var x = document.getElementById("myDIV0");
 							var y = document.getElementById("myDIV1");
 							var z = document.getElementById("myDIV2");
-							if (x.style.display === "none") {
-								x.style.display = "block";
+							if (a.style.display === "none") {
+								a.style.display = "block";
+								x.style.display = "none";
 								y.style.display = "none";
 								z.style.display = "none";
 							} else {
-								x.style.display = "block";
+								a.style.display = "block";
 								}
 							{% endif %}
 						}
@@ -1141,7 +1143,7 @@
 								y.style.display = "none";
 								z.style.display = "none";
 							} else {
-								x.style.display = "block";
+								a.style.display = "block";
 								}
 							{% endif %}
 						}
@@ -1177,7 +1179,7 @@
 								y.style.display = "none";
 								z.style.display = "none";
 							} else {
-								x.style.display = "block";
+								a.style.display = "block";
 								}
 							{% endif %}
 						}
