@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^$', views.homePageView, name="home"),
     url('about/', views.aboutPageView, name="about"),
     url('error/', views.errorFloor, name="error"),
+    url('error0/', views.errorAdmin, name="error-admin"),
     url('accounts/', include('django.contrib.auth.urls')),
     # url('login-landing/', views.loginLanding, name="loginLanding"),
     url('search-view/', views.searchPageView, name="search-view"),

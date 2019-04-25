@@ -74,6 +74,9 @@ def searchPageView(request):
 def errorFloor(request):
 	return render(request, 'error.html')
 
+def errorAdmin(request):
+	return render(request, 'error-admin.html')
+
 def loginLanding(request):
 	return render(request, 'login-landing.html')
 
@@ -132,7 +135,7 @@ def addBuildingPageView(request):
 			except IntegrityError as e:
 				messages.error(request, 'Building already exists. If you want to add a blueprint (floor) to the building, please go to the "Add Floor" section.')
 		else:
-			print(form.errors)
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
@@ -163,7 +166,7 @@ def addFloorPageView(request):
 				except IntegrityError as e:
 					messages.error(request, 'Blueprint already exists. If you want to edit the blueprint, please go to the EDIT panel.')
 		else:
-			print(form.errors)
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
@@ -188,7 +191,7 @@ def addRoutePageView(request):
 				except IntegrityError as e:
 					messages.error(request, 'Route already exists, if you want to edit route, please go to the EDIT panel.')
 		else:
-			print(form.errors)
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
@@ -209,7 +212,7 @@ def deleteFloorPageView(request):
 			except ObjectDoesNotExist:
 				messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
 		else:
-			print(form.errors)
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
@@ -230,7 +233,7 @@ def deleteRoutePageView(request):
 			except ObjectDoesNotExist:
 				messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
 		else:
-			print(form.errors)
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
@@ -255,7 +258,7 @@ def editFloorPageView(request):
 			else:
 					messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
 		else:
-			print(form.errors)	
+			return render(request, 'error-admin.html')	
 	context = {
 		"form" : form
 	}
@@ -279,7 +282,7 @@ def editBuildingPageView(request):
 			else:
 					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
 		else:
-			print(form.errors)	
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
@@ -302,7 +305,7 @@ def deleteBuildingPageView(request):
 			else:
 					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
 		else:
-			print(form.errors)	
+			return render(request, 'error-admin.html')	
 	context = {
 		"form" : form
 	}
@@ -328,7 +331,7 @@ def editRoutePageView(request):
 			else:
 					messages.error(request, 'Route does not exist. If you want to add route, please go to the ADD panel.')
 		else:
-			print(form.errors)	
+			return render(request, 'error-admin.html')
 	context = {
 		"form" : form
 	}
