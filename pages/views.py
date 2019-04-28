@@ -229,7 +229,7 @@ def deleteRoutePageView(request):
 				floor = Routes.objects.get(buildID=checkBuild, roomNo=checkFloor)
 				floor.delete()
 				messages.success(request, 'Successfully deleted route!')
-				return HttpResponseRedirect('/delete-floor/')
+				return HttpResponseRedirect('/delete-route/')
 			except ObjectDoesNotExist:
 				messages.error(request, 'Blueprint does not exist. If you want to add the blueprint, please go to the ADD panel.')
 		else:
@@ -295,11 +295,14 @@ def deleteBuildingPageView(request):
 		form = DeleteBuilding(request.POST)
 		if form.is_valid():
 			checkBuild = form.cleaned_data.get("buildID")
+			#print(checkBuild.buildID)
 			if Building.objects.filter(buildName=checkBuild, buildExist=True).exists():
 				try:
 					Building.objects.filter(buildName=checkBuild).update(buildExist=False)
+					#Floor.objects.filter(buildID=checkBuild.buildID).delete()
+					#Routes.objects.filter(buildID=checkBuild.buildID).delete()
 					messages.success(request, 'Successfully delete the building!')
-					return HttpResponseRedirect('/edit-building/')
+					return HttpResponseRedirect('/delete-building/')
 				except ObjectDoesNotExist:
 					messages.error(request, 'Building does not exist. If you want to add the building, please go to the ADD panel.')
 			else:
